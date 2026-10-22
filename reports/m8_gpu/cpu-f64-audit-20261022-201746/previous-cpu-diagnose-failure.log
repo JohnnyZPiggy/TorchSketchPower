@@ -1,0 +1,5 @@
+
+Traceback (most recent call last):
+  File "C:\t\m8-f64-20261022-201622\repo\experiments\m8_gpu\diagnose_float64.py", line 12, in <module>
+    from run_m8 import make_matrix
+ModuleNotFoundError: No module named 'run_m8'

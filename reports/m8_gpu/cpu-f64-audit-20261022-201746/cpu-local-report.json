@@ -1,0 +1,55 @@
+{
+  "source_sha": "a3cba95d1c1c0df66ef5fccc3e0745ae84debc7a",
+  "status": "PASS",
+  "gpu": "NOT RUN",
+  "colab_cli": "NOT RUN",
+  "steps": {
+    "clone": {
+      "exit_code": 0,
+      "seconds": 0.9985013999976218,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    "checkout": {
+      "exit_code": 0,
+      "seconds": 0.11889959999825805,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    "head": {
+      "exit_code": 0,
+      "seconds": 0.07485180000367109,
+      "sha256": "704f47471509c5ae5978e39874e50f760e0c3f823d320a3c87a2b087012864de"
+    },
+    "clean_before": {
+      "exit_code": 0,
+      "seconds": 0.12263600000005681,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    "install": {
+      "exit_code": 0,
+      "seconds": 5.352624099999957,
+      "sha256": "b41eba72cf8f7ad65036275210bda429a06e4382b9c7082493f66fff56cf5eab"
+    },
+    "environment": {
+      "exit_code": 0,
+      "seconds": 2.6511478000029456,
+      "sha256": "41d18696ee5fe8b73de338a6a777f70f18fa69af197dedd2cd31698f0d7ce228"
+    },
+    "pytest": {
+      "exit_code": 0,
+      "seconds": 33.38262229999964,
+      "sha256": "a7ae6b7cb224ec3491dbc9532893e776eb4058f73be15f6748573c2dc21cc0a2"
+    },
+    "diagnose": {
+      "exit_code": 0,
+      "seconds": 13.297423400006664,
+      "sha256": "e62fa80b7c178054cec7e42522c6920b1688527c6b70158cbc5a1b082c3627a1"
+    },
+    "clean_after": {
+      "exit_code": 0,
+      "seconds": 0.07657079999626148,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    }
+  },
+  "diagnostic_status": "CONSISTENT_WITH_ROUNDOFF",
+  "gpu_historical_status": "INCONCLUSIVE; configured historical FAIL immutable"
+}

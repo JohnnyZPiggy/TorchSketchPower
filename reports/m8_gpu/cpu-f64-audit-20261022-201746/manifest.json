@@ -1,0 +1,54 @@
+{
+  "source_sha": "a3cba95d1c1c0df66ef5fccc3e0745ae84debc7a",
+  "status": "CPU_DIAGNOSTIC_COMPLETE / HISTORICAL_GPU_INCONCLUSIVE",
+  "files": {
+    ".gitattributes": {
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da",
+      "bytes": 8
+    },
+    "cpu-audit.diff": {
+      "sha256": "a6e25dcff520841de5bf9b4adeb68c158538abb06ece3ce2a45aaefa3f974eb3",
+      "bytes": 18540
+    },
+    "cpu-environment.log": {
+      "sha256": "41d18696ee5fe8b73de338a6a777f70f18fa69af197dedd2cd31698f0d7ce228",
+      "bytes": 194
+    },
+    "cpu-install.log": {
+      "sha256": "b41eba72cf8f7ad65036275210bda429a06e4382b9c7082493f66fff56cf5eab",
+      "bytes": 795
+    },
+    "cpu-local-report.json": {
+      "sha256": "1e7bb326c01504d6560181ad836b83b86a46d27005cc544b202926f29db651f3",
+      "bytes": 1838
+    },
+    "cpu-pytest.log": {
+      "sha256": "a7ae6b7cb224ec3491dbc9532893e776eb4058f73be15f6748573c2dc21cc0a2",
+      "bytes": 1159
+    },
+    "diagnose.log": {
+      "sha256": "e62fa80b7c178054cec7e42522c6920b1688527c6b70158cbc5a1b082c3627a1",
+      "bytes": 3275
+    },
+    "diagnostic.json": {
+      "sha256": "39e084b0b90a9bc131f6846bf24ab6e3d98550ad8b703719391bd4c2c0ba6757",
+      "bytes": 62313
+    },
+    "previous-cpu-attempt.json": {
+      "sha256": "67be26cbdff90b0061cd4fbdc9534776d9ee4fe91d12fc80e4768cfd6b4b58cb",
+      "bytes": 1526
+    },
+    "previous-cpu-diagnose-failure.log": {
+      "sha256": "7120efc1a5a42fb673d643f9180c2d5d8fb4b8a749e264d2716ac7439f8c16f3",
+      "bytes": 220
+    },
+    "review.json": {
+      "sha256": "6011d00472d31da58118b96303f68bf0d536a7f539aa6c2f9498d412f399e16e",
+      "bytes": 1407
+    },
+    "review.md": {
+      "sha256": "b84ab92e3e5e87824b7dc2ac85ce27dbd9f6039c71faa977b34dfce97ff47611",
+      "bytes": 3702
+    }
+  }
+}

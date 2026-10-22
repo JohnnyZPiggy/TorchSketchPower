@@ -1,0 +1,27 @@
+{
+  "source_sha": "a3cba95d1c1c0df66ef5fccc3e0745ae84debc7a",
+  "status": "CPU_DIAGNOSTIC_COMPLETE / HISTORICAL_GPU_INCONCLUSIVE",
+  "cpu_tests": {
+    "PASS": 548,
+    "SKIP": 46,
+    "skipped": "CUDA NOT RUN"
+  },
+  "proposed_policy_status": "CONSISTENT_WITH_ROUNDOFF",
+  "gpu_status": "NOT RUN; existing configured FAIL unchanged",
+  "historical_source_sha": "116d6c299b3b84a3477363c2529f6efd37972055",
+  "preserved_gpu_evidence_head": "dd6922108596a89995aa96669faf4808b7b4044f",
+  "unchanged_gpu_coverage": "75/80 complete;65GPU+10CPU;380calls;last5cold-only;20warmup/warm calls NOT RUN",
+  "cpu_serialized_sha256": "d77e73d6541b6be9e633f102efb91d6fe8b34bdb88c02c8e4fa325f5b4a481de",
+  "gpu_serialized_sha256": "f5b892c32d0d7259f9578f0fd1ef36172d794cdec3419d5f24084018b3d76996",
+  "exact_gpu_reproduction": false,
+  "new_500eps_bound_adopted": false,
+  "partial_evidence_merge": "PROPOSED for Architect review only; PR stays Draft; unresolved original fail/coverage visible",
+  "first_attempt_failure": "cd5a584 CPU full pytest passed548/46skipped; isolated diagnostic import failed; full log retained, fixed before final validation",
+  "not_run": [
+    "new CUDA experiment",
+    "Colab CLI/preflight/usage/session allocation",
+    "full GPU pytest",
+    "high precision/outward-rounded certificate",
+    "independent GPU factor backward/orthogonality audit: historical full factors unavailable"
+  ]
+}
