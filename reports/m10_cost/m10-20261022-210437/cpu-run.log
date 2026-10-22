@@ -1,0 +1,11 @@
+USDT:2026-10-22 21:10:52 6892:22628 C:\actions-runner\_work\pytorch\pytorch\third_party\kineto\libkineto\src\SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-22 21:10:52 6892:22628 C:\actions-runner\_work\pytorch\pytorch\third_party\kineto\libkineto\src\SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-10-22 21:10:52 6892:22628 C:\actions-runner\_work\pytorch\pytorch\third_party\kineto\libkineto\src\SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-22 21:10:52 6892:22628 C:\actions-runner\_work\pytorch\pytorch\third_party\kineto\libkineto\src\SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-10-22 21:10:52 6892:22628 C:\actions-runner\_work\pytorch\pytorch\third_party\kineto\libkineto\src\SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-22 21:10:52 6892:22628 C:\actions-runner\_work\pytorch\pytorch\third_party\kineto\libkineto\src\SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-10-22 21:10:52 6892:22628 C:\actions-runner\_work\pytorch\pytorch\third_party\kineto\libkineto\src\SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-22 21:10:52 6892:22628 C:\actions-runner\_work\pytorch\pytorch\third_party\kineto\libkineto\src\SyncActivityProfilerHandler.cpp:46] profiler_stop
+USDT:2026-10-22 21:10:52 6892:22628 C:\actions-runner\_work\pytorch\pytorch\third_party\kineto\libkineto\src\SyncActivityProfilerHandler.cpp:39] profiler_start
+USDT:2026-10-22 21:10:52 6892:22628 C:\actions-runner\_work\pytorch\pytorch\third_party\kineto\libkineto\src\SyncActivityProfilerHandler.cpp:46] profiler_stop
+{"status": "CPU_RESEARCH_ONLY", "h1_cases": 8, "h2_cases": 32, "cpu_ATen_events": {"0": {"aten::linalg_svdvals": 2, "aten::_local_scalar_dense": 11, "aten::linalg_qr": 1, "aten::linalg_lstsq": 2}, "1": {"aten::linalg_svdvals": 3, "aten::_local_scalar_dense": 14, "aten::linalg_qr": 3, "aten::linalg_lstsq": 2}}, "h2_cpu_ATen_events": {"original": {"aten::linalg_svdvals": 1, "aten::_local_scalar_dense": 3}, "tensor_threshold": {"aten::linalg_svdvals": 1, "aten::_local_scalar_dense": 2}, "svdvals_only": {"aten::linalg_svdvals": 1, "aten::_local_scalar_dense": 1}}}
