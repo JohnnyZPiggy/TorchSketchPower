@@ -11,7 +11,7 @@ python -m pip install -e '.[test]'
 pytest -q
 ```
 
-If `(Z Z^H)^q Y` has numerical rank below `k`, the trailing output columns are arbitrary; `sketch_power_subspace` emits a `RankDeficiencyWarning` in that case (disable with `check_rank=False`).
+If `(Z Z^H)^q Y` (or `Y` itself) has numerical rank below `k`, the `k`-dimensional powered range does not exist and QR would fill the missing columns arbitrarily. By default `sketch_power_subspace` raises `RankDeficiencyError`; pass `on_rank_deficient="warn"` to get a `RankDeficiencyWarning` and a basis whose trailing columns are arbitrary, or `"ignore"` to skip the checks. A finite, orthonormal output alone does not imply a correct powered range.
 
 CPU evidence for each revision is recorded in the PR conversation (PR #2). GPU: NOT RUN.
 
@@ -19,4 +19,4 @@ See [research rationale](docs/research/spi-tensorization.md) and [Issue #1](http
 
 Upstream MATLAB: https://github.com/Mitchell-Cxyk/SketchPowerIteration @ `752be34fbd26595f8d608a25e7dcdea586a6e0ca`. No root LICENSE found: no code copied.
 
-SAE V3.3 source commit: `65338eb1aa67971e110db982a07cf43161c23446`. Full `.sae/` snapshot adoption remains **BLOCKED / INCOMPLETE**; do not assume this project has a complete pinned framework snapshot.
+SAE V3.3 framework: complete verbatim snapshot of `JohnnyZPiggy/SAE-Framework@65338eb1aa67971e110db982a07cf43161c23446` in [`.sae/`](.sae/). Its own template `.sae/examples/project/AGENTS.md` links `.sae/...` and resolves from the repository root, which is the layout used here.

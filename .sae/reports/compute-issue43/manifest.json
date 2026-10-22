@@ -1,0 +1,60 @@
+{
+  "status": "LOCAL_VALIDATED",
+  "provider": "NOT_RUN",
+  "live_ready": "NOT_GRANTED",
+  "base_sha": "4baa673b3bb9aec0d6d39545e690663608992386",
+  "tested_source_sha": "a75f12b53fd5882c54c15a9f84ac24338ef5cd74",
+  "utc_packaged": "2026-10-20T16:27:52.050078+00:00",
+  "source_files": {
+    "tools/compute/colab_control.py": {
+      "bytes": 16172,
+      "sha256": "1d564818b48c9d39d1209fb57d88d24c67316efeb1f2ce73172c56350cdc29af"
+    },
+    "tools/compute/tests/test_colab_control.py": {
+      "bytes": 19604,
+      "sha256": "1b980b881d81f43789910fdcf81ccb26cf367034ede7bdf3cf842b1128636456"
+    },
+    "tools/compute/diagnostics/authenticated_readback_074.py": {
+      "bytes": 6416,
+      "sha256": "1bc6d2a15d39faca13aee95e243b8d9a3b9ebf401bfdd63693757fb5859fe8ba"
+    },
+    "tools/compute/diagnostics/colab_cli_074.py": {
+      "bytes": 9877,
+      "sha256": "2113e888ab41979c3695dfd30dd7b79405ca4b318bbf5e766564aca6ef17948c"
+    },
+    "tools/compute/README.md": {
+      "bytes": 8709,
+      "sha256": "ed7f96e2549b847e95c78ffa2376bc52c73e5efea17c5796f035c33b603e6daa"
+    },
+    "tools/compute/README.zh-CN.md": {
+      "bytes": 5195,
+      "sha256": "22f7f58b259313c7830d82060d9791f00edb9a64e9480d6ce5ae891335013d5c"
+    },
+    "tools/compute/diagnostics/README.md": {
+      "bytes": 6441,
+      "sha256": "fac58f360ff30e5a351c6f01fc50cb4da5dea74dafce1fee6d09528d70b0f70f"
+    }
+  },
+  "evidence_files": {
+    "controller-mock-cases.json": {
+      "bytes": 25228,
+      "sha256": "a8222fca8324b2a8f37b1f0e8d89b15eef0f5c4f63a30cd4a03ef3cd3d65ff89"
+    },
+    "execution.json": {
+      "bytes": 836,
+      "sha256": "7aee7af9e842708acd9dee61512900d4c1e8b8fa1816e0d281c22e8f7b3eb5e2"
+    },
+    "installed-cli-final.json": {
+      "bytes": 3995,
+      "sha256": "4a614958ed8f73f06169d7736de5899c2c47b415f438d9ae62e7d2e232d36dcc"
+    },
+    "summary.md": {
+      "bytes": 5576,
+      "sha256": "5a1bf91eafe7d643a24d729c01351ba53d3b9ca71aab8ddb86d5c581c41dc17e"
+    },
+    "unittest-windows.txt": {
+      "bytes": 4898,
+      "sha256": "3433b8a8e1c941765c72215daee13c985ee3bbd1a3ad0052116edf06c5ddd6bf"
+    }
+  }
+}

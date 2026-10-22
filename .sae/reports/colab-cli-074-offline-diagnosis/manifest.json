@@ -1,0 +1,68 @@
+{
+  "classification": "LOCAL_OFFLINE_DIAGNOSIS_ONLY",
+  "status": "PASS",
+  "base_sha": "84cabcd4cbdc8efe6c470207f81a71a0dadc96a4",
+  "original_live_sha": "3f203df3e574b630ccb24cd419e1c2b581c898a1",
+  "utc_evidence_packaged": "2026-10-20T15:30:39.184329+00:00",
+  "unittest": {
+    "command": "python -m unittest discover -s tools/compute/tests -v",
+    "python": "3.12.14",
+    "platform": "Windows",
+    "tests": 33,
+    "exit_code": 0,
+    "elapsed_seconds": 22.665,
+    "log_normalization": "CRLF to LF only"
+  },
+  "diagnostic_command": "EXISTING_CLI_PYTHON tools/compute/diagnostics/colab_cli_074.py --out NEW_REPORT.json",
+  "local_retired_observer": {
+    "historical_status_calls": 71,
+    "static_status_argv_literals_remaining": 0,
+    "executed_this_batch": false,
+    "local_file_sha256": "4214888f50dee113fae861ad46c10b8427723040c3091ae8121703bbcff5ec3b",
+    "repository_deployment_change": false
+  },
+  "execution_handoffs": 0,
+  "final_evidence_handoffs": 1,
+  "real_provider_calls": 0,
+  "real_allocation_attempts": 0,
+  "current_server_state": "NOT_QUERIED",
+  "live_ready": "NOT_GRANTED",
+  "files": {
+    "tools/compute/diagnostics/colab_cli_074.py": {
+      "bytes": 9877,
+      "sha256": "2113e888ab41979c3695dfd30dd7b79405ca4b318bbf5e766564aca6ef17948c"
+    },
+    "tools/compute/colab_control.py": {
+      "bytes": 15127,
+      "sha256": "340b809e4adde7bd1e42265f91275d1c2bc88d3f3fc730664af4b568572ebb6d"
+    },
+    "tools/compute/tests/test_colab_control.py": {
+      "bytes": 15189,
+      "sha256": "b84dc73e14936de25cb6ca1a967c6bd487d9202c7bb31104e105978c2989a3e5"
+    },
+    "tools/compute/diagnostics/README.md": {
+      "bytes": 5451,
+      "sha256": "dcaa182a81735bc918aaf52d8e6848940a0407c99cf18a36ec4769ec5e2d3918"
+    },
+    "tools/compute/README.md": {
+      "bytes": 7492,
+      "sha256": "9f93c21e981fc0419bdd5c50c54d9d6ace960bf369625e169569793edaa53126"
+    },
+    "tools/compute/README.zh-CN.md": {
+      "bytes": 4369,
+      "sha256": "074a09673ff50506cdb5872f22af69e2a4471176b43505c7fed3bf9c994d56fa"
+    },
+    "reports/colab-cli-074-offline-diagnosis/diagnostic-final.json": {
+      "bytes": 5034,
+      "sha256": "33f83fd23298bd98f729daf2182d05e170c740530ca7c3c640ad4cf3ee7daa88"
+    },
+    "reports/colab-cli-074-offline-diagnosis/unittest-windows.txt": {
+      "bytes": 4254,
+      "sha256": "52faa4879e25edaf2d2a627094c06b781c74a8e2d17558c16d4b8e2afb2afdab"
+    },
+    "reports/colab-cli-074-offline-diagnosis/summary.md": {
+      "bytes": 5288,
+      "sha256": "d2901568811a141b788959f73d6f53091528f82f046e58e7b526b8e4a9a976b4"
+    }
+  }
+}

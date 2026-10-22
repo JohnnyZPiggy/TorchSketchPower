@@ -8,7 +8,7 @@ framework:
   repository: "JohnnyZPiggy/SAE-Framework"
   commit_sha: "65338eb1aa67971e110db982a07cf43161c23446"
   local_snapshot: ".sae"
-  snapshot_complete: false
+  snapshot_complete: true
 roles:
   scientist: "human"
   architect: "gpt"

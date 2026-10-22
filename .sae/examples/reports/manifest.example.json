@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "run_id": "EXAMPLE_NOT_REAL_RUN",
+  "timestamp_utc": "2026-10-17T00:00:00Z",
+  "status": "NOT_RUN",
+  "source_commit_sha": "REPLACE_WITH_REAL_40_CHARACTER_SHA",
+  "issue_number": 0,
+  "code_pr_number": 0,
+  "device": {
+    "type": "cuda",
+    "name": "RECORD_ACTUAL_DEVICE"
+  },
+  "environment": {
+    "python": "RECORD_VERSION",
+    "pytorch": "RECORD_VERSION",
+    "cuda": "RECORD_VERSION"
+  },
+  "dtype": "float64",
+  "seed": 42,
+  "command": "RECORD_ACTUAL_COMMAND",
+  "measurement": {
+    "cuda_synchronize": true,
+    "warmup_runs": 0,
+    "repetitions": 0,
+    "compile_time_included": null
+  },
+  "notes": "Documentation-only template; not execution evidence."
+}
