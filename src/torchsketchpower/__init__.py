@@ -1,5 +1,6 @@
 """Experimental sketch-power subspace iteration."""
 from .core import RankDeficiencyError, RankDeficiencyWarning, sketch_power_subspace
+from .lowrank import sketch_power_low_rank
 from .reconstruct import IllConditionedWarning, reconstruct_from_corange, solve_corange_coefficient
 from .sketch import (
     construct_corange_sketch,
@@ -17,6 +18,7 @@ __all__ = [
     "construct_sketches",
     "gaussian_test_matrix",
     "reconstruct_from_corange",
+    "sketch_power_low_rank",
     "sketch_power_subspace",
     "solve_corange_coefficient",
     "sparse_sign_test_matrix",
