@@ -1,0 +1,63 @@
+{
+ "generated_utc": "2026-10-22T14:35:04+00:00",
+ "invocation": "C:\\t\\m5\\venv\\Scripts\\python.exe experiments\\m5_cpu\\run_m5.py --out C:\\t\\m5\\out",
+ "source": {
+  "head": "096cce0bb78974d0aeff53c723c1cf10cbd71519",
+  "dirty": false
+ },
+ "package_file": "C:\\t\\m5\\venv\\Lib\\site-packages\\torchsketchpower\\__init__.py",
+ "os": "Windows-11-10.0.26200-SP0",
+ "python": "3.14.6",
+ "torch": "2.14.1+cpu",
+ "device": "cpu",
+ "cpu": "AMD64 Family 23 Model 96 Stepping 1, AuthenticAMD",
+ "logical_cpus": 16,
+ "torch_threads": 8,
+ "grid": "full",
+ "n_cases": 65,
+ "m4_reference": {
+  "path": "reports\\m4_cpu\\samples.csv",
+  "sha256": "15761ee1f7e07e09154b7178de1feb5f6fd0fa82ea427d0f244a0bbd49fd5fd4",
+  "m4_source_sha": "36e94999b7cf6f64d6437d0c2179fe1eb762386e"
+ },
+ "tolerances": {
+  "identity_flag": "residual <= 1e-10 * max(1, largest term), terms relative to ||A||_F^2",
+  "m4_rel": 1e-09
+ },
+ "definitions": {
+  "squared_terms": "relative to ||A||_F^2",
+  "cross": "-2 Re <D, B - B_r>, <X,Y> = tr(X^H Y); ||Bstar-B_r||^2 = ||D||^2 + ||B-B_r||^2 + cross",
+  "cond_c": "sigma_max(C)/sigma_min(C), C = Psi Q, via torch.linalg.svdvals",
+  "stationarity_rel": "||C^H (C B - W)||_F / (||C||_2 ||C B - W||_F), null when the residual is at the noise floor",
+  "ideal_r": "Q (Q^H A)_r, rank-r truncation inside the sketched range",
+  "psi_prefix48": "first d rows of one 48-row Gaussian Psi (seed 900000): nested draws",
+  "psi_seeded": "independent 24-row Gaussian Psi (seed 900000+k), A and Q fixed",
+  "sequential": "Psi drawn from the sketch generator after Omega, Phi, as in sketch_power_low_rank (M4 convention)"
+ },
+ "files": {
+  "samples.csv": {
+   "sha256": "4c7f2efbd33d03c3ec771a0cf95cae02dd622c573b2c3f1f1d00ba4aa4351d65",
+   "bytes": 62443
+  },
+  "samples.json": {
+   "sha256": "618f19fa428ef922d6b97e7788195f8a250e69b22463432fa3f8c2a54836866a",
+   "bytes": 132539
+  },
+  "summary.md": {
+   "sha256": "11c944c085bc54e3127553b868e8f974cd9297e7eefc97eb4c23876090128250",
+   "bytes": 6176
+  }
+ },
+ "not_run": [
+  "GPU",
+  "TPU",
+  "torch.compile",
+  "streaming/one-pass",
+  "batching",
+  "sparsesign",
+  "timing/speedup",
+  "Actions",
+  "paid services"
+ ],
+ "wall_seconds": 0.72
+}
