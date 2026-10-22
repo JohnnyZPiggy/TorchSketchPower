@@ -1,10 +1,25 @@
 # TorchSketchPower
 
-An independent PyTorch implementation of a sketch-power low-rank approximation, **currently in-memory and CPU-only** (GPU support is planned, not implemented), inspired by Chang and Yang, *Improving Sketching Algorithms for Low-Rank Matrix Approximation via Sketch-Power Iterations*, SIAM J. Matrix Anal. Appl. 47(3), 2026, DOI [10.1137/25M1760143](https://doi.org/10.1137/25M1760143).
+An independent **in-memory PyTorch research implementation** of sketch-power low-rank approximation on CPU and a **boundedly validated CUDA/T4 path**, inspired by Chang and Yang, *Improving Sketching Algorithms for Low-Rank Matrix Approximation via Sketch-Power Iterations*, SIAM J. Matrix Anal. Appl. 47(3), 2026, DOI [10.1137/25M1760143](https://doi.org/10.1137/25M1760143).
 
 Given a resident matrix `A` (`m x n`), it returns a rank-`r` factorization `A ~ U diag(sigma) Vh` from random sketches of `A`, a power iteration on an auxiliary sketch, and a small least-squares solve. It comes with exact-SVD baselines, two committed CPU experiment reports, and a stated list of what it does not do.
 
-## Status
+## Research closeout (October 2026)
+
+**Status: research snapshot; active experiments paused. No V1 release or performance claim.** Code and historical evidence are retained for reproduction. The current implementation is an **in-memory, multi-GEMM** approximation, **not** a one-pass/streaming reproduction of the paper's full algorithm. A bounded real Tesla T4 correctness run was performed (M7); broader CUDA correctness, portability, releases and speedups are *not* established. Details and limitations: [research closeout](docs/RESEARCH_CLOSEOUT.md).
+
+| Milestone | Evidence-based finding |
+|---|---|
+| [M7 — CUDA correctness](experiments/m7_cuda/README.md) | Actual single-T4 numerical oracle: 171 PASS / 1 second-device-only NOT RUN; GPU test subset passed. Specific tested source/runtime only. |
+| [M8 — accuracy/performance](reports/m8_gpu/m8-ref-t4-20261022-195451/review.md) | Exploratory T4/CPU runs; second run **75/80 fully measured**, one configured float64 dense-SVD oracle FAIL remains unresolved, other five GPU configs cold-only. Measured native `torch.svd_lowrank` often outperformed SPI in this tested regime; no general ranking. |
+| [M9 — compilation](reports/m9_compile/m9-t4-20261022-204314/review.md) | Partial `torch.compile` graph capture and graph breaks; three tested Inductor warm pairs were slower than eager on one T4. |
+| [M10 — cost model](experiments/m10_cost/README.md) | Symbolic operation, memory and synchronization audit; no measured GPU stage bottlenecks. |
+| [M11 — concatenated GEMM](reports/m11_concat/m11-20261022-214747/review.md) | **REJECT** as an unrestricted API-preserving optimization: a saved CPU input changes numerical-rank branching and final RNG state. No GPU attempted. |
+| [M12 — spectral phase diagram](https://github.com/JohnnyZPiggy/TorchSketchPower/issues/28) | Planned only, **NOT RUN**; deferred at research closeout. |
+
+**Licensing:** no root `LICENSE` was present at this snapshot; this README does not grant reuse rights. No release/tag was created.
+
+## Historical V1 development status (pre-M7; superseded by the closeout above)
 
 | | |
 |---|---|
@@ -110,7 +125,7 @@ Earlier milestones: [PR #2](https://github.com/JohnnyZPiggy/TorchSketchPower/pul
 
 ## Limitations
 
-- In-memory and CPU only. **CUDA/GPU is NOT VALIDATED: no GPU run has been made.** A CUDA code path (Gaussian only; `gels` behind the rank and conditioning gates) exists as an M7 candidate, but it has never run on a GPU and its correctness run is BLOCKED (no CUDA environment was available to the Engineer); see [docs/gpu-readiness.md](docs/gpu-readiness.md#10-m7-status-candidate-implemented-gpu-run-blocked) and [experiments/m7_cuda](experiments/m7_cuda/README.md). Other device types raise. TPU, `torch.compile`, batching, streaming and one-pass operation are also **NOT RUN** and unsupported.
+- In-memory only: **bounded single-T4 CUDA correctness was validated in M7**, while end-to-end portability, full GPU regression coverage and broader numerical validation remain unestablished. M8 includes incomplete runs and an unresolved numerical-oracle FAIL. See the [closeout](docs/RESEARCH_CLOSEOUT.md) for current evidence; historical M7-readiness documents are pre-run snapshots.
 - Not a verified implementation of the paper's Algorithm 2.1; paper-level equivalence is **UNVERIFIED**. The paper's *Require* line has a dimension inconsistency recorded in the [research note](docs/research/spi-tensorization.md).
 - The sparse-sign option is an exploratory fixed-nonzero distribution; it was not exercised in the committed experiments.
 - Results cover only the tested synthetic grid (small sizes, 5 seeds, four spectra). No general accuracy, rate or speed claim is made.
@@ -134,6 +149,9 @@ python -c "import torchsketchpower as t; print(sorted(t.__all__))"
 ```
 
 ## Documentation
+
+[Research closeout and evidence index](docs/RESEARCH_CLOSEOUT.md) is the current milestone reference; earlier readiness and status pages describe historical phases and may retain their original pre-run wording.
+
 
 [docs/README.md](docs/README.md) lists the documents: [mathematics](docs/math.md), [CPU results](docs/cpu-results.md), [GPU readiness audit](docs/gpu-readiness.md), [research note](docs/research/spi-tensorization.md) and the [release checklist](docs/RELEASE_CHECKLIST.md).
 
