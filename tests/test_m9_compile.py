@@ -43,3 +43,13 @@ def test_bounded_plan_and_deadline_marks_not_run(tmp_path):
     manifest=json.loads((tmp_path/'out/manifest.json').read_bytes())
     import hashlib
     for name,value in manifest['files'].items():assert hashlib.sha256((tmp_path/'out'/name).read_bytes()).hexdigest()==value['sha256']
+
+
+def test_m9_driver_invalid_sha_is_offline_and_manifest_matches(monkeypatch,tmp_path):
+    spec=importlib.util.spec_from_file_location('m9driver',p.parent/'colab_driver.py')
+    driver=importlib.util.module_from_spec(spec);spec.loader.exec_module(driver)
+    monkeypatch.setattr(driver,'WORK',tmp_path);monkeypatch.setattr(driver,'SHA','invalid')
+    driver.main();result=json.loads((tmp_path/driver.NAME).read_bytes())
+    assert result['benchmark_status']=='BLOCKED' and not result['logs']
+    assert 'invalid source SHA' in result['exceptions'][0]
+    assert json.loads((p.parent/'artifacts.json').read_bytes())=={'artifacts':[{'name':driver.NAME}]}

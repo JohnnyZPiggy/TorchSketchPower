@@ -65,7 +65,6 @@ def main():
         report["stage"] = "benchmark"
         out=WORK/"m9_out"
         args=[sys.executable,"-I","experiments/m9_compile/run_m9.py","--device",device,"--source-sha",SHA,"--out",str(out),"--max-seconds","160"]
-        if DRY_RUN:args.append("--smoke")
         code,so,se=sh(args,185,repo,env)
         if (out/"results.json").exists():
             raw=(out/"results.json").read_bytes();benchmark=json.loads(raw)
