@@ -1,22 +1,46 @@
 # TorchSketchPower
 
-**Randomized low-rank approximation with PyTorch**  
-*Numerical Linear Algebra · Scientific Computing · CPU & GPU · Reproducible Research*
+[English](README.md) | [简体中文](README.zh-CN.md)
 
-[Quickstart](#quickstart) · [Mathematics](#algorithm) · [Results](#research-highlights) · [Documentation](docs/README.md) · [MIT License](LICENSE)
+**Randomized low-rank matrix approximation in native PyTorch.**
 
-TorchSketchPower is a PyTorch implementation of **Sketch-Power Iterations** for low-rank matrix approximation. It combines randomized matrix sketches, QR-stabilized subspace iteration, least-squares recovery, and truncated SVD in a compact, testable numerical library.
+TorchSketchPower implements sketch-power iterations using randomized matrix sketches, QR-stabilized subspace refinement, checked least-squares recovery, and truncated SVD. The repository brings together mathematical derivations, CPU/CUDA numerical experiments, PyTorch benchmarking, and reproducible research artifacts.
 
-Built with native PyTorch operations, the project includes CPU/CUDA numerical validation, reproducible benchmarks, and studies of compiler behavior and mathematical optimizations.
+![MIT](https://img.shields.io/badge/license-MIT-0f766e) ![Python](https://img.shields.io/badge/Python-3.10%2B-3776ab) ![PyTorch](https://img.shields.io/badge/PyTorch-2.2%2B-ee4c2c) ![Research](https://img.shields.io/badge/status-research_software-334155)
+
+**Explore:** [Mathematics](docs/math.md) · [Experimental results](docs/RESEARCH_CLOSEOUT.md) · [CPU studies](docs/cpu-results.md) · [GPU benchmarks](reports/m8_gpu/m8-ref-t4-20261022-195451/review.md) · [Documentation](docs/README.md)
 
 ## Highlights
 
-- **PyTorch-native:** vectorized matrix operations and CPU/CUDA execution.
-- **Numerically robust:** QR stabilization, rank checks, conditioning diagnostics, and real/complex dtype support.
-- **Research-oriented:** accuracy analysis, PyTorch baseline comparisons, and `torch.compile` experiments.
-- **Reproducible:** numerical tests, raw CPU/T4 data, exact commit provenance, and archived experiment reports.
+- **Native PyTorch:** matrix-based random sketches, QR, least squares and SVD on CPU and CUDA.
+- **Numerical stability:** rank checks, conditioning diagnostics and complex conjugate-transpose support.
+- **Sketch-power refinement:** subspace iterations reuse an auxiliary sketch.
+- **Reproducible research:** source-pinned CPU/T4 experiments, raw benchmark records and numerical counterexamples.
+- **Independent scientific engineering:** documented algorithm choices, correctness tests and performance investigations.
 
-## Quickstart
+## Algorithm architecture
+
+![Sketch-Power tensor pipeline](docs/assets/sketch-power-architecture.svg)
+
+The pipeline constructs two right sketches and one corange sketch from the input matrix. A QR-stabilized sketch-power iteration extracts a subspace; a small least-squares problem and truncated SVD recover the low-rank factors.
+
+For a dense matrix \(A\in\mathbb{F}^{m\times n}\), sketch dimensions \(s,\ell,d\) and target rank \(r\):
+
+\[
+Y=A\Omega,\quad Z=A\Phi,\quad W=\Psi A,\qquad
+Q_0=\operatorname{orth}(Y).
+\]
+
+\[
+Q_{t+1}=\operatorname{orth}\bigl(Z\,\operatorname{orth}(Z^H Q_t)\bigr),\qquad
+B=\underset{B}{\operatorname{argmin}}\,\|(\Psi Q_t)B-W\|_F.
+\]
+
+The output is the rank-\(r\) truncated factorization \(\widehat A_r=U_r\Sigma_r V_r^H\). The current implementation processes resident matrices; the power updates reuse \(Z\). See [the mathematical formulation](docs/math.md) for derivations and numerical conventions.
+
+## Installation and quick start
+
+Install from a checkout (Python >=3.10; PyTorch >=2.2):
 
 ```bash
 git clone https://github.com/JohnnyZPiggy/TorchSketchPower.git
@@ -28,90 +52,68 @@ python -m pip install .
 import torch
 from torchsketchpower import sketch_power_low_rank
 
-A = torch.randn(120, 80, dtype=torch.float64)
+matrix_rng = torch.Generator().manual_seed(7)
+A = torch.randn(120, 80, generator=matrix_rng, dtype=torch.float64)
+
 U, sigma, Vh = sketch_power_low_rank(
     A, r=8, s=12, ell=24, d=24, steps=1,
     generator=torch.Generator().manual_seed(42),
 )
 
 A_hat = (U * sigma) @ Vh
-error = torch.linalg.matrix_norm(A - A_hat) / torch.linalg.matrix_norm(A)
-print(f"Relative Frobenius error: {error:.4f}")
+relative_error = torch.linalg.matrix_norm(A - A_hat) / torch.linalg.matrix_norm(A)
+print(f"Relative Frobenius error: {relative_error:.4f}")
 ```
 
-For reproducible results, seed the matrix generation separately from the algorithm. The Gaussian CUDA path uses device-matched inputs and a CUDA generator.
+Pass a device-resident input and matching random generator for the Gaussian CUDA path. The API also exposes sketch constructors, the subspace kernel, corange reconstruction and numerical diagnostics.
 
-## Algorithm
+## Performance and research findings
 
-Given a matrix `A`, three random sketches are formed:
+The archive includes real NVIDIA Tesla T4 measurements and CPU numerical studies. This is an accuracy- and evidence-oriented numerical project: comparisons are reported with their measurement scope.
 
-```math
-Y = A\Omega,\qquad Z=A\Phi,\qquad W=\Psi A.
-```
-
-The auxiliary sketch drives a QR-stabilized power iteration:
-
-```math
-Q_0=\operatorname{orth}(Y),\qquad
-Q_{t+1}=\operatorname{orth}\!\left(Z\,\operatorname{orth}(Z^H Q_t)\right).
-```
-
-Finally, the algorithm solves the corange least-squares problem and computes a small SVD:
-
-```math
-B=\underset{B}{\operatorname{argmin}}\ \|(\Psi Q)B-W\|_F,
-\qquad \widehat A_r=U_r\Sigma_r V_r^H.
-```
-
-```mermaid
-flowchart LR
-    A["Input matrix A"] --> S["Random sketches Y, Z, W"]
-    S --> Q["QR-stabilized sketch-power iteration"]
-    Q --> L["Least-squares recovery"]
-    L --> V["Truncated SVD"]
-    V --> O["Low-rank factors U, Σ, Vᴴ"]
-```
-
-The sketch-power iterations reuse `Z` to refine the subspace. The current implementation targets **in-memory matrices**. See [mathematical details](docs/math.md) and the [research notes](docs/research/spi-tensorization.md).
-
-## Research highlights
-
-| Area | Results | Evidence |
+| Study | Result | Evidence |
 |---|---|---|
-| **Numerical accuracy** | Synthetic-spectrum studies and error decomposition | [CPU studies](docs/cpu-results.md) |
-| **GPU validation** | 171 numerical-oracle checks passed on an NVIDIA Tesla T4 | [M7](reports/m7_cuda/m7-t4-20261022-185647/m7-cuda-report.json) |
-| **Low-rank benchmarks** | 75/80 configurations fully measured in the second CPU/T4 study; comparison with `torch.svd_lowrank` | [M8](reports/m8_gpu/m8-ref-t4-20261022-195451/review.md) |
-| **PyTorch compilation** | Examined graph capture, compilation overhead, and eager/compiled execution on T4 | [M9](reports/m9_compile/m9-t4-20261022-204314/review.md) |
-| **Mathematical optimization** | FLOP/memory/synchronization models and reproducible floating-point counterexamples | [M10](experiments/m10_cost/README.md) · [M11](reports/m11_concat/m11-20261022-214747/review.md) |
+| **CPU accuracy and error analysis** | Synthetic spectral experiments and exact error-decomposition checks | [M4–M5](docs/cpu-results.md) |
+| **CUDA correctness** | **171 passing numerical-oracle cases** on a real T4 | [M7](reports/m7_cuda/m7-t4-20261022-185647/m7-cuda-report.json) |
+| **Native PyTorch comparison** | **75/80** configurations fully timed in the second study; `torch.svd_lowrank` was faster on the measured paired cases | [M8](reports/m8_gpu/m8-ref-t4-20261022-195451/review.md) |
+| **`torch.compile`** | Partial graph capture and graph-break analysis; three measured T4 Inductor pairs were slower than eager | [M9](reports/m9_compile/m9-t4-20261022-204314/review.md) |
+| **Optimization research** | FLOP/memory cost model and a reproducible rank-threshold counterexample for concatenated GEMMs | [M10](experiments/m10_cost/README.md) · [M11](reports/m11_concat/m11-20261022-214747/review.md) |
 
-The measured T4 configurations favored PyTorch's native low-rank baseline in the studied regime, and the experiments also identified a rank-boundary case where a GEMM refactor changed execution behavior. These findings help characterize the algorithm's numerical and performance trade-offs.
+The [research evidence index](docs/RESEARCH_CLOSEOUT.md) links tested source commits, raw output and complete numerical findings.
 
-Read the complete [research summary and experiment index](docs/RESEARCH_CLOSEOUT.md).
+## Applications and research directions
 
-## Project structure
+| Area | Potential use |
+|---|---|
+| Low-rank approximation | Explore compressed representations of dense matrices |
+| Subspace estimation | Study leading singular subspaces using randomized sketches |
+| Scientific computing | Compare sketch accuracy across spectra and memory budgets |
+| GPU numerical methods | Examine QR/SVD/least-squares costs and PyTorch execution behavior |
+
+## Repository layout
 
 ```text
-src/torchsketchpower/  PyTorch implementation
-tests/                Numerical and regression tests
-experiments/          Experiment drivers and research prototypes
-reports/              Raw measurements and reproducibility records
-docs/                 Mathematics, findings, and technical notes
-.sae/                 Pinned Scientist–Architect–Engineer workflow
+src/torchsketchpower/   Core PyTorch implementation
+tests/                 Numerical and regression tests
+experiments/           Research and benchmark runners
+reports/               Raw measurements and reproducibility evidence
+docs/                  Mathematical derivations and research documentation
+.sae/                  Scientist–Architect–Engineer workflow snapshot
 ```
 
-To run the tests:
+Run the CPU test suite:
 
 ```bash
 python -m pip install pytest
 python -m pytest -q
 ```
 
-## Reference
+## References
 
-Inspired by Chao Chang and Yuning Yang, *Improving Sketching Algorithms for Low-Rank Matrix Approximation via Sketch-Power Iterations*, **SIAM Journal on Matrix Analysis and Applications**, 2026. [DOI: 10.1137/25M1760143](https://doi.org/10.1137/25M1760143).
+Inspired by **Chao Chang and Yuning Yang**, *Improving Sketching Algorithms for Low-Rank Matrix Approximation via Sketch-Power Iterations*, *SIAM Journal on Matrix Analysis and Applications* (2026). [DOI: 10.1137/25M1760143](https://doi.org/10.1137/25M1760143).
 
-Developed with the [SAE (Scientist–Architect–Engineer)](https://github.com/JohnnyZPiggy/SAE-Framework) research workflow.
+Developed using the [SAE (Scientist–Architect–Engineer) framework](https://github.com/JohnnyZPiggy/SAE-Framework).
 
 ## License
 
-Distributed under the [MIT License](LICENSE). Copyright © 2026 Ru Zhang.
+[MIT License](LICENSE) · Copyright © 2026 Ru Zhang.
