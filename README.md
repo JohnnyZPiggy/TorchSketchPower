@@ -17,6 +17,8 @@ If `(Z Z^H)^q Y` (or `Y` itself) has numerical rank below `k`, the `k`-dimension
 
 `construct_corange_sketch(A, d)` forms `Psi (d x m)` and `W = Psi @ A`; `reconstruct_from_corange(Q, Psi, W, r)` solves `min_B ||(Psi Q) B - W||_F` (`torch.linalg.lstsq`, SVD driver) and returns the rank-`r` truncated SVD `(U, sigma, Vh)` of `Q B`. In-memory and CPU only: not streaming, not one-pass, not the complete paper Algorithm 2.1. Rank-deficient `Psi Q` raises `RankDeficiencyError`; poor conditioning warns with `IllConditionedWarning`.
 
+`sketch_power_low_rank(A, r, s, ell, d, steps=1)` composes the four steps above (sketches, `sketch_power_subspace`, corange sketch, reconstruction) into a rank-`r` `(U, sigma, Vh)`. It makes three products over a resident CPU matrix: not streaming, not one-pass, not a verified paper Algorithm 2.1. Non-CPU input raises; GPU: NOT RUN.
+
 CPU evidence for each revision is recorded in the PR conversation (PR #2). GPU: NOT RUN.
 
 See [research rationale](docs/research/spi-tensorization.md) and [Issue #1](https://github.com/JohnnyZPiggy/TorchSketchPower/issues/1).
