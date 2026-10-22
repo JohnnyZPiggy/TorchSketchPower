@@ -1,0 +1,85 @@
+{
+  "source_sha": "cd870297436d8a3ebca7064a702761fe2d1ded30",
+  "status": "CPU_RESEARCH_COMPLETE / HYPOTHESES_CONDITIONAL",
+  "base_main": "345ee660bd1baed2c7a9c5ae7c58ec45f6feff93",
+  "sae_pin": "65338eb1aa67971e110db982a07cf43161c23446",
+  "tests": {
+    "passed": 236,
+    "files": [
+      "test_m10_cost.py",
+      "test_core.py",
+      "test_lowrank.py",
+      "test_reconstruct.py"
+    ]
+  },
+  "h1_cases": 8,
+  "h2_cases": 32,
+  "h1_max_reconstruction_delta": 0.0,
+  "H1_all_same_final_rng_state": true,
+  "naive_wide_draw_mismatch_cases": 8,
+  "YZ_bitwise_unequal_cases": 0,
+  "normal_equations_failures": [
+    {
+      "dtype": "torch.float32",
+      "exception": "_LinAlgError",
+      "checked_solve_error": 4.380028997275076e-07
+    },
+    {
+      "dtype": "torch.float64",
+      "exception": "_LinAlgError",
+      "checked_solve_error": 3.8459253727671276e-16
+    },
+    {
+      "dtype": "torch.complex64",
+      "exception": "_LinAlgError",
+      "checked_solve_error": 4.380028997275076e-07
+    },
+    {
+      "dtype": "torch.complex128",
+      "exception": "_LinAlgError",
+      "checked_solve_error": 3.8459253727671276e-16
+    }
+  ],
+  "CPU_ATen_counts": {
+    "0": {
+      "aten::linalg_svdvals": 2,
+      "aten::_local_scalar_dense": 11,
+      "aten::linalg_qr": 1,
+      "aten::linalg_lstsq": 2
+    },
+    "1": {
+      "aten::linalg_svdvals": 3,
+      "aten::_local_scalar_dense": 14,
+      "aten::linalg_qr": 3,
+      "aten::linalg_lstsq": 2
+    }
+  },
+  "H2_CPU_ATen_counts": {
+    "original": {
+      "aten::linalg_svdvals": 1,
+      "aten::_local_scalar_dense": 3
+    },
+    "tensor_threshold": {
+      "aten::linalg_svdvals": 1,
+      "aten::_local_scalar_dense": 2
+    },
+    "svdvals_only": {
+      "aten::linalg_svdvals": 1,
+      "aten::_local_scalar_dense": 1
+    }
+  },
+  "decisions": {
+    "H1": "CONDITIONAL / PROCEED independent CPU/API review only",
+    "H2": "CONDITIONAL / DEFER production/performance work"
+  },
+  "not_run": [
+    "GPU/Colab CLI",
+    "CPU/GPU performance benchmarks",
+    "new installation",
+    "physical memory traffic or GPU synchronization latency",
+    "all-input API equivalence, nonfinite/extreme/CUDA threshold cases"
+  ],
+  "new_gpu_allocation": false,
+  "new_cleanup_claim": false,
+  "independent_GPT_T2": "PENDING"
+}

@@ -1,0 +1,34 @@
+{
+  "source_sha": "cd870297436d8a3ebca7064a702761fe2d1ded30",
+  "classification": "CPU_ONLY_MATH_RESEARCH",
+  "files": {
+    ".gitattributes": {
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da",
+      "bytes": 8
+    },
+    "cpu-pytest.log": {
+      "sha256": "49a15f5fcf360782e3ed58a35980d4b5ef934828175c6f215d148aabf39c2bfe",
+      "bytes": 345
+    },
+    "cpu-run.log": {
+      "sha256": "a03f9f28a5e9a45d7c5967d54d0a2a5c8e418392986d155e6cf7fd8ce3c3cb51",
+      "bytes": 2173
+    },
+    "observations-manifest.json": {
+      "sha256": "602c38bcd99281732138c093ab64f509b366c3f698ba451a96f11b3f54646e0b",
+      "bytes": 219
+    },
+    "observations.json": {
+      "sha256": "2f8955fd6af3f8759a049736a72ab814f4ab861e8d8d91a88c0fa3a1aaf5985d",
+      "bytes": 36757
+    },
+    "review.json": {
+      "sha256": "a269e706509c2fa85fb1454419d2058d2df12b0116de669790913b22631ed472",
+      "bytes": 2284
+    },
+    "review.md": {
+      "sha256": "c82e0fd74216d8e4d3e658aa370439c9dbe22104be5e053f1bd4f8d0d79bb9d4",
+      "bytes": 3269
+    }
+  }
+}
