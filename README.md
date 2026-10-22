@@ -26,15 +26,15 @@ The pipeline constructs two right sketches and one corange sketch from the input
 
 For a dense matrix \(A\in\mathbb{F}^{m\times n}\), sketch dimensions \(s,\ell,d\) and target rank \(r\):
 
-\[
+$$
 Y=A\Omega,\quad Z=A\Phi,\quad W=\Psi A,\qquad
 Q_0=\operatorname{orth}(Y).
-\]
+$$
 
-\[
+$$
 Q_{t+1}=\operatorname{orth}\bigl(Z\,\operatorname{orth}(Z^H Q_t)\bigr),\qquad
 B=\underset{B}{\operatorname{argmin}}\,\|(\Psi Q_t)B-W\|_F.
-\]
+$$
 
 The output is the rank-\(r\) truncated factorization \(\widehat A_r=U_r\Sigma_r V_r^H\). The current implementation processes resident matrices; the power updates reuse \(Z\). See [the mathematical formulation](docs/math.md) for derivations and numerical conventions.
 
