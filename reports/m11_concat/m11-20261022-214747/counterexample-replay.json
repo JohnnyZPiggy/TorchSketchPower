@@ -1,0 +1,415 @@
+{
+  "case": "saved_A_independent_replay",
+  "dtype": "torch.float32",
+  "shape": [
+    16,
+    17
+  ],
+  "params": [
+    1,
+    1,
+    3,
+    4,
+    1
+  ],
+  "seed": 315,
+  "max_condition": null,
+  "A_sha256": "ce57394be1ee56e6830a7f32dfa555e19d319d66fe166519170f2a3e26539ce4",
+  "tolerance": 0.001,
+  "public_replay_verified": true,
+  "public": {
+    "error": null,
+    "warnings": [],
+    "rng_before": "516f49643596c37056447c1fed0480210ed298b2ddad534efc67ab493d49a494",
+    "rng_after": "0a49bec5eab69f9170565535b7b9a0aa451d9ae5959dcf95944a0290cfd0bbd3",
+    "global_rng_unchanged": true
+  },
+  "paths": {
+    "separate": {
+      "error": null,
+      "warnings": [],
+      "rng_before": "516f49643596c37056447c1fed0480210ed298b2ddad534efc67ab493d49a494",
+      "rng_after": "0a49bec5eab69f9170565535b7b9a0aa451d9ae5959dcf95944a0290cfd0bbd3",
+      "global_rng_unchanged": true,
+      "trace_stage": "returned",
+      "draws": {
+        "Omega": {
+          "shape": [
+            17,
+            1
+          ],
+          "dtype": "torch.float32",
+          "device": "cpu",
+          "stride": [
+            1,
+            1
+          ],
+          "contiguous": true,
+          "logical_bytes": 68,
+          "backing_bytes": 68,
+          "sha256": "19380bdb5471ab7d12f0f76f42b93d6c1610f04581ed63d88bf23eb365f42c27"
+        },
+        "Phi": {
+          "shape": [
+            17,
+            3
+          ],
+          "dtype": "torch.float32",
+          "device": "cpu",
+          "stride": [
+            3,
+            1
+          ],
+          "contiguous": true,
+          "logical_bytes": 204,
+          "backing_bytes": 204,
+          "sha256": "ed5c7f2f33b6a96d83e19be2463eea92692b1f7c72795de4af289294e9a98909"
+        },
+        "Psi": {
+          "shape": [
+            4,
+            16
+          ],
+          "dtype": "torch.float32",
+          "device": "cpu",
+          "stride": [
+            16,
+            1
+          ],
+          "contiguous": true,
+          "logical_bytes": 256,
+          "backing_bytes": 256,
+          "sha256": "48b6e037d8d16918fcf83adb2ce4ad6501a8d6823e63193d3eebe0a47b8ee29e"
+        }
+      },
+      "intermediates": {
+        "Y": {
+          "shape": [
+            16,
+            1
+          ],
+          "dtype": "torch.float32",
+          "device": "cpu",
+          "stride": [
+            1,
+            1
+          ],
+          "contiguous": true,
+          "logical_bytes": 64,
+          "backing_bytes": 64,
+          "sha256": "177251b5f8b6322a5121b5c806db7ae1614869b6732a039ebf9f60fba47e6a38"
+        },
+        "Z": {
+          "shape": [
+            16,
+            3
+          ],
+          "dtype": "torch.float32",
+          "device": "cpu",
+          "stride": [
+            3,
+            1
+          ],
+          "contiguous": true,
+          "logical_bytes": 192,
+          "backing_bytes": 192,
+          "sha256": "1771f846cc4115092acfa5fb6fcafee4a929a3e452e810e6753d40083ca0491a"
+        },
+        "Q": {
+          "shape": [
+            16,
+            1
+          ],
+          "dtype": "torch.float32",
+          "device": "cpu",
+          "stride": [
+            1,
+            16
+          ],
+          "contiguous": true,
+          "logical_bytes": 64,
+          "backing_bytes": 64,
+          "sha256": "3caba0759f15428333554eac0f5f3e9a8d448e6f3a8103553346083202e1af48"
+        },
+        "W": {
+          "shape": [
+            4,
+            17
+          ],
+          "dtype": "torch.float32",
+          "device": "cpu",
+          "stride": [
+            17,
+            1
+          ],
+          "contiguous": true,
+          "logical_bytes": 272,
+          "backing_bytes": 272,
+          "sha256": "f8fb3ad72ba5042f456ac6802b1c3627d35c16f24b21d0770774e78af3ce0fa2"
+        }
+      },
+      "copy_payload_bytes": {
+        "input_cat": 0,
+        "output_repack": 0
+      },
+      "Y_Z_share_backing": false,
+      "gate_diagnostics": {
+        "scope": "independent gate replay on captured inputs, not an extra execution in public API",
+        "Y_singular_values": [
+          1.0
+        ],
+        "Y_threshold": 1.9073486328125e-06,
+        "first_cross_singular_values": [
+          6.223863806553709e-07
+        ],
+        "first_cross_threshold": 6.194297981210184e-07,
+        "first_cross_min_over_threshold": 1.0047730712072958
+      }
+    },
+    "concat_view": {
+      "error": {
+        "class": "RankDeficiencyError",
+        "message": "z.mH @ q at step 1 has numerical rank 0 < k=1; the powered range is not k-dimensional",
+        "stage": "rank_cross",
+        "traceback": "Traceback (most recent call last):\n  File \"D:\\Dropbox\\study\\ms-phd\\PHD-EPFL\\Doctoral proposal\\EPFL\\small interesting research\\TorchSketchPower\\TorchSketchPower-git\\experiments\\m11_concat\\run_m11.py\", line 74, in capture\n    try:out=fn();error=None\n            ~~^^\n  File \"D:\\Dropbox\\study\\ms-phd\\PHD-EPFL\\Doctoral proposal\\EPFL\\small interesting research\\TorchSketchPower\\TorchSketchPower-git\\experiments\\m11_concat\\run_m11.py\", line 114, in <lambda>\n    rec,out=capture(lambda:prototype(a,r,s,ell,d,generator=g,mode=mode,trace=trace,**args),g,trace)\n                           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\Dropbox\\study\\ms-phd\\PHD-EPFL\\Doctoral proposal\\EPFL\\small interesting research\\TorchSketchPower\\TorchSketchPower-git\\experiments\\m11_concat\\run_m11.py\", line 53, in prototype\n    trace['stage']='subspace';q=sketch_power_subspace(y,z,steps=steps);trace['Q']=q\n                                ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n  File \"C:\\t\\m9-20261022-203507\\venv\\Lib\\site-packages\\torchsketchpower\\core.py\", line 96, in sketch_power_subspace\n    check_rank(zq, f\"z.mH @ q at step {step + 1}\", z_scale)\n    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\t\\m9-20261022-203507\\venv\\Lib\\site-packages\\torchsketchpower\\core.py\", line 78, in check_rank\n    raise RankDeficiencyError(msg)\ntorchsketchpower.core.RankDeficiencyError: z.mH @ q at step 1 has numerical rank 0 < k=1; the powered range is not k-dimensional\n"
+      },
+      "warnings": [],
+      "rng_before": "516f49643596c37056447c1fed0480210ed298b2ddad534efc67ab493d49a494",
+      "rng_after": "b3a63f9acfb665b0616f6b03b29a28942a9bd11aa998e1b27df5de3093d62c0d",
+      "global_rng_unchanged": true,
+      "trace_stage": "subspace",
+      "draws": {
+        "Omega": {
+          "shape": [
+            17,
+            1
+          ],
+          "dtype": "torch.float32",
+          "device": "cpu",
+          "stride": [
+            1,
+            1
+          ],
+          "contiguous": true,
+          "logical_bytes": 68,
+          "backing_bytes": 68,
+          "sha256": "19380bdb5471ab7d12f0f76f42b93d6c1610f04581ed63d88bf23eb365f42c27"
+        },
+        "Phi": {
+          "shape": [
+            17,
+            3
+          ],
+          "dtype": "torch.float32",
+          "device": "cpu",
+          "stride": [
+            3,
+            1
+          ],
+          "contiguous": true,
+          "logical_bytes": 204,
+          "backing_bytes": 204,
+          "sha256": "ed5c7f2f33b6a96d83e19be2463eea92692b1f7c72795de4af289294e9a98909"
+        },
+        "Psi": null
+      },
+      "intermediates": {
+        "Y": {
+          "shape": [
+            16,
+            1
+          ],
+          "dtype": "torch.float32",
+          "device": "cpu",
+          "stride": [
+            4,
+            1
+          ],
+          "contiguous": false,
+          "logical_bytes": 64,
+          "backing_bytes": 256,
+          "sha256": "5dcabcb73250a52195102befa3f416663dea908f412bcab49ba771d4b5b909c3"
+        },
+        "Z": {
+          "shape": [
+            16,
+            3
+          ],
+          "dtype": "torch.float32",
+          "device": "cpu",
+          "stride": [
+            4,
+            1
+          ],
+          "contiguous": false,
+          "logical_bytes": 192,
+          "backing_bytes": 256,
+          "sha256": "1771f846cc4115092acfa5fb6fcafee4a929a3e452e810e6753d40083ca0491a"
+        }
+      },
+      "copy_payload_bytes": {
+        "input_cat": 272,
+        "output_repack": 0
+      },
+      "Y_Z_share_backing": true,
+      "gate_diagnostics": {
+        "scope": "independent gate replay on captured inputs, not an extra execution in public API",
+        "Y_singular_values": [
+          1.0
+        ],
+        "Y_threshold": 1.9073486328125e-06,
+        "first_cross_singular_values": [
+          5.970535426058632e-07
+        ],
+        "first_cross_threshold": 6.194297981210184e-07,
+        "first_cross_min_over_threshold": 0.9638760428009252
+      }
+    },
+    "concat_copy": {
+      "error": {
+        "class": "RankDeficiencyError",
+        "message": "z.mH @ q at step 1 has numerical rank 0 < k=1; the powered range is not k-dimensional",
+        "stage": "rank_cross",
+        "traceback": "Traceback (most recent call last):\n  File \"D:\\Dropbox\\study\\ms-phd\\PHD-EPFL\\Doctoral proposal\\EPFL\\small interesting research\\TorchSketchPower\\TorchSketchPower-git\\experiments\\m11_concat\\run_m11.py\", line 74, in capture\n    try:out=fn();error=None\n            ~~^^\n  File \"D:\\Dropbox\\study\\ms-phd\\PHD-EPFL\\Doctoral proposal\\EPFL\\small interesting research\\TorchSketchPower\\TorchSketchPower-git\\experiments\\m11_concat\\run_m11.py\", line 114, in <lambda>\n    rec,out=capture(lambda:prototype(a,r,s,ell,d,generator=g,mode=mode,trace=trace,**args),g,trace)\n                           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\Dropbox\\study\\ms-phd\\PHD-EPFL\\Doctoral proposal\\EPFL\\small interesting research\\TorchSketchPower\\TorchSketchPower-git\\experiments\\m11_concat\\run_m11.py\", line 53, in prototype\n    trace['stage']='subspace';q=sketch_power_subspace(y,z,steps=steps);trace['Q']=q\n                                ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n  File \"C:\\t\\m9-20261022-203507\\venv\\Lib\\site-packages\\torchsketchpower\\core.py\", line 96, in sketch_power_subspace\n    check_rank(zq, f\"z.mH @ q at step {step + 1}\", z_scale)\n    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\t\\m9-20261022-203507\\venv\\Lib\\site-packages\\torchsketchpower\\core.py\", line 78, in check_rank\n    raise RankDeficiencyError(msg)\ntorchsketchpower.core.RankDeficiencyError: z.mH @ q at step 1 has numerical rank 0 < k=1; the powered range is not k-dimensional\n"
+      },
+      "warnings": [],
+      "rng_before": "516f49643596c37056447c1fed0480210ed298b2ddad534efc67ab493d49a494",
+      "rng_after": "b3a63f9acfb665b0616f6b03b29a28942a9bd11aa998e1b27df5de3093d62c0d",
+      "global_rng_unchanged": true,
+      "trace_stage": "subspace",
+      "draws": {
+        "Omega": {
+          "shape": [
+            17,
+            1
+          ],
+          "dtype": "torch.float32",
+          "device": "cpu",
+          "stride": [
+            1,
+            1
+          ],
+          "contiguous": true,
+          "logical_bytes": 68,
+          "backing_bytes": 68,
+          "sha256": "19380bdb5471ab7d12f0f76f42b93d6c1610f04581ed63d88bf23eb365f42c27"
+        },
+        "Phi": {
+          "shape": [
+            17,
+            3
+          ],
+          "dtype": "torch.float32",
+          "device": "cpu",
+          "stride": [
+            3,
+            1
+          ],
+          "contiguous": true,
+          "logical_bytes": 204,
+          "backing_bytes": 204,
+          "sha256": "ed5c7f2f33b6a96d83e19be2463eea92692b1f7c72795de4af289294e9a98909"
+        },
+        "Psi": null
+      },
+      "intermediates": {
+        "Y": {
+          "shape": [
+            16,
+            1
+          ],
+          "dtype": "torch.float32",
+          "device": "cpu",
+          "stride": [
+            1,
+            1
+          ],
+          "contiguous": true,
+          "logical_bytes": 64,
+          "backing_bytes": 64,
+          "sha256": "5dcabcb73250a52195102befa3f416663dea908f412bcab49ba771d4b5b909c3"
+        },
+        "Z": {
+          "shape": [
+            16,
+            3
+          ],
+          "dtype": "torch.float32",
+          "device": "cpu",
+          "stride": [
+            3,
+            1
+          ],
+          "contiguous": true,
+          "logical_bytes": 192,
+          "backing_bytes": 192,
+          "sha256": "1771f846cc4115092acfa5fb6fcafee4a929a3e452e810e6753d40083ca0491a"
+        }
+      },
+      "copy_payload_bytes": {
+        "input_cat": 272,
+        "output_repack": 256
+      },
+      "Y_Z_share_backing": false,
+      "gate_diagnostics": {
+        "scope": "independent gate replay on captured inputs, not an extra execution in public API",
+        "Y_singular_values": [
+          1.0
+        ],
+        "Y_threshold": 1.9073486328125e-06,
+        "first_cross_singular_values": [
+          5.970535426058632e-07
+        ],
+        "first_cross_threshold": 6.194297981210184e-07,
+        "first_cross_min_over_threshold": 0.9638760428009252
+      }
+    }
+  },
+  "comparisons": {
+    "concat_view": {
+      "semantic_equal": false,
+      "sketch_metrics": {
+        "Y": {
+          "close": true,
+          "fro_delta": 2.7877519926234643e-08,
+          "max_abs": 2.2351741790771484e-08,
+          "relative_to_max1_norm": 2.787751992623421e-08,
+          "bitwise_equal": false
+        },
+        "Z": {
+          "close": true,
+          "fro_delta": 0.0,
+          "max_abs": 0.0,
+          "relative_to_max1_norm": 0.0,
+          "bitwise_equal": true
+        }
+      },
+      "same_draws": false,
+      "same_initial_draws": true,
+      "equivalent_in_test": false
+    },
+    "concat_copy": {
+      "semantic_equal": false,
+      "sketch_metrics": {
+        "Y": {
+          "close": true,
+          "fro_delta": 2.7877519926234643e-08,
+          "max_abs": 2.2351741790771484e-08,
+          "relative_to_max1_norm": 2.787751992623421e-08,
+          "bitwise_equal": false
+        },
+        "Z": {
+          "close": true,
+          "fro_delta": 0.0,
+          "max_abs": 0.0,
+          "relative_to_max1_norm": 0.0,
+          "bitwise_equal": true
+        }
+      },
+      "same_draws": false,
+      "same_initial_draws": true,
+      "equivalent_in_test": false
+    }
+  },
+  "status": "NOT_EQUIVALENT"
+}

@@ -1,0 +1,14 @@
+{
+  "source_sha": "2510723c36618fb61358e5d348264e9fbdabb307",
+  "status": "CPU_GATE_FAIL / NOT_EQUIVALENT",
+  "files": {
+    "first-failure-A.pt": {
+      "sha256": "81d38af309a914504891fbc48baf42ac5231c63c3b7c5dc9c16534a15ad5e1f7",
+      "bytes": 2721
+    },
+    "results.json": {
+      "sha256": "5a5683341e798c2325cb957a9ad462334083c8af4ec45450efc205e16759567f",
+      "bytes": 2452041
+    }
+  }
+}

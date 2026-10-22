@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "C:\t\m11-20261022-214747\confirm_counterexample.py", line 3, in <module>
+    a,params=m.threshold_input(m.torch.float32,315,'cross',1.);r=m.audit_case(a,params,315,'full_counterexample')
+                                                                 ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dropbox\study\ms-phd\PHD-EPFL\Doctoral proposal\EPFL\small interesting research\TorchSketchPower\TorchSketchPower-git\experiments\m11_concat\run_m11.py", line 100, in audit_case
+    rec,out=capture(lambda:prototype(a,r,s,ell,d,generator=g,mode=mode,trace=trace,**args),g,trace)
+            ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dropbox\study\ms-phd\PHD-EPFL\Doctoral proposal\EPFL\small interesting research\TorchSketchPower\TorchSketchPower-git\experiments\m11_concat\run_m11.py", line 81, in capture
+    result['intermediates']={k:tensor_info(trace[k]) for k in ('Y','Z','Q','W') if k in trace}
+                               ~~~~~~~~~~~^^^^^^^^^^
+  File "D:\Dropbox\study\ms-phd\PHD-EPFL\Doctoral proposal\EPFL\small interesting research\TorchSketchPower\TorchSketchPower-git\experiments\m11_concat\run_m11.py", line 37, in tensor_info
+    'backing_bytes':t.untyped_storage().nbytes(),'sha256':digest(t)}
+                                                          ~~~~~~^^^
+  File "D:\Dropbox\study\ms-phd\PHD-EPFL\Doctoral proposal\EPFL\small interesting research\TorchSketchPower\TorchSketchPower-git\experiments\m11_concat\run_m11.py", line 21, in digest
+    return hashlib.sha256(t.detach().contiguous().view(torch.uint8).numpy().tobytes()).hexdigest()
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+RuntimeError: self.stride(-1) must be 1 to view Float as Byte (different element sizes), but got 16

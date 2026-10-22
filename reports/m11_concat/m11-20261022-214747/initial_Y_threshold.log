@@ -1,0 +1,243 @@
+[
+  {
+    "dtype": "torch.float32",
+    "seed": 314,
+    "factor": 0.99,
+    "ranks": [
+      3,
+      3
+    ],
+    "different": false
+  },
+  {
+    "dtype": "torch.float32",
+    "seed": 314,
+    "factor": 1.0,
+    "ranks": [
+      3,
+      3
+    ],
+    "different": false
+  },
+  {
+    "dtype": "torch.float32",
+    "seed": 314,
+    "factor": 1.01,
+    "ranks": [
+      3,
+      3
+    ],
+    "different": false
+  },
+  {
+    "dtype": "torch.float32",
+    "seed": 315,
+    "factor": 0.99,
+    "ranks": [
+      4,
+      4
+    ],
+    "different": false
+  },
+  {
+    "dtype": "torch.float32",
+    "seed": 315,
+    "factor": 1.0,
+    "ranks": [
+      4,
+      4
+    ],
+    "different": false
+  },
+  {
+    "dtype": "torch.float32",
+    "seed": 315,
+    "factor": 1.01,
+    "ranks": [
+      4,
+      4
+    ],
+    "different": false
+  },
+  {
+    "dtype": "torch.float64",
+    "seed": 314,
+    "factor": 0.99,
+    "ranks": [
+      4,
+      4
+    ],
+    "different": false
+  },
+  {
+    "dtype": "torch.float64",
+    "seed": 314,
+    "factor": 1.0,
+    "ranks": [
+      4,
+      4
+    ],
+    "different": false
+  },
+  {
+    "dtype": "torch.float64",
+    "seed": 314,
+    "factor": 1.01,
+    "ranks": [
+      4,
+      4
+    ],
+    "different": false
+  },
+  {
+    "dtype": "torch.float64",
+    "seed": 315,
+    "factor": 0.99,
+    "ranks": [
+      4,
+      4
+    ],
+    "different": false
+  },
+  {
+    "dtype": "torch.float64",
+    "seed": 315,
+    "factor": 1.0,
+    "ranks": [
+      4,
+      4
+    ],
+    "different": false
+  },
+  {
+    "dtype": "torch.float64",
+    "seed": 315,
+    "factor": 1.01,
+    "ranks": [
+      4,
+      4
+    ],
+    "different": false
+  },
+  {
+    "dtype": "torch.complex64",
+    "seed": 314,
+    "factor": 0.99,
+    "ranks": [
+      3,
+      3
+    ],
+    "different": false
+  },
+  {
+    "dtype": "torch.complex64",
+    "seed": 314,
+    "factor": 1.0,
+    "ranks": [
+      4,
+      4
+    ],
+    "different": false
+  },
+  {
+    "dtype": "torch.complex64",
+    "seed": 314,
+    "factor": 1.01,
+    "ranks": [
+      4,
+      4
+    ],
+    "different": false
+  },
+  {
+    "dtype": "torch.complex64",
+    "seed": 315,
+    "factor": 0.99,
+    "ranks": [
+      3,
+      3
+    ],
+    "different": false
+  },
+  {
+    "dtype": "torch.complex64",
+    "seed": 315,
+    "factor": 1.0,
+    "ranks": [
+      3,
+      3
+    ],
+    "different": false
+  },
+  {
+    "dtype": "torch.complex64",
+    "seed": 315,
+    "factor": 1.01,
+    "ranks": [
+      4,
+      4
+    ],
+    "different": false
+  },
+  {
+    "dtype": "torch.complex128",
+    "seed": 314,
+    "factor": 0.99,
+    "ranks": [
+      4,
+      4
+    ],
+    "different": false
+  },
+  {
+    "dtype": "torch.complex128",
+    "seed": 314,
+    "factor": 1.0,
+    "ranks": [
+      4,
+      4
+    ],
+    "different": false
+  },
+  {
+    "dtype": "torch.complex128",
+    "seed": 314,
+    "factor": 1.01,
+    "ranks": [
+      4,
+      4
+    ],
+    "different": false
+  },
+  {
+    "dtype": "torch.complex128",
+    "seed": 315,
+    "factor": 0.99,
+    "ranks": [
+      3,
+      3
+    ],
+    "different": false
+  },
+  {
+    "dtype": "torch.complex128",
+    "seed": 315,
+    "factor": 1.0,
+    "ranks": [
+      3,
+      3
+    ],
+    "different": false
+  },
+  {
+    "dtype": "torch.complex128",
+    "seed": 315,
+    "factor": 1.01,
+    "ranks": [
+      3,
+      3
+    ],
+    "different": false
+  }
+]
+MISMATCHES 0
