@@ -1,0 +1,9 @@
+config_id,method,peak_before_call_bytes,peak_after_cold_call_bytes,peak_after_all_calls_bytes,current_after_all_calls_bytes,est_buffer_bytes
+geometric-80x60-s12-l24-d24-q0-float64,win32 GetProcessMemoryInfo PeakWorkingSetSize/WorkingSetSize,213860352,216129536,217214976,217214976,94320
+geometric-80x60-s12-l24-d24-q1-float64,win32 GetProcessMemoryInfo PeakWorkingSetSize/WorkingSetSize,214360064,216645632,217677824,217677824,94320
+geometric-80x60-s12-l24-d24-q2-float64,win32 GetProcessMemoryInfo PeakWorkingSetSize/WorkingSetSize,214155264,216432640,217473024,217473024,94320
+geometric-80x60-s8-l12-d12-q1-float64,win32 GetProcessMemoryInfo PeakWorkingSetSize/WorkingSetSize,214114304,216076288,217268224,217268224,53872
+geometric-80x60-s8-l16-d16-q1-float64,win32 GetProcessMemoryInfo PeakWorkingSetSize/WorkingSetSize,214642688,216567808,217747456,217747456,63600
+geometric-80x60-s12-l16-d16-q1-float64,win32 GetProcessMemoryInfo PeakWorkingSetSize/WorkingSetSize,213995520,216268800,217305088,217305088,74096
+geometric-60x80-s12-l24-d24-q1-float64,win32 GetProcessMemoryInfo PeakWorkingSetSize/WorkingSetSize,214122496,216440832,217571328,217571328,94320
+geometric-96x96-s12-l24-d24-q1-float64,win32 GetProcessMemoryInfo PeakWorkingSetSize/WorkingSetSize,214597632,216825856,218505216,218505216,126768
