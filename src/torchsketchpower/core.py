@@ -15,10 +15,11 @@ class RankDeficiencyError(ValueError):
 _POLICIES = ("raise", "warn", "ignore")
 
 
-def _numerical_rank(a: torch.Tensor) -> int:
-    # Same default tolerance as torch.linalg.matrix_rank: max(shape) * eps * s_max.
+def _numerical_rank(a: torch.Tensor, scale: float = 0.0) -> int:
+    # Tolerance max(shape) * eps * s_max as in torch.linalg.matrix_rank, with s_max
+    # raised to `scale` when the caller knows a bound on the entries' natural size.
     s = torch.linalg.svdvals(a)
-    tol = max(a.shape) * torch.finfo(s.dtype).eps * s.max()
+    tol = max(a.shape) * torch.finfo(s.dtype).eps * max(s.max(), scale)
     return int((s > tol).sum())
 
 
@@ -35,7 +36,9 @@ def sketch_power_subspace(
 
     Output contract. The result is the powered range only if y and, at every
     step, the (ell, k) cross-product z.mH @ q have numerical rank k (SVD
-    tolerance max(shape) * eps * s_max, as in torch.linalg.matrix_rank).
+    tolerance max(shape) * eps * s_max, as in torch.linalg.matrix_rank; for the
+    cross-product s_max is replaced by max(s_max, ||z||_F) so that a product that
+    is only rounding noise counts as rank 0).
     Otherwise the powered range has dimension < k and reduced QR completes
     the basis with arbitrary orthonormal columns that need not lie in
     range(z); finite, orthonormal output does not imply correctness.
@@ -65,10 +68,10 @@ def sketch_power_subspace(
     if on_rank_deficient not in _POLICIES:
         raise ValueError(f"on_rank_deficient must be one of {_POLICIES}")
 
-    def check_rank(a: torch.Tensor, what: str) -> None:
+    def check_rank(a: torch.Tensor, what: str, scale: float = 0.0) -> None:
         if on_rank_deficient == "ignore":
             return
-        r = _numerical_rank(a)
+        r = _numerical_rank(a, scale)
         if r < k:
             msg = f"{what} has numerical rank {r} < k={k}; the powered range is not k-dimensional"
             if on_rank_deficient == "raise":
@@ -80,13 +83,17 @@ def sketch_power_subspace(
             )
 
     check_rank(y, "y")
+    # z.mH @ q with orthonormal q has norm <= ||z||_2 <= ||z||_F. Using ||z||_F as the
+    # reference scale keeps a cross-product that is pure rounding noise (Z^H Y = 0 up
+    # to eps) from passing a check relative to its own, tiny, largest singular value.
+    z_scale = float(torch.linalg.vector_norm(z)) if on_rank_deficient != "ignore" else 0.0
     q, _ = torch.linalg.qr(y, mode="reduced")
     for step in range(steps):
         zq = z.mH @ q
         # If zq has rank k, middle spans a k-dimensional subspace of range(z.mH),
         # on which z is injective, so z @ middle also has rank k. If zq is
         # rank-deficient, that implication fails and the check below flags it.
-        check_rank(zq, f"z.mH @ q at step {step + 1}")
+        check_rank(zq, f"z.mH @ q at step {step + 1}", z_scale)
         middle, _ = torch.linalg.qr(zq, mode="reduced")
         q, _ = torch.linalg.qr(z @ middle, mode="reduced")
     return q
