@@ -1,0 +1,27 @@
+sae_version: "3.3"
+project:
+  repository: "JohnnyZPiggy/TorchSketchPower"
+  name: "TorchSketchPower"
+  package: "torchsketchpower"
+  scientific_goal: "Sketch-Power Iterations for low-rank matrix approximation"
+framework:
+  repository: "JohnnyZPiggy/SAE-Framework"
+  commit_sha: "65338eb1aa67971e110db982a07cf43161c23446"
+  local_snapshot: ".sae"
+  snapshot_complete: false
+roles:
+  scientist: "human"
+  architect: "gpt"
+  mentor: "gpt"
+  engineer: "gpt_or_assigned_agent"
+collaboration:
+  task_hub: "github_issues"
+  review_hub: "github_pull_requests"
+  actions_enabled: false
+  hosted_ci_required: false
+workflow:
+  default_mode: "EXPLORE"
+  supported_modes: ["EXPLORE", "VALIDATE"]
+experiments:
+  max_active_colab_sessions: 1
+  new_billing_requires_explicit_user_approval: true
