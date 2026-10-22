@@ -112,6 +112,34 @@ def construct_sketches(
     return a @ omega, a @ phi
 
 
+def construct_corange_sketch(
+    a: torch.Tensor,
+    d: int,
+    *,
+    distribution: str = "gaussian",
+    generator: Optional[torch.Generator] = None,
+    **kwargs,
+):
+    """Return ``(Psi, W) = (Psi, Psi @ a)`` for a resident 2-D tensor ``a`` (m, n).
+
+    Psi (d, m) is one draw from the chosen test matrix distribution; dtype and
+    device follow ``a``. W is (d, n). Extra keyword arguments (e.g. ``sparsity``)
+    go to the test matrix constructor. The "sparsesign" option is the fixed-nnz
+    distribution of ``sparse_sign_test_matrix``, not shown equivalent to the paper's.
+
+    In-memory only: one matrix product over a resident ``a``; not one-pass or streaming.
+    """
+    if not isinstance(a, torch.Tensor) or a.ndim != 2:
+        raise ValueError("a must be a two-dimensional torch tensor")
+    if not (a.is_floating_point() or a.is_complex()):
+        raise TypeError("floating or complex tensor required")
+    if type(d) is not int or d < 1:
+        raise ValueError("d must be a positive integer")
+    kwargs.update(generator=generator, dtype=a.dtype, device=a.device)
+    psi = test_matrix(d, a.shape[0], distribution, **kwargs)
+    return psi, psi @ a
+
+
 # Not a test: stop pytest from collecting the dispatcher when imported into test modules.
 test_matrix.__test__ = False
 
