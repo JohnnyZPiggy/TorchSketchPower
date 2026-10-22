@@ -1,0 +1,66 @@
+{
+  "source_sha": "988a1b170f2b9f56eef3a3e21f71bbdb5b68290e",
+  "status": "PASS",
+  "gpu": "NOT_RUN",
+  "steps": {
+    "clone": {
+      "exit_code": 0,
+      "seconds": 1.1519650999980513,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    "checkout": {
+      "exit_code": 0,
+      "seconds": 0.1342752999989898,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    "head": {
+      "exit_code": 0,
+      "seconds": 0.06107960000372259,
+      "sha256": "214f4c5941223da4cc0e4ed350a6d82bb59e7b13cb9e284db252abd3ba01df4d"
+    },
+    "clean_before": {
+      "exit_code": 0,
+      "seconds": 0.20635500000207685,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    "install": {
+      "exit_code": 0,
+      "seconds": 5.5126493999996455,
+      "sha256": "de0a5d817f98985363705f62c734cfd3dc772f2c70e7fc9888e69cc87734e9e0"
+    },
+    "environment": {
+      "exit_code": 0,
+      "seconds": 2.6850903000013204,
+      "sha256": "a58f9e0bd1065f10d1e85904f966ea1c81d3e23c8fe1715c99df025d61ec6138"
+    },
+    "pytest": {
+      "exit_code": 0,
+      "seconds": 33.86488459999964,
+      "sha256": "346cc7a61be90c5049f987054872e6cd5d9e3daf377eeedb43f089583c23550f"
+    },
+    "cpu_compile": {
+      "exit_code": 0,
+      "seconds": 90.06650409999565,
+      "sha256": "4362921d80b3a9a9b9ff0c3f7d3fb0398b56c991ce915da55a6ba5280ff51d5e"
+    },
+    "clean_after": {
+      "exit_code": 0,
+      "seconds": 0.07728040000074543,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    }
+  },
+  "cpu_justifies_gpu": true,
+  "classes": [
+    "SUPPORTED",
+    "SUPPORTED",
+    "GRAPH_BREAK",
+    "GRAPH_BREAK",
+    "SUPPORTED",
+    "SUPPORTED",
+    "GRAPH_BREAK",
+    "GRAPH_BREAK",
+    "UNSUPPORTED",
+    "UNSUPPORTED",
+    "GRAPH_BREAK"
+  ]
+}

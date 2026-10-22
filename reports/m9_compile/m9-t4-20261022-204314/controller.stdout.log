@@ -1,0 +1,187 @@
+{
+  "status": "PASS",
+  "source_sha": "988a1b170f2b9f56eef3a3e21f71bbdb5b68290e",
+  "run_id": "m9-t4-20261022-204314",
+  "created": true,
+  "cleanup_confirmed": true,
+  "utc_start": "2026-10-22T18:43:24.971653+00:00",
+  "commands": [
+    {
+      "operation": "usage",
+      "status": "PASS",
+      "exit_code": 0,
+      "timeout_seconds": 30,
+      "elapsed_seconds": 0.8234617169999989
+    },
+    {
+      "operation": "new",
+      "status": "PASS",
+      "exit_code": 0,
+      "timeout_seconds": 120,
+      "elapsed_seconds": 4.075077875000002
+    },
+    {
+      "operation": "exec",
+      "status": "PASS",
+      "exit_code": 0,
+      "timeout_seconds": 35.0,
+      "elapsed_seconds": 14.030004004999999
+    },
+    {
+      "operation": "exec",
+      "status": "PASS",
+      "exit_code": 0,
+      "timeout_seconds": 221.894574894,
+      "elapsed_seconds": 136.834768642
+    },
+    {
+      "operation": "download",
+      "status": "PASS",
+      "exit_code": 0,
+      "timeout_seconds": 30,
+      "elapsed_seconds": 1.313965048
+    },
+    {
+      "operation": "stop",
+      "status": "PASS",
+      "exit_code": 0,
+      "timeout_seconds": 15,
+      "elapsed_seconds": 1.763195364000012
+    },
+    {
+      "operation": "usage",
+      "status": "PASS",
+      "exit_code": 0,
+      "timeout_seconds": 15,
+      "elapsed_seconds": 1.6043517509999958
+    }
+  ],
+  "readbacks": [
+    {
+      "phase": "preallocation",
+      "method": "CLI_074_AUTHENTICATED_CCU_INFO",
+      "status": "AUTHENTICATED_ZERO",
+      "assignments": 0
+    },
+    {
+      "phase": "cleanup",
+      "method": "CLI_074_AUTHENTICATED_CCU_INFO",
+      "status": "AUTHENTICATED_ZERO",
+      "assignments": 0
+    }
+  ],
+  "classification": "TRANSPORT_ONLY_SCIENCE_UNREVIEWED",
+  "events": {
+    "cli_resolution": {
+      "utc_start": "2026-10-22T18:43:24.985122+00:00",
+      "status": "PASS",
+      "utc_end": "2026-10-22T18:43:24.985287+00:00",
+      "elapsed_seconds": 0.00017184800000080713
+    },
+    "environment_preflight": {
+      "utc_start": "2026-10-22T18:43:25.000117+00:00",
+      "status": "PASS",
+      "utc_end": "2026-10-22T18:43:25.628395+00:00",
+      "elapsed_seconds": 0.6282939110000001
+    },
+    "adapter_validation": {
+      "utc_start": "2026-10-22T18:43:25.628414+00:00",
+      "status": "PASS",
+      "utc_end": "2026-10-22T18:43:25.650879+00:00",
+      "elapsed_seconds": 0.0224806080000004
+    },
+    "snapshot_extraction": {
+      "utc_start": "2026-10-22T18:43:25.545995+00:00",
+      "status": "PASS",
+      "utc_end": "2026-10-22T18:43:25.625106+00:00",
+      "elapsed_seconds": 0.07912448099999914
+    },
+    "wheel_pip_install": null,
+    "first_cpu_pass": null,
+    "exact_pinned_cpu_test": null,
+    "kernel_probe": {
+      "utc_start": "2026-10-22T18:43:30.551820+00:00",
+      "status": "PASS",
+      "utc_end": "2026-10-22T18:43:44.582107+00:00",
+      "elapsed_seconds": 14.030315759999997
+    },
+    "remote_workload": {
+      "utc_start": "2026-10-22T18:43:44.582137+00:00",
+      "status": "PASS",
+      "utc_end": "2026-10-22T18:45:56.427691+00:00",
+      "elapsed_seconds": 136.834924077
+    },
+    "artifact_download": {
+      "utc_start": "2026-10-22T18:45:56.427846+00:00",
+      "status": "PASS",
+      "utc_end": "2026-10-22T18:45:57.744267+00:00",
+      "elapsed_seconds": 1.3164330259999986
+    },
+    "github_publication": null,
+    "cleanup": {
+      "utc_start": "2026-10-22T18:45:57.744281+00:00",
+      "status": "PASS",
+      "utc_end": "2026-10-22T18:46:01.112219+00:00",
+      "elapsed_seconds": 3.367949546999995
+    }
+  },
+  "per_attempt_approvals_actual": null,
+  "api_escalation_requests_actual": null,
+  "handoffs_actual": null,
+  "tool_script_sha256": {
+    "colab_control.py": "1d564818b48c9d39d1209fb57d88d24c67316efeb1f2ce73172c56350cdc29af",
+    "environment_preflight.py": "1ab11ff4baedfa875a23307f9f6af961d1ac8481f62a91f2570d755674dec112",
+    "kernel_smoke.py": "63eedb51b7ac4710009df64d01cf9e33a6e6bdb498294766b215ee90d9490b03"
+  },
+  "preflight": {
+    "status": "PASS",
+    "python_version": "3.12.3",
+    "source_sha": "988a1b170f2b9f56eef3a3e21f71bbdb5b68290e",
+    "events": {
+      "cli_version": {
+        "utc_start": "2026-10-22T18:43:25.000372+00:00",
+        "status": "PASS",
+        "utc_end": "2026-10-22T18:43:25.529416+00:00",
+        "elapsed_seconds": 0.529058706999999
+      },
+      "source_verification": {
+        "utc_start": "2026-10-22T18:43:25.529542+00:00",
+        "status": "PASS",
+        "utc_end": "2026-10-22T18:43:25.535256+00:00",
+        "elapsed_seconds": 0.005729695999999507
+      },
+      "temp_build_cache": {
+        "utc_start": "2026-10-22T18:43:25.544336+00:00",
+        "status": "PASS",
+        "utc_end": "2026-10-22T18:43:25.545960+00:00",
+        "elapsed_seconds": 0.0016319750000004518
+      },
+      "snapshot_extraction": {
+        "utc_start": "2026-10-22T18:43:25.545995+00:00",
+        "status": "PASS",
+        "utc_end": "2026-10-22T18:43:25.625106+00:00",
+        "elapsed_seconds": 0.07912448099999914
+      },
+      "wheel_pip_install": null
+    },
+    "cli_verified": true,
+    "cli_version": "0.7.4",
+    "working_tree_dirty": false,
+    "temp_build_cache_writable": true,
+    "export_scope": "tracked project files excluding .sae/",
+    "exported_blobs": 129,
+    "elapsed_seconds": 0.6281403880000003
+  },
+  "driver_transport_sha256": "f50825d55936c02d98b37603a4c66ceb5a078855e47b6224023ae051c023eeb2",
+  "artifact_manifest_sha256": "71cc2942f154a296b10be7ca5459e2e5be4a40247b2b3b74a47ed2e2620bb4ed",
+  "balance_before": "[REDACTED]",
+  "artifact_sha256": {
+    "m9-report.json": "7788fd6feb780df1326a5357fbcf59eabf7e12133d48879f0167a4652bdfa377"
+  },
+  "utc_cleanup_verified": "2026-10-22T18:46:01.112153+00:00",
+  "allocation_lifecycle_seconds": 159.624792302,
+  "transport_cleanup_confirmed": true,
+  "cleanup_seconds": 3.368821091000001,
+  "total_seconds": 161.130883164,
+  "utc_end": "2026-10-22T18:46:01.113104+00:00"
+}

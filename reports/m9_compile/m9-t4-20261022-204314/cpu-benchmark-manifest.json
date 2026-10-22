@@ -1,0 +1,17 @@
+{
+  "source_sha": "988a1b170f2b9f56eef3a3e21f71bbdb5b68290e",
+  "files": {
+    "results.json": {
+      "bytes": 707946,
+      "sha256": "85f6189f2c7096197370e62f1c34460ef6d27fdecc577ece6c6522c8455b6079"
+    },
+    "trials.csv": {
+      "bytes": 4534,
+      "sha256": "8299f51d0917373fb55cfb1846fdec7bbeca89096289b23763c013bb18ce342f"
+    },
+    "summary.md": {
+      "bytes": 860,
+      "sha256": "7921943eff55c07436de4510efe88c0d4ce42ad29460577bd3e856c7efd20bb5"
+    }
+  }
+}
