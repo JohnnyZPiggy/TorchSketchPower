@@ -280,3 +280,42 @@ def test_cuda_outputs_stay_on_the_device():
     with lib.transfer_spy() as calls:
         u, sg, vh = sketch_power_low_rank(a, 3, 6, 12, 12, generator=torch.Generator(device="cuda").manual_seed(0))
     assert calls == [] and all(t.is_cuda for t in (u, sg, vh))
+
+
+# ---- remote driver for the SAE Colab controller (logic only; the driver itself needs a committed SHA and a network) ----------
+
+import colab_driver  # noqa: E402
+
+
+def test_pytest_summary_parser():
+    assert colab_driver.parse_pytest_summary("..\n46 passed, 3 skipped, 1 warning in 12.30s\n") == {"passed": 46, "failed": 0, "skipped": 3, "errors": 0}
+    assert colab_driver.parse_pytest_summary("2 failed, 5 passed in 1.0s") == {"passed": 5, "failed": 2, "skipped": 0, "errors": 0}
+    assert colab_driver.parse_pytest_summary("1 error in 0.1s")["errors"] == 1
+    assert colab_driver.parse_pytest_summary("no summary here") is None
+
+
+def test_driver_status_is_transport_status_not_a_verdict():
+    gpu = {"gpu_evidence": True, "status": "FAIL"}  # oracles failed, but the run reached the GPU
+    assert colab_driver.decide_status(False, True, gpu) == "PASS"
+    assert colab_driver.decide_status(False, True, {"gpu_evidence": False}) == "FAIL"
+    assert colab_driver.decide_status(False, False, gpu) == "FAIL"
+    assert colab_driver.decide_status(False, True, None) == "FAIL"
+    assert colab_driver.decide_status(True, False, {"gpu_evidence": False}) == "DRY_RUN_CPU"
+
+
+def test_artifact_manifest_matches_controller_rules():
+    import re
+    data = json.loads(open(os.path.join(ROOT, "experiments", "m7_cuda", "artifacts.json"), encoding="utf-8").read())
+    assert set(data) == {"artifacts"} and len(data["artifacts"]) == 1
+    entry = data["artifacts"][0]
+    assert set(entry) == {"name"} and re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_.-]{0,95}\.json", entry["name"])
+    assert entry["name"] == colab_driver.NAME and entry["name"].casefold() != "colab-control.json"
+
+
+def test_driver_is_self_contained_standard_library_only():
+    import ast
+    tree = ast.parse(open(os.path.join(ROOT, "experiments", "m7_cuda", "colab_driver.py"), encoding="utf-8").read())
+    mods = {n.names[0].name.split(".")[0] for n in ast.walk(tree) if isinstance(n, ast.Import)} | {
+        n.module.split(".")[0] for n in ast.walk(tree) if isinstance(n, ast.ImportFrom)}
+    assert mods <= {"hashlib", "json", "os", "re", "shutil", "subprocess", "sys", "time"}
+    assert os.path.getsize(os.path.join(ROOT, "experiments", "m7_cuda", "colab_driver.py")) < 1024 * 1024

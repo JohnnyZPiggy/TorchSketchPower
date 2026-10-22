@@ -1,6 +1,6 @@
 # M7 CUDA correctness: bounded run procedure
 
-**Status: GPU correctness is BLOCKED / NOT RUN.** The Engineer's runtime had no authorized CUDA environment (no NVIDIA GPU, torch `+cpu`, no Colab CLI), so nothing here has run on a GPU. This directory contains the oracles and a single self-contained entry point so that someone with a CUDA device can produce the evidence for one fixed commit. A CPU run (`--device cpu`) only checks the oracle logic and is labelled `DRY_RUN_CPU`; it is never GPU evidence.
+**Status: no GPU result is recorded in this file.** The Windows runtime has no CUDA, but the Engineer can reach the Colab CLI 0.7.4 from WSL (login shell) through the SAE compute controller; evidence of any controller-managed run is posted in Issue #18, not here. An earlier note that no Colab CLI was available was wrong (wrong shell context) and is superseded. This directory contains the oracles and a single self-contained entry point so that someone with a CUDA device can produce the evidence for one fixed commit. A CPU run (`--device cpu`) only checks the oracle logic and is labelled `DRY_RUN_CPU`; it is never GPU evidence.
 
 Correctness only: no timing, no benchmark, no speed claim. One bounded session (a free or already-entitled T4 is enough), nothing to purchase, no credentials, no GitHub writes.
 
@@ -70,4 +70,15 @@ Interpretation: `status: PASS` with `gpu_evidence: true` means every oracle row 
 ```bash
 python experiments/m7_cuda/run_m7_cuda.py --device cpu --out out_m7_dry --quick     # logic only, status DRY_RUN_CPU
 python experiments/m7_cuda/run_m7_cuda.py --device cuda --out out_m7_blocked          # without CUDA: status BLOCKED, exit code 2
+```
+
+## Controller-managed run (SAE Compute Adapter, one bounded T4 session)
+
+`colab_driver.py` and `artifacts.json` are the project adapter for the pinned SAE controller (`tools/compute/colab_control.py`, SAE-Framework `65338eb1aa67971e110db982a07cf43161c23446`, Colab CLI 0.7.4). The controller reads both as Git blobs at `--source-sha`, stages the driver alone on the Colab VM and passes the commit in `SAE_CANDIDATE_SHA`. The driver clones that exact commit, runs `run_m7_cuda.py` and `tests/test_cuda_lowrank.py` on the GPU and writes one artifact, `m7-cuda-report.json`. Its `status` is the transport status (`PASS` = completed on a CUDA device); the numerical verdict is `m7_oracle_status` inside it, and nothing counts as GPU correctness until the Architect reviews it. From the WSL login shell that has `colab`:
+
+```sh
+python3 <SAE>/tools/compute/colab_control.py --preflight-only --cli colab --repo-path <clone> --source-sha <SHA> --run-id <id> --out <new-dir>
+python3 <SAE>/tools/compute/colab_control.py --cli colab --repo-path <clone> --source-sha <SHA> \
+  --driver experiments/m7_cuda/colab_driver.py --artifacts experiments/m7_cuda/artifacts.json \
+  --device T4 --run-id <id2> --out <new-dir2> --task-seconds 900 --allocation-seconds 600 --cleanup-seconds 60 --work-timeout 420
 ```
