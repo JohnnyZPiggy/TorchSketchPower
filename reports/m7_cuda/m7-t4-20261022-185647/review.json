@@ -1,0 +1,39 @@
+{
+  "classification": "PROBE_ONLY_SINGLE_T4_CORRECTNESS_PASS_WITH_EXCLUSIONS",
+  "source_sha": "645777724845207fbb882329c086f59dc5da8b04",
+  "framework_sha": "65338eb1aa67971e110db982a07cf43161c23446",
+  "device": "Tesla T4",
+  "oracle_counts": {
+    "PASS": 171,
+    "NOT_RUN": 1
+  },
+  "oracle_not_run": [
+    {
+      "case": "mixed CUDA indices",
+      "device": "cuda",
+      "dtype": "float64",
+      "status": "NOT_RUN",
+      "reason": "only one CUDA device"
+    }
+  ],
+  "pytest_counts": {
+    "passed": 98,
+    "failed": 0,
+    "skipped": 1,
+    "errors": 0
+  },
+  "pytest_skipped_reason": "only meaningful without CUDA; all 46 CUDA-only tests executed",
+  "cleanup_confirmed": true,
+  "allocation_attempts": 1,
+  "full_rows_preserved": true,
+  "artifact_sha256": "6fe65d8d45cf1c85d42ec7410dff7171a462c47adca34471ed29f594ef15bb59",
+  "limitations": [
+    "Engineer-run; Architect acceptance pending",
+    "Single-GPU mixed-index control NOT RUN",
+    "Driver imports src via PYTHONPATH, not non-editable installed-package validation",
+    "Timeout/incomplete-plan status issue remains in source; this run completed all planned rows without timeout",
+    "Only one combined scientific JSON artifact downloaded; runner stdout/stderr and pytest stdout are bounded tails, not full raw test logs",
+    "No performance, speedup, compile, batching, streaming, TPU or validated sparse-sign CUDA claim"
+  ],
+  "wrapper_summary_note": "Initial wrapper blanket skip guard was conservative: it did not distinguish legitimate single-GPU and CPU-only exclusions; this file classifies the actual rows and pytest skip reason."
+}

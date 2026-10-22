@@ -8,6 +8,7 @@ import warnings
 
 import torch
 
+from ._device import lstsq_driver, require_supported_device
 from .core import RankDeficiencyError
 
 
@@ -22,6 +23,7 @@ def _check_inputs(q: torch.Tensor, psi: torch.Tensor, w: torch.Tensor) -> None:
         raise ValueError("q, psi and w must be two-dimensional")
     if not (q.dtype == psi.dtype == w.dtype) or not (q.device == psi.device == w.device):
         raise ValueError("q, psi and w must share device and dtype")
+    require_supported_device(q.device, "q, psi and w")
     if not (q.is_floating_point() or q.is_complex()):
         raise TypeError("floating or complex tensors required")
     m, s = q.shape
@@ -48,9 +50,13 @@ def solve_corange_coefficient(
     (SVD tolerance max(shape) * eps * s_max). Rank deficiency raises
     ``RankDeficiencyError``. If cond(C) exceeds ``max_condition`` (default
     eps**-0.5) an ``IllConditionedWarning`` is emitted and B is still returned.
-    The solve uses ``torch.linalg.lstsq`` with the SVD driver ``gelsd`` and forms
-    no explicit inverse. B is the least-squares solution; C B = w is not expected
-    unless the columns of w lie in range(C).
+    On the CPU the solve uses ``torch.linalg.lstsq`` with the SVD driver ``gelsd``
+    and forms no explicit inverse. On CUDA the only valid driver is ``gels``, which
+    assumes full column rank and is not a rank detector, so it is used only after the
+    rank and conditioning checks above (run on the device, with host scalar reads for
+    the control flow) pass; nothing is copied to the CPU. The CUDA path is an
+    unvalidated candidate until a real-GPU run (M7). B is the least-squares solution;
+    C B = w is not expected unless the columns of w lie in range(C).
     """
     _check_inputs(q, psi, w)
     m, s = q.shape
@@ -74,7 +80,7 @@ def solve_corange_coefficient(
             IllConditionedWarning,
             stacklevel=2,
         )
-    return torch.linalg.lstsq(c, w, driver="gelsd").solution
+    return torch.linalg.lstsq(c, w, driver=lstsq_driver(q.device)).solution
 
 
 def reconstruct_from_corange(
