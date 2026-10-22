@@ -43,7 +43,7 @@ FLOAT_FIELDS = (
     "id2_resid expansion_resid opt_r2 ideal_r2 extra_vs_ideal2 rel_fro_final rel_fro_ideal_r rel_fro_opt "
     "rel_spec_final rel_spec_ideal_r rel_spec_opt e_rel e_opt_s_rel e_ratio_s d_rel qe_orth cond_c "
     "sigma_min_c sigma_max_c c_resid_rel stationarity_rel b_oracle_diff b_lstsq_diff d_formula_diff_rel "
-    "id1_rel id2_rel api_rel_diff m4_rel_fro_err m4_rel_diff"
+    "id1_rel id2_rel d2_over_e2 gauss_d2_over_e2 api_rel_diff m4_rel_fro_err m4_rel_diff"
 ).split()
 
 SCHEMA = {
@@ -140,6 +140,11 @@ def decompose(a, q, psi, r):
     if out["stationarity_rel"] is None:
         nulls.append("stationarity_rel: consistent system, residual at noise floor")
     out["null_reason"] = "; ".join(nulls) or None
+    # For real Gaussian Psi independent of (A, Q): E||C^+ Psi E||_F^2 = s/(d-s-1) ||E||_F^2 (inverse-Wishart
+    # trace); infinite when d <= s + 1. A numerical comparison target, not a proved property of this code.
+    s_q, d_psi = q.shape[1], psi.shape[0]
+    out["d2_over_e2"] = d2 / e2 if e2 > 1e-20 else None
+    out["gauss_d2_over_e2"] = s_q / (d_psi - s_q - 1) if (not a.is_complex() and d_psi - s_q - 1 > 0) else None
     if out["d_rel"] < 1e-10:
         out["d_formula_diff_rel"] = None
         nulls.append("d_formula_diff_rel: D at noise floor")
@@ -311,24 +316,24 @@ def stage_table(rows):
     groups = {}
     for r in _ok(rows, "P_baseline"):
         groups.setdefault((r["spectrum"], r["q"]), []).append(r)
-    head = ["| spectrum | q | n | opt r^2 | ideal-Q r^2 | E^2 | D^2 | tail(B)^2 | cross | final r^2 | final-ideal | cross<0 | median cond(C) | max cond(C) |",
-            "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
+    head = ["| spectrum | q | n | opt r^2 | ideal-Q r^2 | E^2 | D^2 | tail(B)^2 | cross | final r^2 | final-ideal | cross<0 | median D^2/E^2 | s/(d-s-1) | median cond(C) | max cond(C) |",
+            "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
     for (sp, q), rs in groups.items():
         g = lambda k: _med([x[k] for x in rs])  # noqa: E731
         head.append(
             f"| {sp} | {q} | {len(rs)} | {_f(g('opt_r2'))} | {_f(g('ideal_r2'))} | {_f(g('e2'))} | {_f(g('d2'))} | "
             f"{_f(g('tail_b2'))} | {_f(g('cross'))} | {_f(g('trunc_lhs'))} | {_f(g('extra_vs_ideal2'))} | "
-            f"{sum(x['cross'] < 0 for x in rs)}/{len(rs)} | {_f(g('cond_c'))} | {_f(max(x['cond_c'] for x in rs))} |")
+            f"{sum(x['cross'] < 0 for x in rs)}/{len(rs)} | {_f(g('d2_over_e2'))} | {_f(g('gauss_d2_over_e2'))} | {_f(g('cond_c'))} | {_f(max(x['cond_c'] for x in rs))} |")
     return "\n".join(head)
 
 
 def psi_table(rows):
     """Block S: A and Q fixed; each row differs only in Psi."""
-    head = ["| spectrum | Psi variant | d | E^2 (fixed) | D^2 | cross | final r^2 | rel Fro final | cond(C) | sigma_min(C) |",
-            "|---|---|---|---|---|---|---|---|---|---|"]
+    head = ["| spectrum | Psi variant | d | E^2 (fixed) | D^2 | D^2/E^2 | s/(d-s-1) | cross | final r^2 | rel Fro final | cond(C) | sigma_min(C) |",
+            "|---|---|---|---|---|---|---|---|---|---|---|---|"]
     for r in _ok(rows, "S_psi"):
         head.append(f"| {r['spectrum']} | {r['case'].split('-psi-')[1]} | {r['d']} | {_f(r['e2'])} | {_f(r['d2'])} | "
-                    f"{_f(r['cross'])} | {_f(r['trunc_lhs'])} | {_f(r['rel_fro_final'])} | {_f(r['cond_c'])} | {_f(r['sigma_min_c'])} |")
+                    f"{_f(r['d2_over_e2'])} | {_f(r['gauss_d2_over_e2'])} | {_f(r['cross'])} | {_f(r['trunc_lhs'])} | {_f(r['rel_fro_final'])} | {_f(r['cond_c'])} | {_f(r['sigma_min_c'])} |")
     return "\n".join(head)
 
 

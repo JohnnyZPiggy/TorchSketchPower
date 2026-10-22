@@ -271,3 +271,21 @@ def test_runner_smoke_is_deterministic_and_hashed(tmp_path):
     rows = lib.read_csv(str(outs[0] / "samples.csv"))
     assert {r["block"] for r in rows} == {"P_baseline", "S_psi", "O_tiny"}
     assert any(r["status"] == "error" for r in rows)  # negative controls are kept
+
+
+def test_gaussian_d2_over_e2_matches_inverse_wishart_expectation():
+    # Fixed A, Q; many independent real Gaussian Psi: mean D^2/E^2 should approach s/(d-s-1).
+    a, q, _ = _problem(m=40, n=20, s=4, d=4, seed=1)
+    g = torch.Generator().manual_seed(123)
+    d = 30
+    vals = [lib.decompose(a, q, torch.randn(d, 40, generator=g, dtype=torch.float64), 2)["d2_over_e2"] for _ in range(400)]
+    assert sum(vals) / len(vals) == pytest.approx(4 / (d - 4 - 1), rel=0.15)
+    out = lib.decompose(a, q, torch.randn(d, 40, generator=g, dtype=torch.float64), 2)
+    assert out["gauss_d2_over_e2"] == pytest.approx(4 / 25)
+
+
+def test_gaussian_reference_is_null_when_infinite_or_complex():
+    a, q, psi = _problem(m=30, n=20, s=6, d=7)  # d = s + 1: infinite expectation
+    assert lib.decompose(a, q, psi, 2)["gauss_d2_over_e2"] is None
+    a, q, psi = _problem(m=30, n=20, s=6, d=12, dtype=torch.complex128)
+    assert lib.decompose(a, q, psi, 2)["gauss_d2_over_e2"] is None
