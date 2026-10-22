@@ -1,6 +1,6 @@
 # TorchSketchPower
 
-An independent, in-memory, **CPU-only** PyTorch reference implementation of a sketch-power low-rank approximation, inspired by Chang and Yang, *Improving Sketching Algorithms for Low-Rank Matrix Approximation via Sketch-Power Iterations*, SIAM J. Matrix Anal. Appl. 47(3), 2026, DOI [10.1137/25M1760143](https://doi.org/10.1137/25M1760143).
+An independent PyTorch implementation of a sketch-power low-rank approximation, **currently in-memory and CPU-only** (GPU support is planned, not implemented), inspired by Chang and Yang, *Improving Sketching Algorithms for Low-Rank Matrix Approximation via Sketch-Power Iterations*, SIAM J. Matrix Anal. Appl. 47(3), 2026, DOI [10.1137/25M1760143](https://doi.org/10.1137/25M1760143).
 
 Given a resident matrix `A` (`m x n`), it returns a rank-`r` factorization `A ~ U diag(sigma) Vh` from random sketches of `A`, a power iteration on an auxiliary sketch, and a small least-squares solve. It comes with exact-SVD baselines, two committed CPU experiment reports, and a stated list of what it does not do.
 
@@ -8,7 +8,7 @@ Given a resident matrix `A` (`m x n`), it returns a rank-`r` factorization `A ~ 
 
 | | |
 |---|---|
-| Stage | V1 independent reference implementation (milestones M0-M5 merged). **Not released:** at the time of writing no tag and no GitHub Release exists (inventory and gates in the [release checklist](docs/RELEASE_CHECKLIST.md)). Package version in `pyproject.toml`: `0.1.0`. |
+| Stage | **V1 in development; release NOT APPROVED.** V1 is defined (Scientist decision, [Issue #16](https://github.com/JohnnyZPiggy/TorchSketchPower/issues/16)) as an independent PyTorch implementation that also includes GPU development and validated acceleration; V2 is later reuse of Panther, skerch and similar ecosystems. Milestones M0-M5 (the CPU baseline) are merged; M6 (GPU readiness audit, [docs/gpu-readiness.md](docs/gpu-readiness.md)) is a design document only, and M7-M10 (GPU correctness, performance, `torch.compile`, independent CPU/GPU validation) are **NOT RUN**. At the time of writing no tag and no GitHub Release exists (inventory and gates in the [release checklist](docs/RELEASE_CHECKLIST.md)). Package version in `pyproject.toml`: `0.1.0`. |
 | Is | A bounded, tested, documented PyTorch implementation of: sketch construction, the subspace power kernel, corange least-squares recovery, and their composition, with CPU numerical evidence. |
 | Is not | A verified reproduction of the paper's complete Algorithm 2.1; a one-pass or streaming implementation; accelerator-validated (GPU/TPU, `torch.compile` all NOT RUN); evidence of any speedup; a convergence proof or rate. |
 | Tested on | Windows 11, Python 3.14.6, torch 2.14.1+cpu, pytest 9.1.1 (444 tests, Engineer-run, not independently re-run by the Architect). `requires-python >= 3.10` and `torch >= 2.2` in `pyproject.toml` are declared but **not verified** on other versions. |
@@ -110,7 +110,7 @@ Earlier milestones: [PR #2](https://github.com/JohnnyZPiggy/TorchSketchPower/pul
 
 ## Limitations
 
-- In-memory and CPU only. GPU, TPU, `torch.compile`, batching, streaming and one-pass operation are **NOT RUN** and unsupported (non-CPU input raises).
+- In-memory and CPU only. **CUDA/GPU is NOT YET IMPLEMENTED and NOT RUN**, whatever PyTorch backend is installed: `sketch_power_low_rank` raises for non-CPU input, and the least-squares step (`gelsd`) is not available on CUDA. The audit and the planned gates M7 to M10 are in [docs/gpu-readiness.md](docs/gpu-readiness.md). TPU, `torch.compile`, batching, streaming and one-pass operation are also **NOT RUN** and unsupported.
 - Not a verified implementation of the paper's Algorithm 2.1; paper-level equivalence is **UNVERIFIED**. The paper's *Require* line has a dimension inconsistency recorded in the [research note](docs/research/spi-tensorization.md).
 - The sparse-sign option is an exploratory fixed-nonzero distribution; it was not exercised in the committed experiments.
 - Results cover only the tested synthetic grid (small sizes, 5 seeds, four spectra). No general accuracy, rate or speed claim is made.
@@ -135,7 +135,7 @@ python -c "import torchsketchpower as t; print(sorted(t.__all__))"
 
 ## Documentation
 
-[docs/README.md](docs/README.md) lists the documents: [mathematics](docs/math.md), [CPU results](docs/cpu-results.md), [research note](docs/research/spi-tensorization.md) and the [release checklist](docs/RELEASE_CHECKLIST.md).
+[docs/README.md](docs/README.md) lists the documents: [mathematics](docs/math.md), [CPU results](docs/cpu-results.md), [GPU readiness audit](docs/gpu-readiness.md), [research note](docs/research/spi-tensorization.md) and the [release checklist](docs/RELEASE_CHECKLIST.md).
 
 ## Provenance and project process
 
