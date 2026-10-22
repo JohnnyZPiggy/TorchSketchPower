@@ -1,5 +1,7 @@
 # Documentation
 
+**Current project state:** [Research closeout (October 2026)](RESEARCH_CLOSEOUT.md) — M7–M11 outcomes, negative results, exact evidence links, scientific limitations and paused M12. Previous GPU-readiness and release-checklist documents are historical plans, not current status assertions.
+
 Start with the [project README](../README.md) (scope, install, example, API, limitations).
 
 | Document | Read it for |
