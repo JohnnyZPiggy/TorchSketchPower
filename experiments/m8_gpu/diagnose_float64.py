@@ -9,6 +9,9 @@ import subprocess
 import sys
 
 import torch
+
+# -I omits the script directory; load the adjacent pinned experiment, not a global module.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 from run_m8 import make_matrix
 
 
