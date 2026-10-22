@@ -32,6 +32,8 @@ def test_exact_spectrum_and_materially_wrong_dense_candidate():
     assert d.audit(a,f,s*1.01,full)['status']=='INCONCLUSIVE'
     badu=u.clone();badu[:,0]*=2
     assert d.audit(a,(badu[:,:1],s[:1],vh[:1]),s,full)['status']=='FAIL'
+    # Compensating S preserves reconstruction but must not hide nonorthogonal factors.
+    assert d.audit(a,(u[:,:1]*1.1,s[:1]/1.1,vh[:1]),s,full)['status']=='FAIL'
     nan=s.clone();nan[0]=float('nan')
     assert d.audit(a,(u[:,:1],nan[:1],vh[:1]),s,full)['status']=='FAIL'
 

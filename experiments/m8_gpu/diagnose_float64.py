@@ -81,7 +81,8 @@ def audit(a, factors, reference_s, full_factors):
     sorted_nonnegative = bool((s >= 0).all() and (s[:-1] >= s[1:]).all() and (reference_s >= 0).all() and (reference_s[:-1] >= reference_s[1:]).all())
     valid = (sorted_nonnegative and len(s) == min(a.shape) and r < len(s)
              and factors[0].shape == (a.shape[0], r) and factors[2].shape == (r, a.shape[1])
-             and math.isfinite(cu + cv) and cmu['gram_defect_upper_model'] < .5 and cmv['gram_defect_upper_model'] < .5)
+             and math.isfinite(cu + cv) and cmu['gram_defect_upper_model'] <= math.sqrt(torch.finfo(a.dtype).eps / 2)
+             and cmv['gram_defect_upper_model'] <= math.sqrt(torch.finfo(a.dtype).eps / 2))
     # Underflow/overflow invalidate the standard relative-error model rather than pass.
     normal_model = all(not bool(((x.abs() > 0) & (x.abs() < math.sqrt(torch.finfo(x.dtype).tiny))).any()) for x in all_values)
     status = classify_dense(norm(residual), tail, uncertainty if normal_model else math.inf, norm(a), valid)
