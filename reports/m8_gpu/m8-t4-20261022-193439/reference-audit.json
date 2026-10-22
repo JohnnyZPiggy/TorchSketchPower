@@ -1,0 +1,13 @@
+{
+  "classification": "OFFLINE_DIAGNOSTIC_HYPOTHESIS_NOT_REFERENCE_REPLACEMENT",
+  "case": "m10-cuda-4",
+  "observed_fro_ratio": 0.9999256131718273,
+  "preset_ey_relative_tolerance": 5.9604644775390625e-05,
+  "required_min_ratio": 0.9999403953552246,
+  "residual_fro_norm": 21.88224310079404,
+  "cuda_reference_opt_fro": 21.88387097254383,
+  "intended_precast_spectrum_opt_fro": 21.88224308110135,
+  "ideal_spectrum_vs_reference_relative_difference": 7.439326199087937e-05,
+  "approximate_cast_only_fro_bound": 1.3151263213340946e-06,
+  "note": "Intended spectrum and observed residual suggest float32 CUDA reference SVD bias. This is NOT an independent decomposition of the realized rounded A; actual A is not archived, only synthesis seed/torch-save hash. Requires independent higher-precision reference review. No tolerance changed and no GPU rerun."
+}

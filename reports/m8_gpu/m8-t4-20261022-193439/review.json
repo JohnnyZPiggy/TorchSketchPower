@@ -1,0 +1,68 @@
+{
+  "status": "BLOCKED",
+  "source_sha": "e986a1b03abf772e383778865ef47d16687bb77d",
+  "run_id": "m8-t4-20261022-193439",
+  "transport_status": "PASS",
+  "installed_correctness_gate": "PASS",
+  "gate_counts": {
+    "PASS": 39,
+    "NOT_RUN": 1
+  },
+  "planned_method_configs": 80,
+  "complete_method_configs": 60,
+  "complete_gpu_configs": 50,
+  "complete_cpu_configs": 10,
+  "cold_only_accuracy_pass_configs": [
+    "m10-cuda-0",
+    "m10-cuda-1",
+    "m10-cuda-2",
+    "m10-cuda-3"
+  ],
+  "accuracy_failed_config": "m10-cuda-4",
+  "not_run_configs": [
+    "m11-cuda-0",
+    "m11-cuda-1",
+    "m11-cuda-2",
+    "m11-cuda-3",
+    "m11-cuda-4",
+    "m12-cuda-0",
+    "m12-cuda-1",
+    "m12-cuda-2",
+    "m12-cuda-3",
+    "m12-cuda-4",
+    "m13-cuda-0",
+    "m13-cuda-1",
+    "m13-cuda-2",
+    "m13-cuda-3",
+    "m13-cuda-4"
+  ],
+  "trial_count": 305,
+  "runtime_failed_trials": 0,
+  "timed_warning_count": 0,
+  "cleanup_confirmed": true,
+  "artifact_sha256": "d6c06b9707e7a9d374ac092582eb4d65a66f9e4337bdf01355d1c1ce0d85a6f5",
+  "native_niter1_smaller_wall_and_no_worse_fro_than_completed_spi": {
+    "observed_pairs": 20,
+    "total_completed_gpu_spi_configs": 20
+  },
+  "not_run": [
+    "full grid completion",
+    "1024x512 near-flat float64",
+    "2048x1024 both dtypes",
+    "warm trials of 1024x512 near-flat float32",
+    "full GPU pytest in this cycle",
+    "M8 complex performance",
+    "kernel-only timing",
+    "compile",
+    "TPU",
+    "sparse-sign performance",
+    "streaming"
+  ],
+  "limitations": [
+    "one matrix seed and session, three warm repeats",
+    "first measured calls are not fresh-process cold",
+    "no complete matrix reconstruction retained; reference and residual singular values plus direct Fro audit retained",
+    "no unqualified speedup; blocked quality reference gate",
+    "clock/thermal initial snapshot only; no variability quantification"
+  ]
+}
