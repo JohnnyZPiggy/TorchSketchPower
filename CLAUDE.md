@@ -25,6 +25,7 @@
 - PR 描述写清：被测 SHA、命令、Python 与 torch 版本、设备、种子、结果；模板见 `.sae/templates/`。
 - GPU 与 `torch.compile` 在验证前一律标 UNVERIFIED。
 - 回复保持简短：做了什么、结果、下一步。
+- 按 `.sae/workflows/NEXT_ACTION.md`，每个实质周期结束时用可点击按钮给出 1–3 个下一步（推荐项在前，每个按钮带完整指令）。用户不应需要打字回复；只有无后续步骤时才只给状态。
 
 ## 环境（Windows）
 - 主 shell 是 PowerShell；路径含空格，需加引号。
