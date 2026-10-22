@@ -13,6 +13,8 @@ pytest -q
 
 If `(Z Z^H)^q Y` (or `Y` itself) has numerical rank below `k`, the `k`-dimensional powered range does not exist and QR would fill the missing columns arbitrarily. By default `sketch_power_subspace` raises `RankDeficiencyError`; pass `on_rank_deficient="warn"` to get a `RankDeficiencyWarning` and a basis whose trailing columns are arbitrary, or `"ignore"` to skip the checks. A finite, orthonormal output alone does not imply a correct powered range.
 
+`construct_sketches(A, s, ell)` forms `Y = A @ Omega`, `Z = A @ Phi` for a resident matrix with Gaussian or fixed-nnz sparse-sign test matrices. It is in-memory only: not streaming, not one-pass, no `W = Psi A`.
+
 CPU evidence for each revision is recorded in the PR conversation (PR #2). GPU: NOT RUN.
 
 See [research rationale](docs/research/spi-tensorization.md) and [Issue #1](https://github.com/JohnnyZPiggy/TorchSketchPower/issues/1).
