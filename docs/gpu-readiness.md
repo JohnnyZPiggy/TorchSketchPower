@@ -1,6 +1,6 @@
 # GPU readiness audit (M6)
 
-**Status: AUDIT AND DESIGN ONLY. CUDA is NOT IMPLEMENTED and NOT RUN.** Nothing in this document is a GPU result. The audit used source reading, the installed PyTorch documentation, the official PyTorch pages, and CPU-only probes (including the `meta` device, which executes no kernels). The machine used has `torch 2.14.1+cpu` (`torch.version.cuda` is `None`, `torch.cuda.is_available()` is `False`), so no CUDA code path could have been exercised.
+**Status: AUDIT AND DESIGN (M6), with an M7 status update in [Section 10](#10-m7-status-candidate-implemented-gpu-run-blocked).** Sections 1 to 9 describe `main` at `a19402ee31adc4cda5fdd601f1024ca1443aae3d` (before M7). **No GPU result exists: the M7 CUDA path is a candidate that has never been run on a GPU.** Nothing in this document is a GPU result. The audit used source reading, the installed PyTorch documentation, the official PyTorch pages, and CPU-only probes (including the `meta` device, which executes no kernels). The machine used has `torch 2.14.1+cpu` (`torch.version.cuda` is `None`, `torch.cuda.is_available()` is `False`), so no CUDA code path could have been exercised.
 
 - Base: `main` `8eae3c63c04a6b43a463f1b5f8d1670c0fd33fe2`; task: [Issue #16](https://github.com/JohnnyZPiggy/TorchSketchPower/issues/16); SAE pin `JohnnyZPiggy/SAE-Framework@65338eb1aa67971e110db982a07cf43161c23446` (unchanged).
 - Production code, tests, experiments and reports are untouched by this audit.
@@ -79,7 +79,7 @@ for name, fn in {
         print(name, "->", type(e).__name__ + ":", str(e)[:70])
 ```
 
-Observed (torch 2.14.1+cpu):
+Observed on `main` before M7 (torch 2.14.1+cpu):
 
 ```
 construct_sketches(meta A) -> returned tuple
@@ -87,6 +87,16 @@ construct_corange_sketch(meta A) -> returned tuple
 sketch_power_subspace(meta y,z) -> RuntimeError: Tensor.item() cannot be called on meta tensors
 solve_corange_coefficient(meta) -> RuntimeError: Tensor.item() cannot be called on meta tensors
 sketch_power_low_rank(meta A) -> ValueError: a must be on the CPU, got device meta; other devices are not supported
+```
+
+Observed with the M7 candidate (same probe, same environment; the last two rows changed because they now apply the CPU-or-CUDA device policy):
+
+```
+construct_sketches(meta A) -> returned tuple
+construct_corange_sketch(meta A) -> returned tuple
+sketch_power_subspace(meta y,z) -> RuntimeError: Tensor.item() cannot be called on meta tensors
+solve_corange_coefficient(meta) -> ValueError: q, psi and w must be on a CPU or CUDA device, got device meta; other d
+sketch_power_low_rank(meta A) -> ValueError: a must be on a CPU or CUDA device, got device meta; other devices are
 ```
 
 Reading: only the top-level function rejects a non-CPU device cleanly (H1). The sketch constructors silently produce tensors on the foreign device; the rank-checking functions fail at the first host read. This also confirms that the host reads (`.item()` through `float()`/`int()`) sit on the path of every gate.
@@ -227,3 +237,25 @@ Status of every gate except M6: **NOT RUN**. Execution rules come from the pinne
 | Colab CLI plan, three stages, source SHA | planned; GPU environment for the Engineer NOT VERIFIED | Section 8 |
 
 **GPU_READY: not set by the Engineer.** Per the template, formal VALIDATE acceptance requires the mandatory gates above, several of which are NOT RUN. Short `EXPLORE` / `PROBE_ONLY` correctness work (M7) is a separate decision for the Architect. This table asserts nothing about GPU correctness, compilation or speed.
+
+## 10. M7 status: candidate implemented, GPU run blocked
+
+Task: [Issue #18](https://github.com/JohnnyZPiggy/TorchSketchPower/issues/18). **M7 GPU correctness: BLOCKED (no GPU result; not a pass).**
+
+What the M7 candidate changes (CPU behaviour unchanged; the 444 earlier tests pass and the committed M4/M5 CPU sample files regenerate byte for byte):
+
+- `solve_corange_coefficient` keeps the same orthonormality, rank and conditioning gates, then calls `lstsq` with `driver="gelsd"` on the CPU (unchanged) or `driver="gels"` on CUDA. `gels` is reached only after the rank gate passes; nothing is copied to the CPU. The gates still read scalars to the host (a device synchronization). This is the candidate of DR-1; the SVD-based solve is **not** implemented and stays an option to decide after a real GPU oracle run.
+- Device policy: `sketch_power_low_rank`, `solve_corange_coefficient` and `reconstruct_from_corange` accept CPU and CUDA tensors and reject other device types (for example `meta`) with `ValueError`. A generator must be on the same device (and CUDA index) as `A`, checked before any draw. Only `distribution="gaussian"` is accepted on CUDA; `sparsesign` there raises (NOT RUN / UNVERIFIED). The lower-level sketch constructors and `sketch_power_subspace` were not changed.
+- New: `experiments/m7_cuda/` (oracles O1 to O6, a self-contained runner and a Colab procedure) and `tests/test_cuda_lowrank.py`.
+
+What could and could not be verified:
+
+| Item | Status |
+|---|---|
+| CUDA environment for the Engineer | **NOT AVAILABLE**: no NVIDIA GPU (only an AMD display adapter), `torch 2.14.1+cpu` with `torch.cuda.is_available()` False, no `colab` executable on Windows or in WSL Ubuntu 24.04, WSL has no `nvidia-smi` and no torch |
+| CPU tests with the candidate | PASS (Engineer-run); GPU tests SKIPPED, which counts as NOT RUN |
+| Oracle logic | validated on the CPU (168 rows PASS, 4 NOT_RUN for CUDA-only cases) and shown to fail on deliberately broken code (wrong coefficient, hidden host transfer, swallowed rank error, ignored power steps) |
+| CUDA `gels`, CUDA SVD driver, complex dtypes on CUDA, CUDA generators, residency, scalar-read synchronization | **NOT RUN / UNVERIFIED** until `experiments/m7_cuda/README.md` is executed on a CUDA device and reviewed |
+| Performance, `torch.compile`, batching, `sparsesign` on CUDA, TPU | NOT RUN (out of M7 scope) |
+
+The Scientist-run procedure, for one fixed commit and one bounded session, is in [`experiments/m7_cuda/README.md`](../experiments/m7_cuda/README.md). Its raw output must be attached to the Issue and independently reviewed before M7 can be called passed.

@@ -1,8 +1,9 @@
-"""End-to-end in-memory sketch-power low-rank approximation (CPU only)."""
+"""End-to-end in-memory sketch-power low-rank approximation (CPU; CUDA candidate, unvalidated)."""
 from typing import Optional
 
 import torch
 
+from ._device import check_distribution, check_generator, require_supported_device
 from .core import sketch_power_subspace
 from .reconstruct import reconstruct_from_corange
 from .sketch import _DISTRIBUTIONS, construct_corange_sketch, construct_sketches
@@ -27,7 +28,7 @@ def sketch_power_low_rank(
 ):
     """Return ``(u, sigma, vh)``, a rank-``r`` approximation ``u @ diag(sigma) @ vh`` of ``a``.
 
-    Pipeline, for a resident CPU tensor ``a`` (m, n), with 1 <= r <= min(s, n),
+    Pipeline, for a resident tensor ``a`` (m, n) on the CPU or a CUDA device, with 1 <= r <= min(s, n),
     s <= m, s < ell (ell may exceed m) and d >= s:
 
     1. ``Y = a @ Omega`` (m, s), ``Z = a @ Phi`` (m, ell)      [construct_sketches]
@@ -36,8 +37,8 @@ def sketch_power_low_rank(
     4. ``B = argmin ||Psi Q B - W||_F``; ``u, sigma, vh`` = rank-r truncated SVD of ``Q B``
        [reconstruct_from_corange]
 
-    Omega, Phi and Psi are drawn sequentially from ``generator`` (a CPU generator, or
-    the global RNG if None), so a fixed seed replays and the three draws differ; this
+    Omega, Phi and Psi are drawn sequentially from ``generator`` (on the same device as ``a``, or
+    the global RNG of that device if None), so a fixed seed replays and the three draws differ; this
     is not a test of statistical independence. ``distribution`` is "gaussian" or
     the exploratory fixed-nnz "sparsesign" (not shown equivalent to the paper's);
     extra keyword arguments (e.g. ``sparsity``) go to the test matrix constructors.
@@ -49,15 +50,18 @@ def sketch_power_low_rank(
 
     This is three matrix products over a fully resident ``a``: not one-pass, not
     streaming, and not a verified implementation of the paper's Algorithm 2.1.
-    CPU only: non-CPU input raises ``ValueError`` (the least-squares driver is
-    CPU-specific and other devices are NOT RUN).
+    Devices: the CPU path is validated (``gelsd``). CUDA is a **candidate, never run on a
+    GPU yet**: the least-squares step uses ``gels`` behind the same rank and conditioning
+    gates, every tensor stays on the device, and the gates read a few scalars back to the
+    host for control flow (a device synchronization). Only ``distribution="gaussian"`` is
+    accepted on CUDA; the generator must be on the same device as ``a`` (checked before any
+    draw). Any other device type (for example ``meta``) raises ``ValueError``.
     """
     if not isinstance(a, torch.Tensor) or a.ndim != 2:
         raise ValueError("a must be a two-dimensional torch tensor")
     if not (a.is_floating_point() or a.is_complex()):
         raise TypeError("floating or complex tensor required")
-    if a.device.type != "cpu":
-        raise ValueError(f"a must be on the CPU, got device {a.device}; other devices are not supported")
+    require_supported_device(a.device, "a")
     m, n = a.shape
     if m < 1 or n < 1:
         raise ValueError("a must have nonempty dimensions")
@@ -76,8 +80,8 @@ def sketch_power_low_rank(
         raise ValueError("expected d >= s")
     if not isinstance(distribution, str) or distribution.lower() not in _DISTRIBUTIONS:
         raise ValueError(f"distribution must be one of {_DISTRIBUTIONS}")
-    if generator is not None and generator.device.type != "cpu":
-        raise ValueError("generator must be a CPU generator")
+    check_generator(generator, a.device)
+    check_distribution(distribution, a.device)
 
     y, z = construct_sketches(a, s, ell, distribution=distribution, generator=generator, **kwargs)
     q = sketch_power_subspace(y, z, steps=steps)
