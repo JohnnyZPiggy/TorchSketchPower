@@ -112,7 +112,32 @@ def timed_call(fn, device):
     return output, data
 
 
+def reference_spectrum(a, r):
+    """Reference the realized rounded A, outside all method timing/memory windows."""
+    rounded_double = a.to(torch.float64)
+    ref = torch.linalg.svdvals(rounded_double)
+    if not bool(torch.isfinite(ref).all()):
+        raise ValueError("nonfinite float64 reference")
+    native = torch.linalg.svdvals(a) if a.dtype == torch.float32 else ref
+    total2 = float(torch.linalg.vector_norm(rounded_double) ** 2)
+    leading2 = float((ref[:r] ** 2).sum())
+    energy_tail2 = total2 - leading2
+    cancellation_bound = 100 * torch.finfo(torch.float64).eps * max(total2, leading2)
+    return ref, {"precision": "float64", "input": "actual dtype-rounded A promoted to float64 on same device",
+                 "outside_method_timing_and_memory": True,
+                 "reference_singular_values": ref.cpu().tolist(),
+                 "native_reference_precision": str(a.dtype),
+                 "native_reference_authoritative": False,
+                 "native_reference_singular_values": native.cpu().tolist(),
+                 "energy_tail2": energy_tail2, "energy_cancellation_bound": cancellation_bound,
+                 "energy_tail_reliable": energy_tail2 > cancellation_bound,
+                 "energy_tail_fro": math.sqrt(energy_tail2) if energy_tail2 > cancellation_bound else None,
+                 "tail_svd_fro": float(torch.linalg.vector_norm(ref[r:]))}
+
+
 def accuracy(a, factors, reference_s):
+    if reference_s.dtype != torch.float64 or reference_s.device != a.device:
+        raise ValueError("authoritative reference must be same-device float64 SVD of rounded A")
     u, s, vh = factors
     residual = a - (u * s) @ vh
     singular = torch.linalg.svdvals(residual).double()
@@ -231,8 +256,8 @@ def run(device="cuda", smoke=False, source_sha=None, max_seconds=170, checkpoint
                 t=time.perf_counter(); a=cpu.to(dev)
                 if dev=="cuda":torch.cuda.synchronize()
                 transfer_ms=(time.perf_counter()-t)*1000
-                ref=torch.linalg.svdvals(a)
-                matrix["devices"][dev]={"transfer_ms":transfer_ms,"reference_singular_values":ref.cpu().tolist()}
+                ref,reference=reference_spectrum(a,methods(smoke)[0]["r"])
+                matrix["devices"][dev]=dict(reference,transfer_ms=transfer_ms)
                 cs=[c for c in report["configs"] if c["matrix_id"]==mid and c["device"]==dev]
                 for phase,repeat in [("cold",0),("warmup",0)]+[("warm",i) for i in range(REPEATS)]:
                     order=cs if (repeat+(phase=="warmup"))%2==0 else list(reversed(cs))

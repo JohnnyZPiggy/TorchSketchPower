@@ -43,7 +43,7 @@ def test_seeded_matrix_and_spectrum(spectrum):
 @pytest.mark.parametrize('shape',[(24,16),(16,24)])
 def test_all_baselines_accuracy_orientation_and_replay(dtype,shape):
     a=m8.make_matrix(*shape,'polynomial').to(dtype)
-    ref=torch.linalg.svdvals(a)
+    ref,_=m8.reference_spectrum(a,2)
     for cfg in m8.methods(True):
         out=m8.call_method(a,cfg)
         replay=m8.call_method(a,cfg)
@@ -181,3 +181,46 @@ def test_driver_correctness_gate_failure_prevents_benchmark(monkeypatch,tmp_path
     assert r['benchmark_status']=='BLOCKED' and 'benchmark' not in r and r['correctness_gate']['status']=='FAIL'
     assert not any('experiments/m8_gpu/run_m8.py' in cmd for cmd in calls)
     assert r['logs'][-1]['stderr']=='complete gate exception'
+
+
+def test_native_float32_reference_cannot_be_authoritative():
+    a=torch.diag(torch.tensor([4.,3.,2.,1.],dtype=torch.float32))
+    factors=(torch.eye(4)[:,:1],torch.tensor([4.]),torch.eye(4)[:1])
+    with pytest.raises(ValueError,match="float64"):
+        m8.accuracy(a,factors,torch.linalg.svdvals(a)*1.01)
+    ref,meta=m8.reference_spectrum(a,1)
+    torch.testing.assert_close(ref,torch.tensor([4.,3.,2.,1.],dtype=torch.float64))
+    result=m8.accuracy(a,factors,ref)
+    assert result['status']=='PASS' and result['opt_fro']==pytest.approx(14**.5)
+    assert meta['energy_tail_reliable'] and meta['energy_tail_fro']==pytest.approx(14**.5)
+    assert not meta['native_reference_authoritative']
+
+
+def test_reference_uses_actual_dtype_rounding_and_cancellation_guard():
+    original=torch.diag(torch.tensor([1.+2**-25,2**-30],dtype=torch.float64))
+    a=original.float();ref,meta=m8.reference_spectrum(a,1)
+    assert float(ref[0])==1. and float(ref[0])!=float(original[0,0])
+    assert not meta['energy_tail_reliable'] and meta['energy_tail_fro'] is None
+    assert meta['tail_svd_fro']==pytest.approx(2**-30)
+    assert meta['outside_method_timing_and_memory']
+
+
+def test_actual_near_flat_float32_double_reference_ey_gate():
+    import io
+    torch.set_num_threads(1)
+    a=m8.make_matrix(1024,512,'near_flat',seed=123).float()
+    raw=io.BytesIO();torch.save(a,raw)
+    assert torch.equal(a,torch.load(io.BytesIO(raw.getvalue()),weights_only=True))
+    ref,meta=m8.reference_spectrum(a,8)
+    result=m8.accuracy(a,m8.call_method(a,m8.methods()[-1]),ref)
+    assert result['status']=='PASS' and result['ey_ok']
+    assert result['fro_ratio']==pytest.approx(1.,rel=1e-6)
+    assert meta['energy_tail_fro']==pytest.approx(meta['tail_svd_fro'],rel=1e-12)
+
+
+def test_reference_api_failure_is_blocked_without_method_calls(monkeypatch):
+    def bad(a,r):raise RuntimeError('double reference unavailable')
+    monkeypatch.setattr(m8,'reference_spectrum',bad)
+    r=m8.run('cpu',True,'b'*40)
+    assert r['status']=='BLOCKED' and not r['trials']
+    assert 'double reference unavailable' in r['exceptions'][0]['exception']
