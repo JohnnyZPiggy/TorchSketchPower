@@ -1,0 +1,7 @@
+# Source and licensing
+
+Copyright (c) 2026 JohnnyZPiggy. Promoted/adapted contributions in this directory and `examples/compute_adapter` are submitted under the framework's [MIT license](../../LICENSE) at the repository owner's explicit request in Issue 38.
+
+Source: owner-authored SAE_Test PR 3, merged commit `dff21544dc751749a43ffeb97f67f4a00ee27a02`. Adapted files: `scripts/environment_preflight.py`, `scripts/colab_control.py`, `scripts/kernel_smoke.py`, `tests/test_environment_preflight.py`, `tests/test_colab_control.py`. The source tree at that commit has **no project-root LICENSE**; `.sae/LICENSE` licenses the copied framework material and is not treated as a project-wide code license. Promotion relies on the owner's current explicit request for these contributions, not an assertion that all historical SAE_Test code was MIT. No license or other file in SAE_Test was changed.
+
+No source from the external Colab CLI is vendored. It remains a separately installed program. Official metadata inspected 2026-10-20 declares Apache-2.0, Python >=3.12, and entry point `colab = colab_cli.cli:main`: [upstream pyproject](https://github.com/googlecolab/google-colab-cli/blob/main/pyproject.toml), [upstream license](https://github.com/googlecolab/google-colab-cli/blob/main/LICENSE). These upstream links can change; local runtime evidence records the actual version checked. The optional CLI-internal HTTP diagnostic wrapper was deliberately not promoted, so these tools import neither `requests` nor `colab_cli`.

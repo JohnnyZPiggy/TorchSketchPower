@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1580" viewBox="0 0 1000 1580" role="img" aria-labelledby="title desc">
+<title id="title">SAE Framework V3.3 — 通用 AI Agent 科研组织架构</title>
+<desc id="desc">卡片式科研架构图：双重目标、人类科学家、架构师与导师、可接力的通用工程师、GitHub 证据中心及本地和远程算力。</desc>
+<rect x="0" y="0" width="1000" height="1580" fill="#f5f7fb"/>
+<rect x="28" y="26" width="944" height="1524" rx="26" fill="#f8fafc" stroke="#e1e6ee" stroke-width="1.5"/>
+<g transform="translate(84 84)" stroke="#61748e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+<circle cx="-12" cy="7" r="5"/><circle cx="13" cy="35" r="5"/><circle cx="-12" cy="35" r="5"/><path d="M-12 12v18M-7 7h7c12 0 13 9 13 23"/>
+</g>
+<text x="128" y="80" fill="#192a41" font-size="34" font-weight="750" text-anchor="start" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">SAE FRAMEWORK</text>
+<text x="130" y="112" fill="#718096" font-size="14" font-weight="550" text-anchor="start" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">V3.3  ·  PROVIDER-NEUTRAL MULTI-AGENT RESEARCH LAB</text>
+<rect x="100" y="135" width="244" height="35" rx="18" fill="#ffffff" stroke="#e5eaf0" stroke-width="1"/>
+<text x="222" y="158" fill="#60728a" font-size="13" font-weight="600" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">模型无关,GitHub 协作,证据驱动</text>
+<rect x="68" y="200" width="420" height="105" rx="18" fill="#edf4ff" stroke="#c7daf8" stroke-width="1.5"/>
+<g transform="translate(119 228)" stroke="#547fc5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+<path d="M-6 26C-5 11 5 0 21-2c3 15-8 27-22 29M-6 26l-10 7 1-14 9-6M-1 27l6 10 6-14M-18 36l-6 8M-11 38l-3 8"/><circle cx="10" cy="12" r="4"/>
+</g>
+<text x="157" y="230" fill="#244976" font-size="21" font-weight="700" text-anchor="start" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">工程生产力</text>
+<text x="157" y="257" fill="#657c9c" font-size="15" font-weight="400" text-anchor="start" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">正确 · 可复现 · 低成本</text>
+<rect x="512" y="200" width="420" height="105" rx="18" fill="#f0f8f1" stroke="#c9e5d3" stroke-width="1.5"/>
+<g transform="translate(565 228)" stroke="#469775" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+<path d="M-24 16L0 4l24 12L0 27Z M-14 24v12c9 8 19 8 28 0V24 M24 17v18"/>
+</g>
+<text x="602" y="230" fill="#275c46" font-size="21" font-weight="700" text-anchor="start" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">科学学习</text>
+<text x="602" y="257" fill="#587a69" font-size="15" font-weight="400" text-anchor="start" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">数学 · 数值方法 · ML 系统</text>
+<path d="M 278 305 L 278 324" fill="none" stroke="#a8b3c4" stroke-width="2" stroke-linecap="round"/>
+<path d="M 722 305 L 722 324" fill="none" stroke="#a8b3c4" stroke-width="2" stroke-linecap="round"/>
+<path d="M 278 324 L 722 324" fill="none" stroke="#a8b3c4" stroke-width="2" stroke-linecap="round"/>
+<path d="M 500 324 L 500 336" fill="none" stroke="#a8b3c4" stroke-width="2" stroke-linecap="round"/>
+<path d="M493 330 L500 339 L507 330" stroke="#91a1b5" stroke-width="2.5" stroke-linejoin="round" fill="none"/>
+<rect x="230" y="354" width="540" height="120" rx="22" fill="#fff6e9" stroke="#e6c995" stroke-width="1.5"/>
+<rect x="246" y="370" width="70" height="86" rx="18" fill="#fae6c1" stroke="#fae6c1" stroke-width="1.5"/>
+<g transform="translate(281 387)" stroke="#9c703a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+<circle cy="12" r="10"/><path d="M-19 38c0-20 38-20 38 0"/>
+</g>
+<text x="338" y="386" fill="#8b6e41" font-size="14" font-weight="800" text-anchor="start" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">SCIENTIST</text>
+<text x="338" y="415" fill="#503c24" font-size="21" font-weight="700" text-anchor="start" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">人类 · 科研负责人</text>
+<text x="338" y="443" fill="#856d4e" font-size="16" font-weight="400" text-anchor="start" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">设定目标 · 调整方向 · 随时叫停</text>
+<text x="500" y="495" fill="#79869b" font-size="13" font-weight="500" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">科研授权 · 目标 · 反馈</text>
+<path d="M 500 475 L 500 513" fill="none" stroke="#a8b3c4" stroke-width="2" stroke-linecap="round"/>
+<path d="M493 507 L500 516 L507 507" stroke="#91a1b5" stroke-width="2.5" stroke-linejoin="round" fill="none"/>
+<rect x="67" y="534" width="425" height="177" rx="20" fill="#eef2ff" stroke="#bdc9f2" stroke-width="1.5"/>
+<rect x="508" y="534" width="425" height="177" rx="20" fill="#f4effd" stroke="#d6c4ea" stroke-width="1.5"/>
+<g transform="translate(118 554)" stroke="#5c70b9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+<path d="M0 8C-12 -1 -18 13 -13 20C-19 27 -10 38 0 33M0 8C11 -1 18 13 13 20C19 27 10 38 0 33M0 8V33M-8 13l8 6 8-6M-8 29l8-7 8 7"/>
+</g>
+<text x="158" y="573" fill="#354b8e" font-size="21" font-weight="800" text-anchor="start" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">ARCHITECT</text>
+<text x="158" y="597" fill="#6879a8" font-size="14" font-weight="500" text-anchor="start" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">AI Agent · 例如 GPT</text>
+<path d="M 90 615 L 470 615" fill="none" stroke="#d4ddf3" stroke-width="1" stroke-linecap="round"/>
+<text x="100" y="642" fill="#243047" font-size="16" font-weight="400" text-anchor="start" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">数学架构与规格设计</text>
+<text x="100" y="670" fill="#243047" font-size="16" font-weight="400" text-anchor="start" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">工程派单 · 独立审查 · PR 合并</text>
+<g transform="translate(559 554)" stroke="#8660b0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+<path d="M0 8C-8 3 -18 4 -23 8v27c10-5 17-5 23 0 6-5 13-5 23 0V8C16 4 8 3 0 8v27M-15 15h9M7 15h9"/>
+</g>
+<text x="598" y="573" fill="#69428f" font-size="21" font-weight="800" text-anchor="start" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">MENTOR</text>
+<text x="598" y="597" fill="#9478b2" font-size="14" font-weight="500" text-anchor="start" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">AI Agent · 例如 GPT</text>
+<path d="M 530 615 L 910 615" fill="none" stroke="#e4d7f0" stroke-width="1" stroke-linecap="round"/>
+<text x="542" y="642" fill="#243047" font-size="16" font-weight="400" text-anchor="start" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">数学研究 · 张量化 · 证明</text>
+<text x="542" y="670" fill="#243047" font-size="16" font-weight="400" text-anchor="start" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">数值分析 · 科研指导与学习</text>
+<path d="M 280 711 L 280 729" fill="none" stroke="#a8b3c4" stroke-width="2" stroke-linecap="round"/>
+<path d="M 720 711 L 720 729" fill="none" stroke="#a8b3c4" stroke-width="2" stroke-linecap="round"/>
+<path d="M 280 729 L 720 729" fill="none" stroke="#a8b3c4" stroke-width="2" stroke-linecap="round"/>
+<path d="M 500 729 L 500 741" fill="none" stroke="#a8b3c4" stroke-width="2" stroke-linecap="round"/>
+<path d="M493 735 L500 744 L507 735" stroke="#91a1b5" stroke-width="2.5" stroke-linejoin="round" fill="none"/>
+<text x="500" y="768" fill="#75849b" font-size="13" font-weight="500" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">任务分配  ↕  数学规范  ↕  实测证据</text>
+<rect x="67" y="790" width="866" height="301" rx="23" fill="#eaf8f3" stroke="#9ccfbb" stroke-width="1.5"/>
+<g transform="translate(121 809)" stroke="#278a69" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+<path d="M-13 14l-10 9 10 9M13 14l10 9-10 9M6 9L-6 37"/>
+</g>
+<text x="163" y="825" fill="#24664c" font-size="22" font-weight="800" text-anchor="start" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">ENGINEER POOL</text>
+<text x="163" y="850" fill="#648577" font-size="15" font-weight="400" text-anchor="start" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">通用 AI 编码 Agent · 可替换的工程师角色</text>
+<rect x="768" y="810" width="137" height="31" rx="16" fill="#d6f0e4" stroke="#c2e8d7" stroke-width="1"/>
+<text x="837" y="831" fill="#2e805f" font-size="11" font-weight="700" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">REPLACEABLE</text>
+<rect x="93" y="874" width="395" height="135" rx="15" fill="#ffffff" stroke="#cee9db" stroke-width="1.5"/>
+<rect x="512" y="874" width="395" height="135" rx="15" fill="#ffffff" stroke="#cee9db" stroke-width="1.5"/>
+<g transform="translate(131 894)" stroke="#508d78" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+<rect x="-23" y="5" width="46" height="29" rx="4"/><path d="M-9 40h18M0 34v6"/>
+</g>
+<text x="174" y="907" fill="#304b43" font-size="19" font-weight="800" text-anchor="start" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">ENGINEER A</text>
+<text x="174" y="935" fill="#34634e" font-size="18" font-weight="700" text-anchor="start" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">Codex</text>
+<text x="174" y="965" fill="#667f76" font-size="14" font-weight="400" text-anchor="start" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">算法实现 · CPU 测试 · 工程迭代</text>
+<g transform="translate(551 892)" stroke="#508d78" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+<path d="M-13 14l-10 9 10 9M13 14l10 9-10 9M6 9L-6 37"/>
+</g>
+<text x="595" y="907" fill="#304b43" font-size="19" font-weight="800" text-anchor="start" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">ENGINEER B</text>
+<text x="595" y="935" fill="#34634e" font-size="18" font-weight="700" text-anchor="start" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">Claude Code</text>
+<text x="595" y="965" fill="#667f76" font-size="14" font-weight="400" text-anchor="start" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">代码执行 · 实验测试 · 交叉验证</text>
+<path d="M 472 947 L 530 947" fill="none" stroke="#76b69c" stroke-width="3" stroke-linecap="round"/>
+<path d="M 479 941 l -8 6 8 6 M 523 941 l 8 6 -8 6" stroke="#60a888" stroke-width="2" fill="none"/>
+<text x="500" y="1043" fill="#39775d" font-size="15" font-weight="650" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">SHA + 测试 + PR 接力 · 独立工作区 · 不自行合并</text>
+<text x="500" y="1072" fill="#6c8a7b" font-size="14" font-weight="500" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">可扩展：其他合格 AI Agent</text>
+<path d="M 500 1091 L 500 1119" fill="none" stroke="#a8b3c4" stroke-width="2" stroke-linecap="round"/>
+<path d="M493 1113 L500 1122 L507 1113" stroke="#91a1b5" stroke-width="2.5" stroke-linejoin="round" fill="none"/>
+<rect x="68" y="1138" width="864" height="148" rx="21" fill="#f0effa" stroke="#c8bfe2" stroke-width="1.5"/>
+<g transform="translate(126 1159)" stroke="#695c9b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+<path d="M-17 12C-6 -1 8 -1 18 12C28 27 18 38 9 40V31C9 27 6 24 0 24c-6 0-9 3-9 7v9C-19 37-28 27-17 12Z"/><path d="M-12 10l-2-9M12 10l2-9"/>
+</g>
+<text x="172" y="1178" fill="#473b78" font-size="22" font-weight="800" text-anchor="start" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">GITHUB</text>
+<text x="172" y="1202" fill="#8179a0" font-size="15" font-weight="400" text-anchor="start" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">共享协作与实验证据中心</text>
+<rect x="100" y="1220" width="187" height="45" rx="11" fill="#ffffff" stroke="#e0daf0" stroke-width="1"/>
+<text x="193.5" y="1249" fill="#6b628a" font-size="13" font-weight="650" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">ISSUES</text>
+<rect x="304" y="1220" width="187" height="45" rx="11" fill="#ffffff" stroke="#e0daf0" stroke-width="1"/>
+<text x="397.5" y="1249" fill="#6b628a" font-size="13" font-weight="650" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">PULL REQUESTS</text>
+<rect x="508" y="1220" width="187" height="45" rx="11" fill="#ffffff" stroke="#e0daf0" stroke-width="1"/>
+<text x="601.5" y="1249" fill="#6b628a" font-size="13" font-weight="650" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">COMMIT SHA</text>
+<rect x="712" y="1220" width="187" height="45" rx="11" fill="#ffffff" stroke="#e0daf0" stroke-width="1"/>
+<text x="805.5" y="1249" fill="#6b628a" font-size="13" font-weight="650" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">REPORTS</text>
+<path d="M 500 1286 L 500 1309" fill="none" stroke="#a8b3c4" stroke-width="2" stroke-linecap="round"/>
+<path d="M493 1303 L500 1312 L507 1303" stroke="#91a1b5" stroke-width="2.5" stroke-linejoin="round" fill="none"/>
+<rect x="68" y="1331" width="864" height="157" rx="21" fill="#ffffff" stroke="#d8e0ea" stroke-width="1.5"/>
+<text x="110" y="1363" fill="#334761" font-size="20" font-weight="800" text-anchor="start" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">计算与执行层</text>
+<rect x="101" y="1381" width="384" height="82" rx="15" fill="#f1f5f9" stroke="#e1e7ef" stroke-width="1.5"/>
+<rect x="516" y="1381" width="384" height="82" rx="15" fill="#f1f5f9" stroke="#e1e7ef" stroke-width="1.5"/>
+<g transform="translate(142 1397)" stroke="#667e9c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+<rect x="-23" y="5" width="46" height="29" rx="4"/><path d="M-9 40h18M0 34v6"/>
+</g>
+<text x="184" y="1411" fill="#3b4d62" font-size="17" font-weight="700" text-anchor="start" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">本地 CPU</text>
+<text x="184" y="1438" fill="#6c8095" font-size="14" font-weight="400" text-anchor="start" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">WSL2 · PyTorch · pytest</text>
+<g transform="translate(557 1398)" stroke="#667e9c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+<path d="M-14 32h32a12 12 0 0 0 0-24 18 18 0 0 0-34 7A9 9 0 0 0-14 32Z"/>
+</g>
+<text x="604" y="1411" fill="#3b4d62" font-size="17" font-weight="700" text-anchor="start" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">远程算力</text>
+<text x="604" y="1438" fill="#6c8095" font-size="14" font-weight="400" text-anchor="start" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">Colab CLI · GPU · 会话清理</text>
+<text x="500" y="1521" fill="#708096" font-size="15" font-weight="650" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">探索  →  验证  →  审查  →  迭代</text>
+</svg>

@@ -1,0 +1,38 @@
+test_duplicate_json_fields_rejected (test_adapter.AdapterTests.test_duplicate_json_fields_rejected) ... ok
+test_example_runs_locally_without_provider (test_adapter.AdapterTests.test_example_runs_locally_without_provider) ... ok
+test_manifest_structure_and_safe_names (test_adapter.AdapterTests.test_manifest_structure_and_safe_names) ... ok
+test_pinned_files_ignore_dirty_adapter_and_manifest (test_adapter.AdapterTests.test_pinned_files_ignore_dirty_adapter_and_manifest) ... ok
+test_source_sha_is_immutable (test_adapter.AdapterTests.test_source_sha_is_immutable) ... ok
+test_symlink_blob_is_not_an_executable_adapter (test_adapter.AdapterTests.test_symlink_blob_is_not_an_executable_adapter) ... ok
+test_unsafe_adapter_paths_rejected (test_adapter.AdapterTests.test_unsafe_adapter_paths_rejected) ... ok
+test_allocation_timeout_is_outer_scope_not_http_diagnosis (test_colab_control.ControllerTests.test_allocation_timeout_is_outer_scope_not_http_diagnosis) ... ok
+test_artifact_source_and_status_mismatch (test_colab_control.ControllerTests.test_artifact_source_and_status_mismatch) ... ok
+test_existing_output_not_overwritten (test_colab_control.ControllerTests.test_existing_output_not_overwritten) ... ok
+test_existing_sessions_not_touched (test_colab_control.ControllerTests.test_existing_sessions_not_touched) ... ok
+test_expired_work_budget_still_stops (test_colab_control.ControllerTests.test_expired_work_budget_still_stops) ... ok
+test_failed_cleanup_never_passes (test_colab_control.ControllerTests.test_failed_cleanup_never_passes) ... ok
+test_hash_mismatch (test_colab_control.ControllerTests.test_hash_mismatch) ... ok
+test_interrupt_stops (test_colab_control.ControllerTests.test_interrupt_stops) ... ok
+test_partial_new_failure_stops (test_colab_control.ControllerTests.test_partial_new_failure_stops) ... ok
+test_preflight_failure_keeps_timed_child_report (test_colab_control.ControllerTests.test_preflight_failure_keeps_timed_child_report) ... ok
+test_preflight_only_never_calls_provider (test_colab_control.ControllerTests.test_preflight_only_never_calls_provider) ... ok
+test_probe_failure_skips_work_and_cleans_up (test_colab_control.ControllerTests.test_probe_failure_skips_work_and_cleans_up) ... ok
+test_probe_timeout_has_short_bound (test_colab_control.ControllerTests.test_probe_timeout_has_short_bound) ... ok
+test_quota_blocks_allocation (test_colab_control.ControllerTests.test_quota_blocks_allocation) ... ok
+test_real_local_allocation_child_timeout_without_status_polling (test_colab_control.ControllerTests.test_real_local_allocation_child_timeout_without_status_polling) ... ok
+test_real_local_child_timeout_still_cleans_up (test_colab_control.ControllerTests.test_real_local_child_timeout_still_cleans_up) ... ok
+test_success_defaults_to_probe_before_work_and_download (test_colab_control.ControllerTests.test_success_defaults_to_probe_before_work_and_download) ... ok
+test_unavailable_cli_blocks_before_provider (test_colab_control.ControllerTests.test_unavailable_cli_blocks_before_provider) ... ok
+test_work_hang_preserves_cleanup_reserve (test_colab_control.ControllerTests.test_work_hang_preserves_cleanup_reserve) ... ok
+test_cli_resolution_and_missing_cli (test_environment_preflight.PreflightTests.test_cli_resolution_and_missing_cli) ... ok
+test_default_preflight_does_not_install_or_contact_provider (test_environment_preflight.PreflightTests.test_default_preflight_does_not_install_or_contact_provider) ... ok
+test_exact_export_ignores_dirty_crlf_worktree_and_local_pip_paths (test_environment_preflight.PreflightTests.test_exact_export_ignores_dirty_crlf_worktree_and_local_pip_paths) ... ok
+test_git_or_cli_timeout_is_bounded_and_safe (test_environment_preflight.PreflightTests.test_git_or_cli_timeout_is_bounded_and_safe) ... ok
+test_invalid_sha_before_any_command (test_environment_preflight.PreflightTests.test_invalid_sha_before_any_command) ... ok
+test_nonwritable_temp_stops_before_pip (test_environment_preflight.PreflightTests.test_nonwritable_temp_stops_before_pip) ... ok
+test_reject_synced_or_checkout_temp (test_environment_preflight.PreflightTests.test_reject_synced_or_checkout_temp) ... ok
+
+----------------------------------------------------------------------
+Ran 33 tests in 22.665s
+
+OK

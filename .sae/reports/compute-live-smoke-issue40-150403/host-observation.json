@@ -1,0 +1,521 @@
+{
+  "utc_start": "2026-10-20T15:05:50.455686+00:00",
+  "source_sha": "3f203df3e574b630ccb24cd419e1c2b581c898a1",
+  "classification": "REAL_PROVIDER_TRANSPORT_ONLY",
+  "device_request": "T4",
+  "observed_device": null,
+  "observations": [
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 0.8206422339999992,
+      "utc": "2026-10-20T15:05:57.176048+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 0.7738660970000009,
+      "utc": "2026-10-20T15:05:58.455044+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 0.7758307990000013,
+      "utc": "2026-10-20T15:05:59.735844+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 1.371730599000001,
+      "utc": "2026-10-20T15:06:01.612413+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 1.3460630510000016,
+      "utc": "2026-10-20T15:06:03.463454+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 0.7476838739999998,
+      "utc": "2026-10-20T15:06:04.715740+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 0.7558176669999987,
+      "utc": "2026-10-20T15:06:05.977419+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 0.7574184929999994,
+      "utc": "2026-10-20T15:06:07.239394+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 1.3629000619999978,
+      "utc": "2026-10-20T15:06:09.107358+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 1.360251041999998,
+      "utc": "2026-10-20T15:06:10.972936+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 0.7696565409999998,
+      "utc": "2026-10-20T15:06:12.247497+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 0.7815805299999994,
+      "utc": "2026-10-20T15:06:13.533918+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 1.3815401509999994,
+      "utc": "2026-10-20T15:06:15.420494+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 1.3329119379999987,
+      "utc": "2026-10-20T15:06:17.258363+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 0.7691062270000018,
+      "utc": "2026-10-20T15:06:18.532965+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 1.4505572970000031,
+      "utc": "2026-10-20T15:06:20.488762+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 1.4986492519999999,
+      "utc": "2026-10-20T15:06:22.525654+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 0.8430473570000032,
+      "utc": "2026-10-20T15:06:23.883011+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 0.8667233159999981,
+      "utc": "2026-10-20T15:06:25.288276+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 1.449464060000004,
+      "utc": "2026-10-20T15:06:27.268309+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 1.452457613,
+      "utc": "2026-10-20T15:06:29.238398+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 1.4544089870000008,
+      "utc": "2026-10-20T15:06:31.200104+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 1.3577449329999993,
+      "utc": "2026-10-20T15:06:33.096186+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 0.7620371300000031,
+      "utc": "2026-10-20T15:06:34.362785+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 1.3502323059999952,
+      "utc": "2026-10-20T15:06:36.217645+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 1.353598832000003,
+      "utc": "2026-10-20T15:06:38.076040+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 1.3813705580000004,
+      "utc": "2026-10-20T15:06:39.964607+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 1.3671370440000032,
+      "utc": "2026-10-20T15:06:41.836833+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 1.336437711000002,
+      "utc": "2026-10-20T15:06:43.678730+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 1.350609200000001,
+      "utc": "2026-10-20T15:06:45.534895+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 1.4115244810000007,
+      "utc": "2026-10-20T15:06:47.450842+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 1.3480024169999965,
+      "utc": "2026-10-20T15:06:49.303304+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 0.7756128450000048,
+      "utc": "2026-10-20T15:06:50.583096+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 1.3552520209999983,
+      "utc": "2026-10-20T15:06:52.443254+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 0.8609470690000052,
+      "utc": "2026-10-20T15:06:52.877713+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 0.8187882969999976,
+      "utc": "2026-10-20T15:06:54.202004+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 1.3456209520000044,
+      "utc": "2026-10-20T15:06:56.053183+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 0.7880419239999981,
+      "utc": "2026-10-20T15:06:57.346179+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 1.3406859490000045,
+      "utc": "2026-10-20T15:06:59.192486+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 0.7829588909999927,
+      "utc": "2026-10-20T15:07:00.480669+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 1.3915162199999997,
+      "utc": "2026-10-20T15:07:02.378127+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 1.370847402999999,
+      "utc": "2026-10-20T15:07:04.253922+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 1.3564624280000004,
+      "utc": "2026-10-20T15:07:06.116638+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 1.3467427590000085,
+      "utc": "2026-10-20T15:07:07.969555+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 1.4936989180000069,
+      "utc": "2026-10-20T15:07:09.968489+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 1.5256801690000117,
+      "utc": "2026-10-20T15:07:12.018434+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 1.4914043990000039,
+      "utc": "2026-10-20T15:07:14.019365+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 1.4717158759999904,
+      "utc": "2026-10-20T15:07:16.005526+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 1.5028869390000068,
+      "utc": "2026-10-20T15:07:18.018153+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 0.9561371759999986,
+      "utc": "2026-10-20T15:07:19.481206+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 1.4503844609999987,
+      "utc": "2026-10-20T15:07:21.443462+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 0.827808203999993,
+      "utc": "2026-10-20T15:07:22.776970+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 1.3514216960000027,
+      "utc": "2026-10-20T15:07:23.545479+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 1.392586921000003,
+      "utc": "2026-10-20T15:07:25.443033+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 0.7900033660000076,
+      "utc": "2026-10-20T15:07:26.754607+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 1.422106503000009,
+      "utc": "2026-10-20T15:07:28.682544+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 1.4201737719999983,
+      "utc": "2026-10-20T15:07:30.609495+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 0.8167617169999914,
+      "utc": "2026-10-20T15:07:31.934700+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 1.4076088870000092,
+      "utc": "2026-10-20T15:07:33.847005+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 1.3991221240000016,
+      "utc": "2026-10-20T15:07:35.754226+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 1.3867153610000003,
+      "utc": "2026-10-20T15:07:37.652655+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 1.3844505050000038,
+      "utc": "2026-10-20T15:07:39.543893+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 1.3946666559999983,
+      "utc": "2026-10-20T15:07:41.444913+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 1.4667902449999985,
+      "utc": "2026-10-20T15:07:43.437508+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 1.4566260210000053,
+      "utc": "2026-10-20T15:07:45.419864+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 1.407584607000004,
+      "utc": "2026-10-20T15:07:47.343172+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 0.7534804459999975,
+      "utc": "2026-10-20T15:07:48.609091+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 1.3489101669999997,
+      "utc": "2026-10-20T15:07:50.462740+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 1.363133321999996,
+      "utc": "2026-10-20T15:07:52.331816+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 1.3597650849999923,
+      "utc": "2026-10-20T15:07:54.201361+00:00",
+      "hardware": null
+    },
+    {
+      "operation": "status",
+      "exit_code": 0,
+      "elapsed_seconds": 1.3888976140000011,
+      "utc": "2026-10-20T15:07:54.937567+00:00",
+      "hardware": null
+    }
+  ],
+  "allocation_limit_seconds": 180,
+  "cleanup_reserve_seconds": 45,
+  "host_interrupt_after_seconds": 200,
+  "host_kill_after_interrupt_seconds": 50,
+  "new_call_cap": 1,
+  "tool_blob_sha256": {
+    "colab_control.py": "f70738a13e4c06267f9f73e534765bf0c8b3e2f7c93cb5245e6e01c05b96d156",
+    "environment_preflight.py": "1ab11ff4baedfa875a23307f9f6af961d1ac8481f62a91f2570d755674dec112",
+    "kernel_smoke.py": "63eedb51b7ac4710009df64d01cf9e33a6e6bdb498294766b215ee90d9490b03"
+  },
+  "controller_exit_code": 1,
+  "independent_server_zero_sessions": true,
+  "sessions_readback_exit_code": 0,
+  "utc_end": "2026-10-20T15:07:56.849304+00:00",
+  "elapsed_seconds": 129.575506277
+}

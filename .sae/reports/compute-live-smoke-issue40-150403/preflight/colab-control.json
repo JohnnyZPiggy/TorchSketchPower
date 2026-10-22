@@ -1,0 +1,89 @@
+{
+  "status": "PREFLIGHT_PASS",
+  "source_sha": "3f203df3e574b630ccb24cd419e1c2b581c898a1",
+  "run_id": "issue40-preflight-150403",
+  "created": false,
+  "cleanup_confirmed": false,
+  "utc_start": "2026-10-20T15:04:18.215875+00:00",
+  "commands": [],
+  "classification": "PREFLIGHT_ONLY",
+  "events": {
+    "cli_resolution": {
+      "utc_start": "2026-10-20T15:04:18.229585+00:00",
+      "status": "PASS",
+      "utc_end": "2026-10-20T15:04:18.233382+00:00",
+      "elapsed_seconds": 0.0038221610000004347
+    },
+    "environment_preflight": {
+      "utc_start": "2026-10-20T15:04:18.244424+00:00",
+      "status": "PASS",
+      "utc_end": "2026-10-20T15:04:20.716281+00:00",
+      "elapsed_seconds": 2.4718679560000005
+    },
+    "adapter_validation": null,
+    "snapshot_extraction": {
+      "utc_start": "2026-10-20T15:04:20.394874+00:00",
+      "status": "PASS",
+      "utc_end": "2026-10-20T15:04:20.713474+00:00",
+      "elapsed_seconds": 0.31861298100000024
+    },
+    "wheel_pip_install": null,
+    "first_cpu_pass": null,
+    "exact_pinned_cpu_test": null,
+    "kernel_probe": null,
+    "remote_workload": null,
+    "artifact_download": null,
+    "github_publication": null,
+    "cleanup": null
+  },
+  "per_attempt_approvals_actual": null,
+  "api_escalation_requests_actual": null,
+  "handoffs_actual": null,
+  "tool_script_sha256": {
+    "colab_control.py": "f70738a13e4c06267f9f73e534765bf0c8b3e2f7c93cb5245e6e01c05b96d156",
+    "environment_preflight.py": "1ab11ff4baedfa875a23307f9f6af961d1ac8481f62a91f2570d755674dec112",
+    "kernel_smoke.py": "63eedb51b7ac4710009df64d01cf9e33a6e6bdb498294766b215ee90d9490b03"
+  },
+  "preflight": {
+    "status": "PASS",
+    "python_version": "3.12.3",
+    "source_sha": "3f203df3e574b630ccb24cd419e1c2b581c898a1",
+    "events": {
+      "cli_version": {
+        "utc_start": "2026-10-20T15:04:18.244994+00:00",
+        "status": "PASS",
+        "utc_end": "2026-10-20T15:04:19.392135+00:00",
+        "elapsed_seconds": 1.1471613330000006
+      },
+      "source_verification": {
+        "utc_start": "2026-10-20T15:04:19.392272+00:00",
+        "status": "PASS",
+        "utc_end": "2026-10-20T15:04:19.464260+00:00",
+        "elapsed_seconds": 0.07201081400000042
+      },
+      "temp_build_cache": {
+        "utc_start": "2026-10-20T15:04:20.392496+00:00",
+        "status": "PASS",
+        "utc_end": "2026-10-20T15:04:20.394826+00:00",
+        "elapsed_seconds": 0.0023485880000002624
+      },
+      "snapshot_extraction": {
+        "utc_start": "2026-10-20T15:04:20.394874+00:00",
+        "status": "PASS",
+        "utc_end": "2026-10-20T15:04:20.713474+00:00",
+        "elapsed_seconds": 0.31861298100000024
+      },
+      "wheel_pip_install": null
+    },
+    "cli_verified": true,
+    "cli_version": "0.7.4",
+    "working_tree_dirty": true,
+    "temp_build_cache_writable": true,
+    "export_scope": "tracked project files excluding .sae/",
+    "exported_blobs": 105,
+    "elapsed_seconds": 2.471468595
+  },
+  "cleanup_seconds": 2.7100000021818005e-07,
+  "total_seconds": 2.5005105159999994,
+  "utc_end": "2026-10-20T15:04:20.716293+00:00"
+}
