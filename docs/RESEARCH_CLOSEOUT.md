@@ -28,7 +28,7 @@ Each run has its own **tested source SHA**, report hash and device/runtime recor
 - [Experiments](../experiments/) and [raw reports](../reports/) — immutable scientific provenance.
 - SAE governance remains pinned in [`sae.yaml`](../sae.yaml) and [`.sae/`](../.sae/) at `65338eb1aa67971e110db982a07cf43161c23446`.
 
-**Do not infer** a reproducible GPU speedup, production-safe `torch.compile` support, full one-pass equivalence, validated TPU support, or all-input numerical correctness from these bounded experiments. Tests and scientific outcomes have separate verdicts. No license file is included at this snapshot; a license choice and independent release audit would be needed before a public distribution.
+**Do not infer** a reproducible GPU speedup, production-safe `torch.compile` support, full one-pass equivalence, validated TPU support, or all-input numerical correctness from these bounded experiments. Tests and scientific outcomes have separate verdicts. The source code is now distributed under the [MIT License](../LICENSE). A separate release audit would be needed for a formal package release.
 
 ## Resume only if research priorities change
 
