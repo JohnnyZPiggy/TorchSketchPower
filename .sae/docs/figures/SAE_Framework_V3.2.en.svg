@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1400" height="2090" viewBox="0 0 1400 2090" role="img" aria-label="SAE Framework V3.2 English architecture: engineering productivity, scientific learning, Scientist, GPT, Codex, GitHub and Colab">
+<defs>
+ <marker id="arrow" markerWidth="11" markerHeight="11" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 1 1 L 9 5 L 1 9 Z" fill="#95A3B6"/></marker>
+ <marker id="arrowStart" markerWidth="11" markerHeight="11" refX="2" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 9 1 L 1 5 L 9 9 Z" fill="#95A3B6"/></marker>
+ <filter id="shadow" x="-12%" y="-12%" width="124%" height="132%"><feDropShadow dx="0" dy="7" stdDeviation="10" flood-color="#1E293B" flood-opacity="0.045"/></filter>
+</defs>
+<rect x="0" y="0" width="1400" height="2090" rx="0" fill="#FAFBFC" stroke="none" stroke-width="0" />
+<rect x="100" y="58" width="172" height="45" rx="22" fill="#E9EDF3" stroke="none" stroke-width="0" />
+<text x="186" y="89" font-family="'Noto Sans CJK SC','PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="20" font-weight="650" fill="#42536B" text-anchor="middle" >SAE / V3.2</text>
+<text x="105" y="166" font-family="'Noto Sans CJK SC','PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="57" font-weight="760" fill="#1E293B" text-anchor="start" >SAE Framework V3.2</text>
+<text x="108" y="209" font-family="'Noto Sans CJK SC','PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="24" font-weight="450" fill="#64748B" text-anchor="start" >Research-First Agentic R&amp;D</text>
+
+<text x="105" y="272" font-family="'Noto Sans CJK SC','PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="23" font-weight="680" fill="#334155">TWO EQUAL OBJECTIVES</text>
+<rect x="104" y="292" width="580" height="221" rx="23" fill="#F0F5FA" stroke="#D6E1ED" stroke-width="2"/>
+<rect x="716" y="292" width="580" height="221" rx="23" fill="#F7F4EE" stroke="#E6DDCF" stroke-width="2"/>
+<circle cx="160" cy="347" r="27" fill="#E1ECF7"/>
+<path d="M 149 360 L 170 336 M 158 335 L 171 335 L 171 347" fill="none" stroke="#4A667D" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="772" cy="347" r="27" fill="#ECE4D7"/>
+<path d="M 757 339 L 772 335 L 787 339 V 359 L 772 355 L 757 359 Z M 772 335 V 355" fill="none" stroke="#756D60" stroke-width="3" stroke-linejoin="round"/>
+<text x="197" y="347" font-family="'Noto Sans CJK SC','PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="30" font-weight="730" fill="#243549">Engineering Productivity</text>
+<text x="809" y="347" font-family="'Noto Sans CJK SC','PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="30" font-weight="730" fill="#4C4033">Scientific Learning</text>
+<text x="145" y="398" font-family="'Noto Sans CJK SC','PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="27" font-weight="670" fill="#334155">Reliable, Reproducible Software</text>
+<text x="145" y="449" font-family="'Noto Sans CJK SC','PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="22" fill="#64748B">Efficient Collaboration / Rigorous Tests</text>
+<text x="757" y="398" font-family="'Noto Sans CJK SC','PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="27" font-weight="670" fill="#51483F">Deep Algorithm &amp; ML Understanding</text>
+<text x="757" y="449" font-family="'Noto Sans CJK SC','PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="22" fill="#7B736A">Math / PyTorch / GPU / Experiments</text>
+<text x="700" y="542" text-anchor="middle" font-family="'Noto Sans CJK SC','PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="20" font-weight="560" fill="#7B8794">ONE PROJECT = BETTER SOFTWARE + BETTER SCIENTIST</text>
+<g transform="translate(0, 337)">
+<rect x="82" y="244" width="1236" height="1439" rx="28" fill="#FFFFFF" stroke="#E4E8ED" stroke-width="2" filter="url(#shadow)"/>
+<rect x="164" y="290" width="1072" height="158" rx="22" fill="#F3F5F8" stroke="#E0E5EA" stroke-width="1.6" />
+<circle cx="353" cy="368" r="40" fill="#EDF1F5" stroke="#DCE4EC" stroke-width="1.5"/>
+<path d="M 325 360 L 353 345 L 381 360 L 353 375 Z" stroke="#48576A" stroke-width="2.9" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M 334 369 L 334 383 Q 353 397 372 383 L 372 369" stroke="#48576A" stroke-width="2.9" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M 381 360 V 388" stroke="#48576A" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+<circle cx="381" cy="392" r="3" fill="#48576A" stroke="none" stroke-width="0"/>
+<text x="420" y="356" font-family="'Noto Sans CJK SC','PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="34" font-weight="720" fill="#202D3E" text-anchor="start" >Human · Scientist</text>
+<text x="422" y="401" font-family="'Noto Sans CJK SC','PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="23" font-weight="450" fill="#64748B" text-anchor="start" >Research / Learning / Colab / Final Authority</text>
+<path d="M 700 448 V 480 M 428 480 H 972" stroke="#95A3B6" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M 428 480 L 428 515" stroke="#95A3B6" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 972 480 L 972 515" stroke="#95A3B6" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="159" y="527" width="526" height="265" rx="22" fill="#FFFFFF" stroke="#DAE1E8" stroke-width="1.8" />
+<rect x="715" y="527" width="526" height="265" rx="22" fill="#FFFFFF" stroke="#DAE1E8" stroke-width="1.8" />
+<circle cx="252" cy="606" r="40" fill="#EDF1F5" stroke="#DCE4EC" stroke-width="1.5"/>
+<path d="M 249 583 C 234 573 223 588 228 599 C 218 607 223 622 234 624 C 237 636 251 634 251 621 V 582" stroke="#48576A" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M 255 583 C 270 573 281 588 276 599 C 286 607 281 622 270 624 C 267 636 253 634 253 621 V 582" stroke="#48576A" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M 230 602 L 242 608 L 250 600 M 274 602 L 262 608 L 254 600" stroke="#48576A" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+<circle cx="810" cy="606" r="40" fill="#EDF1F5" stroke="#DCE4EC" stroke-width="1.5"/>
+<path d="M 795 591 L 779 606 L 795 621 M 825 591 L 841 606 L 825 621 M 818 583 L 802 629" stroke="#48576A" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+<text x="291" y="591" font-family="'Noto Sans CJK SC','PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="26" font-weight="720" fill="#1F2937" text-anchor="start" >GPT · Architect + Mentor</text>
+<text x="870" y="591" font-family="'Noto Sans CJK SC','PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="31" font-weight="720" fill="#1F2937" text-anchor="start" >Codex · Engineer</text>
+<text x="422" y="656" font-family="'Noto Sans CJK SC','PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="23" font-weight="450" fill="#64748B" text-anchor="middle" >Architecture / Tasks / Reviews</text>
+<text x="422" y="694" font-family="'Noto Sans CJK SC','PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="23" font-weight="450" fill="#64748B" text-anchor="middle" >Matvec Discovery / Tensorization</text>
+<text x="978" y="656" font-family="'Noto Sans CJK SC','PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="23" font-weight="450" fill="#64748B" text-anchor="middle" >Task Claims / Implementation / Tests</text>
+<text x="978" y="694" font-family="'Noto Sans CJK SC','PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="23" font-weight="450" fill="#64748B" text-anchor="middle" >Feedback / Maintenance</text>
+<rect x="283" y="724" width="278" height="39" rx="11" fill="#F3F5F8" stroke="none" stroke-width="0" />
+<text x="422.0" y="751" font-family="'Noto Sans CJK SC','PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="17.7" font-weight="500" fill="#526174" text-anchor="middle" >Research → Architect Cycle</text>
+<rect x="839" y="724" width="278" height="39" rx="11" fill="#F3F5F8" stroke="none" stroke-width="0" />
+<text x="978.0" y="751" font-family="'Noto Sans CJK SC','PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="21" font-weight="500" fill="#526174" text-anchor="middle" >Engineer Work Cycle</text>
+<path d="M 422 792 V 826 M 978 792 V 826 M 422 826 H 978" stroke="#95A3B6" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M 700 826 L 700 869" stroke="#95A3B6" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<text x="700" y="862" font-family="'Noto Sans CJK SC','PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="18" font-weight="450" fill="#6C7C8F" text-anchor="middle" dy="-12">Research → Design → Implementation → Validation</text>
+<rect x="164" y="894" width="1072" height="230" rx="24" fill="#FFFFFF" stroke="#73849B" stroke-width="2.6" />
+<circle cx="423" cy="962" r="40" fill="#EDF1F5" stroke="#DCE4EC" stroke-width="1.5"/>
+<path d="M 406 942 V 979 Q 406 990 417 990 H 435 Q 445 990 445 979 V 965" stroke="#48576A" stroke-width="3.6" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+<circle cx="406" cy="938" r="6" fill="#fff" stroke="#48576A" stroke-width="3"/>
+<circle cx="445" cy="960" r="6" fill="#fff" stroke="#48576A" stroke-width="3"/>
+<circle cx="406" cy="991" r="6" fill="#fff" stroke="#48576A" stroke-width="3"/>
+<text x="485" y="955" font-family="'Noto Sans CJK SC','PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="36" font-weight="730" fill="#1F2937" text-anchor="start" >GitHub · Central Hub</text>
+<text x="487" y="998" font-family="'Noto Sans CJK SC','PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="23" font-weight="480" fill="#526174" text-anchor="start" >Shared Tasks, Code and Experiment Evidence</text>
+<rect x="209" y="1043" width="181" height="39" rx="11" fill="#F3F5F8" stroke="none" stroke-width="0" />
+<text x="299.5" y="1070" font-family="'Noto Sans CJK SC','PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="20" font-weight="500" fill="#526174" text-anchor="middle" >Issues</text>
+<rect x="401" y="1043" width="208" height="39" rx="11" fill="#F3F5F8" stroke="none" stroke-width="0" />
+<text x="505.0" y="1070" font-family="'Noto Sans CJK SC','PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="20" font-weight="500" fill="#526174" text-anchor="middle" >Pull Requests</text>
+<rect x="620" y="1043" width="185" height="39" rx="11" fill="#F3F5F8" stroke="none" stroke-width="0" />
+<text x="712.5" y="1070" font-family="'Noto Sans CJK SC','PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="20" font-weight="500" fill="#526174" text-anchor="middle" >Code / Specs</text>
+<rect x="816" y="1043" width="173" height="39" rx="11" fill="#F3F5F8" stroke="none" stroke-width="0" />
+<text x="902.5" y="1070" font-family="'Noto Sans CJK SC','PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="20" font-weight="500" fill="#526174" text-anchor="middle" >CPU Tests</text>
+<rect x="1000" y="1043" width="192" height="39" rx="11" fill="#F3F5F8" stroke="none" stroke-width="0" />
+<text x="1096.0" y="1070" font-family="'Noto Sans CJK SC','PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="20" font-weight="500" fill="#526174" text-anchor="middle" >GPU Reports</text>
+<path d="M 700 1126 L 700 1209" stroke="#95A3B6" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)" marker-start="url(#arrowStart)"/>
+<text x="732" y="1167" font-family="'Noto Sans CJK SC','PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="18" font-weight="450" fill="#6C7C8F" text-anchor="start" >Fetch Code / Publish Experiments</text>
+<rect x="164" y="1221" width="1072" height="154" rx="22" fill="#FFFFFF" stroke="#DAE1E8" stroke-width="1.8" />
+<circle cx="410" cy="1297" r="40" fill="#EDF1F5" stroke="#DCE4EC" stroke-width="1.5"/>
+<rect x="377" y="1273" width="66" height="46" rx="5" fill="none" stroke="#48576A" stroke-width="3" />
+<path d="M 410 1319 V 1331 M 393 1331 H 427" stroke="#48576A" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+<text x="476" y="1286" font-family="'Noto Sans CJK SC','PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="32" font-weight="720" fill="#1F2937" text-anchor="start" >Google Colab · Experiments</text>
+<text x="476" y="1327" font-family="'Noto Sans CJK SC','PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="21" font-weight="460" fill="#64748B" text-anchor="start" >Thin Notebook / Python CLI / CPU-GPU Tests / GitHub Reports</text>
+<path d="M 700 1376 L 700 1448" stroke="#95A3B6" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)" marker-start="url(#arrowStart)"/>
+<text x="727" y="1420" font-family="'Noto Sans CJK SC','PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="17" font-weight="450" fill="#718096" text-anchor="start" >Notebook / Temporary Files Only</text>
+<rect x="164" y="1458" width="1072" height="140" rx="22" fill="#F3F5F8" stroke="#E0E5EA" stroke-width="1.6" />
+<circle cx="407" cy="1528" r="40" fill="#EDF1F5" stroke="#DCE4EC" stroke-width="1.5"/>
+<path d="M 372 1510 H 395 L 403 1519 H 440 V 1550 H 372 Z" stroke="#48576A" stroke-width="3.4" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+<text x="476" y="1518" font-family="'Noto Sans CJK SC','PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="29" font-weight="700" fill="#243244" text-anchor="start" >Google Drive · Simple Workspace</text>
+<text x="477" y="1558" font-family="'Noto Sans CJK SC','PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="21" font-weight="450" fill="#65758A" text-anchor="start" >One Folder / No Sync / No Data Handoff</text>
+<text x="700" y="1645" font-family="'Noto Sans CJK SC','PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="17" font-weight="500" fill="#8090A3" text-anchor="middle" >Mentor research first / Human-led decisions / Verified GPU experiments</text>
+
+</g>
+</svg>

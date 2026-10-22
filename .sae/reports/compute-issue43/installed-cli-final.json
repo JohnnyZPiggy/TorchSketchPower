@@ -1,0 +1,144 @@
+{
+  "classification": "LOCAL_MOCK_NO_PROVIDER_CALLS",
+  "status": "PASS",
+  "utc_start": "2026-10-20T16:26:15.698143+00:00",
+  "utc_end": "2026-10-20T16:26:17.029131+00:00",
+  "elapsed_seconds": 1.3309806489999998,
+  "python_version": "3.15.0",
+  "cases": [
+    {
+      "case": "AUTHENTICATED_EMPTY",
+      "test_status": "PASS",
+      "usage_exit_code": 0,
+      "readback_status": "AUTHENTICATED_ZERO",
+      "legacy_false_zero_reproduced": false,
+      "mock_requests": [
+        {
+          "method": "GET",
+          "timeout": 120,
+          "synthetic_auth_header": true
+        }
+      ]
+    },
+    {
+      "case": "NONEMPTY",
+      "test_status": "PASS",
+      "usage_exit_code": 0,
+      "readback_status": "ACTIVE_ASSIGNMENTS",
+      "legacy_false_zero_reproduced": false,
+      "mock_requests": [
+        {
+          "method": "GET",
+          "timeout": 120,
+          "synthetic_auth_header": true
+        }
+      ]
+    },
+    {
+      "case": "SWALLOWED_AUTH_EMPTY",
+      "test_status": "PASS",
+      "usage_exit_code": 1,
+      "readback_status": "READBACK_UNVERIFIED",
+      "legacy_false_zero_reproduced": true,
+      "mock_requests": []
+    },
+    {
+      "case": "EXPIRED_CREDENTIALS",
+      "test_status": "PASS",
+      "usage_exit_code": 1,
+      "readback_status": "READBACK_UNVERIFIED",
+      "legacy_false_zero_reproduced": false,
+      "mock_requests": []
+    },
+    {
+      "case": "UNAUTHORIZED",
+      "test_status": "PASS",
+      "usage_exit_code": 1,
+      "readback_status": "READBACK_UNVERIFIED",
+      "legacy_false_zero_reproduced": false,
+      "mock_requests": [
+        {
+          "method": "GET",
+          "timeout": 120,
+          "synthetic_auth_header": true
+        }
+      ]
+    },
+    {
+      "case": "REMOTE_TIMEOUT",
+      "test_status": "PASS",
+      "usage_exit_code": 1,
+      "readback_status": "READBACK_UNVERIFIED",
+      "legacy_false_zero_reproduced": false,
+      "mock_requests": [
+        {
+          "method": "GET",
+          "timeout": 120,
+          "synthetic_auth_header": true
+        }
+      ]
+    },
+    {
+      "case": "EMPTY_BODY",
+      "test_status": "PASS",
+      "usage_exit_code": 1,
+      "readback_status": "READBACK_UNVERIFIED",
+      "legacy_false_zero_reproduced": false,
+      "mock_requests": [
+        {
+          "method": "GET",
+          "timeout": 120,
+          "synthetic_auth_header": true
+        }
+      ]
+    },
+    {
+      "case": "MISSING_COUNT",
+      "test_status": "PASS",
+      "usage_exit_code": 1,
+      "readback_status": "READBACK_UNVERIFIED",
+      "legacy_false_zero_reproduced": false,
+      "mock_requests": [
+        {
+          "method": "GET",
+          "timeout": 120,
+          "synthetic_auth_header": true
+        }
+      ]
+    }
+  ],
+  "cli_version": "0.7.4",
+  "provider": "NOT_RUN",
+  "real_provider_requests": 0,
+  "real_credentials_loaded": false,
+  "live_ready": "NOT_GRANTED",
+  "diagnostic_script_sha256": "1bc6d2a15d39faca13aee95e243b8d9a3b9ebf401bfdd63693757fb5859fe8ba",
+  "controller_sha256": "1d564818b48c9d39d1209fb57d88d24c67316efeb1f2ce73172c56350cdc29af",
+  "sources": [
+    {
+      "file": "colab_cli/commands/usage.py",
+      "first_line": 20,
+      "last_line": 33,
+      "file_sha256": "0fb8830b2a335f98a4f104010a70fda00804ad69452c5f2888c4658e95db018e"
+    },
+    {
+      "file": "colab_cli/client.py",
+      "first_line": 246,
+      "last_line": 250,
+      "file_sha256": "af6cb28c96ac9dc3d1d1a0a7587ad87acc8e0eed36b63de301ce4b9f026755b1"
+    },
+    {
+      "file": "colab_cli/common.py",
+      "first_line": 114,
+      "last_line": 148,
+      "file_sha256": "56cc48f56a8dbe223b04728d075b8c8382c801925ad6a508e8eaa2870b887276"
+    },
+    {
+      "file": "colab_cli/commands/session.py",
+      "first_line": 254,
+      "last_line": 278,
+      "file_sha256": "91aeef7b4936c8462a969347096611301ef3c11737f220a9cbb774771c3cbb43"
+    }
+  ],
+  "limitation": "Synthetic credentials and HTTP responses only; no live authentication or current server state verified."
+}

@@ -1,0 +1,23 @@
+# Issue 45 — TRANSPORT_LIVE_PASS; GPT LIVE_READY decision pending
+
+Executed immutable source/main SHA `8081b6e02eee0754903898d5afe5b112f1bb23d0` with unmodified tools and committed transport adapter. PR base is that same source pin at submission; GitHub PR receipt records actual publication time/head. This evidence-only branch does not modify tools, algorithms, previous reports or snapshots. Dirty-worktree flags reflect generated evidence and a pre-existing allocation lock; all five executed tool/adapter files match exact Git blobs.
+
+## Actual provider result
+
+Separate no-allocation preflight PASS: 2026-10-20 16:52:34.531451–16:52:37.404339 UTC, 2.873 s, CLI 0.7.4 / host Python 3.12.3. Commands/readbacks empty; no install. Live controller repeated its local validation before provider work.
+
+**First attempt PASS; no second attempt/retry.** Host 16:53:43.103383–16:54:02.686740 UTC, **19.583 s** including an independent final authenticated usage readback. Controller **17.889 s**. Authenticated zero assignments and positive existing balance verified before new. One real `new --gpu T4` returned exit 0 in **4.064 s**. Mandatory default kernel marker verified by pinned controller before driver: **2.848 s**. Committed transport driver: **1.667 s**. Download/integrity stage: **1.439 s**. stop: exit 0 / **1.795 s**; controller authenticated usage readback exit 0 / **1.446 s**; total cleanup **3.241 s**. Allocation lifecycle including cleanup **13.259 s** (240 s cap).
+
+Downloaded `transport-check.json` is **202 bytes**, SHA-256 `da167ca43f358ce64c9aa4d471b1d6df60c8ee014d68ee06e09a4786c05b28f3`. Pinned controller checked emitted byte count/hash, exact source SHA and PASS; independent host/local validation rechecked SHA, length and semantic fields. Artifact classification is TRANSPORT_FIXTURE_NO_SCIENTIFIC_TEST; live_gpu, tpu and compilation all NOT_RUN. No locally substituted fixture or mocked provider was used.
+
+Both controller preallocation/cleanup readbacks are AUTHENTICATED_ZERO via the pinned CLI usage/ccu-info contract. After process completion, independent bounded usage readback also returned AUTHENTICATED_ZERO at **16:54:02.677137 UTC**, assignments=0 and remaining existing entitlement positive. This is zero-state evidence at those timestamps, not continuous monitoring. No sessions-empty-text inference, no status/sessions polling. No host abort/emergency stop was needed. Cleanup unknown would stop retries, not count as PASS.
+
+## Scope, limits and skipped work
+
+T4 **requested**; actual hardware identity **UNVERIFIED**. No extra hardware query was made. Kernel reachability plus fixture transport is not CUDA execution or a numerical GPU benchmark. Mathematical algorithms, PyTorch, CPU numerical tests, TPU, native compilation, package install and Publisher remain NOT_RUN. First attempt success makes second attempt and retry gate NOT_NEEDED; no second new was invoked. The earlier allocation timeout's root cause remains unknown; this success does not establish a fix for it.
+
+Per invocation: task 480 s, allocation 240 s, cleanup reserve 60 s, kernel remote 30 s / external 35 s, driver remote 60 s / external 65 s, new subprocess 120 s. Host interrupt bound 420 s plus 60 s grace and bounded emergency cleanup stays below the 540 s host ceiling. At most two sequential attempts were authorized; **one allocation actually performed**, zero reallocation/retry. Existing prepaid account capacity used, no new subscription, top-up, billing commitment, setting/permission change, service, Actions or background scheduler. Original controller balance_before is retained as positive-entitlement evidence, not exact charge attribution.
+
+Raw credentials, CLI argv/private roots, OAuth/session URLs, runtime proxy data and vendor debug logs were not published. Downloaded payload has exactly the six expected safe fields and was secret-screened before publication. Source/adapter hashes and all JSON payload hashes are in manifest.json; original sanitized controller reports are preserved. Per-step timestamps and monotonic durations are primary evidence; do not sum overlapping stage times or infer whole-task duration from them. Task began 16:52:07 UTC; PR creation is the actual publication receipt.
+
+Execution handoffs: 0; final Engineer→GPT evidence handoff: 1. No per-attempt approval or API escalation requested. Generic transport is observed passing on this T4-requested existing-account setup/CLI 0.7.4 only. **GPT independently decides whether to grant scoped LIVE_READY**; engineer does not self-certify, self-merge or claim numerical/device/TPU/Publisher readiness.

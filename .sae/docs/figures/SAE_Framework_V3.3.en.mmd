@@ -1,0 +1,55 @@
+flowchart TB
+    subgraph OBJECTIVES["01 · Two Equal Objectives"]
+      direction LR
+      O1["Engineering Productivity<br/>Correct · Reproducible · Low Cost"]
+      O2["Scientific Learning<br/>Math · Numerics · ML Systems"]
+    end
+
+    S["Scientist · Human<br/>Research direction · Scientific decisions · Compute budgets"]
+
+    subgraph PEOPLE["02 · Research and Engineering Roles"]
+      direction LR
+      G["GPT · Chief Architect + Scientific Mentor<br/>Math / Tensorization · Design / Delegation<br/>Teaching / Review / Eligible PR Merges"]
+      E["Codex · Engineer<br/>Implement / Test · Local CPU<br/>Authorized Colab CPU / GPU / TPU"]
+    end
+
+    H[("GitHub · Single Collaboration and Evidence Hub<br/>Issues · Code · PRs · Source SHA · Reports")]
+
+    subgraph COMPUTE["03 · Codex Execution / Evidence Loop"]
+      direction LR
+      L["Local CPU<br/>Install · Numerical correctness · Regression tests"]
+      C["Colab CLI / WSL2<br/>CPU · GPU · TPU*<br/>Run / Integrity check / Session cleanup"]
+    end
+
+    P["Pinned source SHA → No-GitHub-write benchmark<br/>→ Optional, separately authorized evidence PR"]
+    D["Google Drive<br/>Optional notebook scratch"]
+
+    O1 --> S
+    O2 --> S
+    S <-->|Research exchange / Scientific approval| G
+    S -->|Device / Time / Quota approval| E
+    G <-->|Issues / Review feedback| H
+    E <-->|Code / Evidence PR| H
+    G <-->|Iterative collaboration| E
+    E --> L
+    E -->|Authorized compute| C
+    L --> P
+    C --> P
+    P -.->|Verified reports via PR| H
+    D -.->|Temporary files only| C
+    H -.->|New evidence / Next research cycle| G
+
+    classDef goal fill:#EFF5FC,stroke:#9EB9D8,color:#243F5B,stroke-width:1.5px
+    classDef human fill:#FFF4E2,stroke:#DDB875,color:#6E4820,stroke-width:2px
+    classDef agent fill:#EEF2FF,stroke:#9FA8E7,color:#2D3D73,stroke-width:1.5px
+    classDef engineer fill:#EAF8F5,stroke:#78B8AD,color:#164E4B,stroke-width:1.5px
+    classDef github fill:#F3EDFB,stroke:#B19ACF,color:#4E3974,stroke-width:2px
+    classDef compute fill:#F2F7FA,stroke:#B1C6D4,color:#274659,stroke-width:1.5px
+    classDef scratch fill:#F7F7F9,stroke:#C8CBD0,color:#66717D,stroke-dasharray:5 4
+    class O1,O2 goal
+    class S human
+    class G agent
+    class E engineer
+    class H github
+    class L,C,P compute
+    class D scratch

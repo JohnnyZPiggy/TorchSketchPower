@@ -1,0 +1,39 @@
+{
+  "status": "TRANSPORT_LIVE_FAIL",
+  "source_sha": "3f203df3e574b630ccb24cd419e1c2b581c898a1",
+  "report_cutoff_utc": "2026-10-20T15:09:35.013190+00:00",
+  "task_start_utc": "2026-10-20T15:04:03Z",
+  "task_deadline_utc": "2026-10-20T15:12:03Z",
+  "allocation_limit_seconds": 180,
+  "cleanup_reserve_seconds": 45,
+  "task_limit_seconds": 480,
+  "new_commands": 1,
+  "reallocations": 0,
+  "artifact_verified": false,
+  "cleanup_verified": true,
+  "device_requested": "T4",
+  "device_observation": null,
+  "device_scope": "CLI status after server session sync; no CUDA/hardware computation run",
+  "github_access": "OWNER_PUBLIC_ADMIN_PUSH_CONFIRMED",
+  "colab_auth": "EXISTING_OAUTH2_CLI",
+  "entitlement": "Existing prepaid account only; no purchase or billing-setting change",
+  "github_publication_utc": null,
+  "gpt_live_ready_decision": "PENDING",
+  "gpu_numerical": "NOT_RUN",
+  "tpu": "NOT_RUN",
+  "compilation": "NOT_RUN",
+  "artifacts": {
+    "host-observation.json": {
+      "bytes": 13751,
+      "sha256": "6f6c3a40a15783052da3252f63392318fe02ae738fdd835b814b5c960cd6fca9"
+    },
+    "live/colab-control.json": {
+      "bytes": 4658,
+      "sha256": "f823199a2a3e6698785402202cab602fda64260e840d58f493b6931c8142e3b3"
+    },
+    "preflight/colab-control.json": {
+      "bytes": 3096,
+      "sha256": "8ac234c970c8649ff7fbd6772be7bbaca8d1ece501fd42fae204d51d50206326"
+    }
+  }
+}

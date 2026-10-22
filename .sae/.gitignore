@@ -1,0 +1,11 @@
+# Local or generated experiment material (do not publish credentials)
+__pycache__/
+.pytest_cache/
+.ipynb_checkpoints/
+.venv/
+.env
+.env.*
+*.key
+*.pem
+*.log
+.DS_Store

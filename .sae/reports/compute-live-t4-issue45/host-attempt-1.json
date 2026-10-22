@@ -1,0 +1,47 @@
+{
+  "utc_start": "2026-10-20T16:53:43.103383+00:00",
+  "source_sha": "8081b6e02eee0754903898d5afe5b112f1bb23d0",
+  "attempt": 1,
+  "run_id": "issue45-t4-1-165207",
+  "classification": "REAL_PROVIDER_TRANSPORT_ONLY",
+  "device_requested": "T4",
+  "device_observed": null,
+  "status_polling_calls": 0,
+  "tool_blob_sha256": {
+    "colab_control.py": "1d564818b48c9d39d1209fb57d88d24c67316efeb1f2ce73172c56350cdc29af",
+    "environment_preflight.py": "1ab11ff4baedfa875a23307f9f6af961d1ac8481f62a91f2570d755674dec112",
+    "kernel_smoke.py": "63eedb51b7ac4710009df64d01cf9e33a6e6bdb498294766b215ee90d9490b03"
+  },
+  "limits": {
+    "task_seconds": 480,
+    "allocation_seconds": 240,
+    "cleanup_reserve_seconds": 60,
+    "kernel_timeout": 30,
+    "work_timeout": 60,
+    "new_timeout": 120,
+    "host_interrupt_after_seconds": 420,
+    "host_cleanup_grace_seconds": 60,
+    "host_kill_wait_seconds": 5,
+    "host_total_ceiling_seconds": 540
+  },
+  "provider_numerical_gpu": "NOT_RUN",
+  "tpu": "NOT_RUN",
+  "compilation": "NOT_RUN",
+  "controller_exit_code": 0,
+  "independent_final_readback": {
+    "status": "AUTHENTICATED_ZERO",
+    "utc_start": "2026-10-20T16:54:01.207492+00:00",
+    "exit_code": 0,
+    "assignments": 0,
+    "positive_entitlement": true,
+    "utc_end": "2026-10-20T16:54:02.677137+00:00",
+    "elapsed_seconds": 1.4696938589999888
+  },
+  "controller_cleanup_confirmed": true,
+  "new_commands": 1,
+  "artifact_verified": true,
+  "artifact_bytes": 202,
+  "artifact_sha256": "da167ca43f358ce64c9aa4d471b1d6df60c8ee014d68ee06e09a4786c05b28f3",
+  "utc_end": "2026-10-20T16:54:02.686740+00:00",
+  "elapsed_seconds": 19.583391246999994
+}

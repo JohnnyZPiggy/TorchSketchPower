@@ -1,0 +1,31 @@
+{
+  "python": "WSL Python 3.12.3",
+  "cli": "existing login-shell colab 0.7.4",
+  "controller_relative_path": "tools/compute/colab_control.py",
+  "repo_path": "PINNED_CHECKOUT",
+  "source_sha": "8081b6e02eee0754903898d5afe5b112f1bb23d0",
+  "driver": "examples/compute_adapter/driver.py",
+  "artifacts": "examples/compute_adapter/artifacts.json",
+  "device": "T4",
+  "task_seconds": 480,
+  "allocation_seconds": 240,
+  "cleanup_seconds": 60,
+  "kernel_timeout": 30,
+  "work_timeout": 60,
+  "run_id": "issue45-t4-1-165207",
+  "out_relative_path": "reports/compute-live-t4-issue45/attempt-1-165207",
+  "stdin": "DEVNULL",
+  "controller_exit_code": 0,
+  "separate_preflight": {
+    "run_id": "issue45-preflight-165207",
+    "preflight_only": true,
+    "exit_code": 0
+  },
+  "host_wrapper_sha256": "9643c5efc92d26083bf70c021dfd3c42422a553596faf049e1913da4b9f6bee9",
+  "host_wrapper_scope": "one invocation; no status/sessions polling or automatic retry",
+  "independent_final_readback": {
+    "operation": "colab --auth=oauth2 usage",
+    "timeout_seconds": 15,
+    "stdout_contract": "CLI 0.7.4 strict complete ccu-info display; zero assignments"
+  }
+}
