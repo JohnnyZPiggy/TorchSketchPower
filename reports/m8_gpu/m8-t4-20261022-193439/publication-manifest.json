@@ -1,0 +1,76 @@
+{
+  "source_sha": "e986a1b03abf772e383778865ef47d16687bb77d",
+  "run_id": "m8-t4-20261022-193439",
+  "status": "BLOCKED",
+  "scientific_artifact_unmodified": true,
+  "files": {
+    "benchmark-manifest.json": {
+      "sha256": "19e01963a39bbfc1724c9f0332bcbb10fc61e77e08b626cfac329f88661eecbd",
+      "bytes": 501
+    },
+    "colab-control.json": {
+      "sha256": "298af2e5443b9674a2999eb32ca99dc1dc342303dd70ab2c7995c0783541800d",
+      "bytes": 5928
+    },
+    "controller.stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "controller.stdout.log": {
+      "sha256": "298af2e5443b9674a2999eb32ca99dc1dc342303dd70ab2c7995c0783541800d",
+      "bytes": 5928
+    },
+    "cpu-driver.log": {
+      "sha256": "435df6f339e8d4597229f59c0f51fd3bdc059fc49d51044861f842ebaac39c7d",
+      "bytes": 98
+    },
+    "cpu-install.log": {
+      "sha256": "65078421d725fa302a9215d47c85456e58e1dcb8201b4f08a340f70eb8b72635",
+      "bytes": 807
+    },
+    "cpu-local-report.json": {
+      "sha256": "d7c57474828a43e757fb712135339cfc4c031671759b24552e27af0e4b90649f",
+      "bytes": 3032
+    },
+    "cpu-pytest.log": {
+      "sha256": "4c7363119b49d8c33a0481e900758db411c7dced6c52eb54625d6c1a3b14b53a",
+      "bytes": 1175
+    },
+    "invocation.json": {
+      "sha256": "de49b37bf983aed0b4c510a9319136ca14c76ae03ba1c1423d9c011148fa6675",
+      "bytes": 416
+    },
+    "m8-report.json": {
+      "sha256": "d6c06b9707e7a9d374ac092582eb4d65a66f9e4337bdf01355d1c1ce0d85a6f5",
+      "bytes": 383332
+    },
+    "preflight.json": {
+      "sha256": "31dea67f6bcf87fe1986861f1fb4947780d6d615c90375f37b9e70a1dfb17d4a",
+      "bytes": 3124
+    },
+    "reference-audit.json": {
+      "sha256": "bf01b355e546a84447597b4647f993bc29ae0da3fd95e9a3c68c0e3ac137e401",
+      "bytes": 869
+    },
+    "results.json": {
+      "sha256": "59de317c91eb5cbc25eadbd54c87923a10768e1938dc5364993f4e07d76cc9b2",
+      "bytes": 602193
+    },
+    "review.json": {
+      "sha256": "ebedec117d9a016aa8d86e5b8e9e9780b6e41ce3256fb851f4b37cc67efc47c9",
+      "bytes": 1954
+    },
+    "review.md": {
+      "sha256": "fa60265369ed2ec69c1ebf6484080c5e43b1d29defbe5270bc8c9e7996b74074",
+      "bytes": 4412
+    },
+    "summary.md": {
+      "sha256": "a899c487c68bbb53d27a04b879bc77d2e2e056fad4f573f4cc930498862cfbdd",
+      "bytes": 7710
+    },
+    "trials.csv": {
+      "sha256": "5f9d2fdcf1bd6106759126d5a7375794b3cc0b15917ac095ef81eefb4338b8c7",
+      "bytes": 64407
+    }
+  }
+}

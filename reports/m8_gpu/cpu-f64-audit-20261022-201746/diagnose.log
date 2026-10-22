@@ -1,0 +1,73 @@
+{
+  "status": "CONSISTENT_WITH_ROUNDOFF",
+  "scope": "proposed CPU dense-optimality audit only; not historical reclassification",
+  "model": "real float64 standard arithmetic; gamma_k=k*u/(1-k*u), u=eps/2; no underflow/overflow",
+  "residual_fro": 6.965567894904858,
+  "reference_tail_fro": 6.965567894904856,
+  "full_svd_tail_fro": 6.965567894904862,
+  "signed_gap": 1.7763568394002505e-15,
+  "relative_gap": 2.220446049250313e-16,
+  "uncertainty_fro": 5.437058632845571e-09,
+  "uncertainty_relative_to_a": 7.263182203089926e-10,
+  "reference_uncertainty_fro": 3.815250906765242e-09,
+  "candidate_formation_uncertainty_fro": 1.621807726080329e-09,
+  "full_backward_residual_fro": 4.31255234897446e-14,
+  "full_backward_residual_relative": 5.760992401616173e-15,
+  "polar_error_upper_model": 3.786367352251348e-09,
+  "full_backward_plus_polar_upper_model": 3.813670182743117e-09,
+  "full_u": {
+    "observed_gram_defect_fro": 1.6765738238562302e-13,
+    "gram_defect_upper_model": 2.330054065721028e-10,
+    "distance_to_orthonormal_upper_model": 1.1650270329283784e-10
+  },
+  "full_v": {
+    "observed_gram_defect_fro": 1.3926560818898742e-13,
+    "gram_defect_upper_model": 1.165616928896177e-10,
+    "distance_to_orthonormal_upper_model": 5.828084644650719e-11
+  },
+  "candidate_u": {
+    "observed_gram_defect_fro": 5.390774222235385e-15,
+    "gram_defect_upper_model": 1.8250082147585976e-12,
+    "distance_to_orthonormal_upper_model": 9.125041073797152e-13
+  },
+  "candidate_v": {
+    "observed_gram_defect_fro": 3.1845989745185005e-15,
+    "gram_defect_upper_model": 9.133073377326754e-13,
+    "distance_to_orthonormal_upper_model": 4.566536688664419e-13
+  },
+  "normal_model": true,
+  "valid": true,
+  "source_sha": "a3cba95d1c1c0df66ef5fccc3e0745ae84debc7a",
+  "torch": "2.14.1+cpu",
+  "threads": 1,
+  "shape": [
+    2048,
+    1024
+  ],
+  "spectrum": "geometric",
+  "dtype": "float64",
+  "seed": 123,
+  "rank": 8,
+  "serialized_sha256": "d77e73d6541b6be9e633f102efb91d6fe8b34bdb88c02c8e4fa325f5b4a481de",
+  "tensor_bytes_sha256": "2a37be205a00f1ea6adb49f345dd08a3f3ea7d2f579aa9b2c256c76504a331b4",
+  "serialization_roundtrip_equal": true,
+  "direct_fro_squared": 48.519136098529295,
+  "fsum_residual_fro_squared": 48.51913609852937,
+  "total_energy": 56.03690685911249,
+  "leading_energy": 7.517770760582906,
+  "energy_tail_squared": 48.519136098529586,
+  "energy_tail_uncertainty_model": 2.609425848468382e-08,
+  "energy_tail_reliable": true,
+  "energy_tail_relative_uncertainty": 5.378137490266367e-10,
+  "energy_uncertainty_scope": "arithmetic/cancellation only; singular-reference error accounted separately by reference_uncertainty_fro",
+  "condition_number_2_observed": 10000.000000001108,
+  "rank_boundary_gap": 0.008415423955627666,
+  "historical_gpu_serialized_sha256": "f5b892c32d0d7259f9578f0fd1ef36172d794cdec3419d5f24084018b3d76996",
+  "historical_gpu_input_hash_matches": false,
+  "historical_gpu_diagnosis": "INCONCLUSIVE: full GPU factors/A not saved, CPU serialization differs; no byte-identical reproduction or retrospective PASS",
+  "energy_tail_fro": 6.965567894904879,
+  "historical_500eps_check_cpu": true,
+  "cuda": "NOT RUN; no CLI invocation",
+  "history": "Both GPU run directories remain immutable; prior configured FAIL remains FAIL."
+}
+

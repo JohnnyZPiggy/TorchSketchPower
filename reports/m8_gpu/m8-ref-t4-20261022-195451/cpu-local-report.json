@@ -1,0 +1,80 @@
+{
+  "source_sha": "116d6c299b3b84a3477363c2529f6efd37972055",
+  "steps": {
+    "clone": {
+      "exit_code": 0,
+      "seconds": 1.41,
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    "checkout": {
+      "exit_code": 0,
+      "seconds": 0.18,
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    "head": {
+      "exit_code": 0,
+      "seconds": 0.09,
+      "sha256": "6e7fc471df3367ca08d3292c0562d874893bd60e80ba30c59ec9997c1f6d216d"
+    },
+    "clean_before": {
+      "exit_code": 0,
+      "seconds": 0.16,
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    "install": {
+      "exit_code": 0,
+      "seconds": 7.59,
+      "sha256": "7db89cdea9d658d81e18444e65719352c5c1eed1897a628e2ddd53a7d69c5fec"
+    },
+    "environment": {
+      "exit_code": 0,
+      "seconds": 3.97,
+      "sha256": "b031fbbdc6c305a1fca3208a8a270c56b89bca6f02df5a3f3e0a36bdbf8ee359"
+    },
+    "pytest": {
+      "exit_code": 0,
+      "seconds": 47.8,
+      "sha256": "41a79684906f5d204a2381b07d9b82a589459a85e3f96ed0f9e241492c9b40ec"
+    },
+    "cpu_smoke": {
+      "exit_code": 0,
+      "seconds": 3.8,
+      "sha256": "fe9c4c411287ec863ad1fdb67c077880b2d01eb12deaa74db4ab16b5b43f6ecd"
+    },
+    "driver_cpu": {
+      "exit_code": 0,
+      "seconds": 17.37,
+      "sha256": "3047ab331a585b2dbd222a2355fa50a845c2aa807a1cd1a934a13db970043d2f"
+    },
+    "clean_after": {
+      "exit_code": 0,
+      "seconds": 0.1,
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    }
+  },
+  "gpu": "NOT RUN",
+  "environment": "fresh venv with system-site-packages; existing CPU dependencies reused; noneditable installed package",
+  "artifact": {
+    "bytes": 28979,
+    "sha256": "8702c6f7304e8b1d2ba9d8a0d8199599e4f57feb3a456f7d6c0459026ab0c0ab",
+    "installed_package": {
+      "verified": true,
+      "source_sha": "116d6c299b3b84a3477363c2529f6efd37972055",
+      "module_file": "C:\\t\\m8-reference-20261022\\venv\\Lib\\site-packages\\torchsketchpower\\__init__.py",
+      "distribution_version": "0.1.0",
+      "editable": false,
+      "files_sha256": {
+        "torchsketchpower/__init__.py": "3f47bd9c93e07711a07ff13d6becc6a9ae15fba1c85ef6c53473f6d4e62313d8",
+        "torchsketchpower/_device.py": "ee2950044677925a890ddde840198e6eea592eb39dcc534df280fbca4f34b572",
+        "torchsketchpower/core.py": "ec3da9c158da333fe4955d28601a8bea6345e7b00ec5ef4652ac74f04e4a18e3",
+        "torchsketchpower/lowrank.py": "8aabb82238c0c18d7dfbc20035f631900f45f5d06c2def4c3b0bf2420c1856f9",
+        "torchsketchpower/reconstruct.py": "ed074d0a1439c45abebd057e546c66cedcbc5f884caa4f43faabc28cb2b54445",
+        "torchsketchpower/sketch.py": "e1419aa10b8a9d3daedf6c04790462e5e8a1c93bdc1134b4b5ac35a96fda0d27"
+      }
+    },
+    "benchmark_status": "DRY_RUN_CPU",
+    "completed": 5,
+    "trial_count": 25
+  },
+  "status": "PASS"
+}

@@ -1,0 +1,18 @@
+{
+  "source_sha": "116d6c299b3b84a3477363c2529f6efd37972055",
+  "status": "BLOCKED",
+  "files": {
+    "results.json": {
+      "sha256": "60253b21cc02cfdce51fda52937e9583df8c5db9cc4aa33d6d6c446adb0831de",
+      "bytes": 1085032
+    },
+    "trials.csv": {
+      "sha256": "e71c36d2b3766647a69b7d950a458cb6680ee9c5d5c0959f9c605061673f0b3d",
+      "bytes": 82824
+    },
+    "summary.md": {
+      "sha256": "ac5f905465423e77a4fb2a5049b40ee2ac70b9050b02d065c572feb083615e8a",
+      "bytes": 8536
+    }
+  }
+}
