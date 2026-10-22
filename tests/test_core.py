@@ -2,7 +2,7 @@ import warnings
 
 import pytest
 import torch
-from torchsketchpower import RankDeficiencyWarning, sketch_power_subspace
+from torchsketchpower import RankDeficiencyError, RankDeficiencyWarning, sketch_power_subspace
 
 
 def _oracle(y, z, steps):
@@ -71,32 +71,101 @@ def test_validation():
         sketch_power_subspace(torch.ones(10, 2, dtype=torch.int64), torch.ones(10, 3, dtype=torch.int64))
 
 
-def test_rank_deficient_z_warns():
+def _orthonormal(g, rows, cols):
+    q, _ = torch.linalg.qr(torch.randn(rows, cols, generator=g, dtype=torch.float64))
+    return q
+
+
+def test_default_raises_when_z_rank_below_k():
     g = torch.Generator().manual_seed(11)
     y = torch.randn(12, 3, generator=g, dtype=torch.float64)
     z = torch.ones(12, 5, dtype=torch.float64)  # rank(Z) = 1 < k = 3
+    with pytest.raises(RankDeficiencyError, match="rank 1 < k=3"):
+        sketch_power_subspace(y, z, 1)
+
+
+def test_warn_policy_z_rank_below_k():
+    g = torch.Generator().manual_seed(11)
+    y = torch.randn(12, 3, generator=g, dtype=torch.float64)
+    z = torch.ones(12, 5, dtype=torch.float64)
     with pytest.warns(RankDeficiencyWarning, match="rank 1 < k=3"):
-        q = sketch_power_subspace(y, z, 1)
-    assert torch.isfinite(q).all()
-    # The well-defined part (span of Z) is still contained in the output.
+        q = sketch_power_subspace(y, z, 1, on_rank_deficient="warn")
+    assert q.shape == (12, 3) and torch.isfinite(q).all()
+    torch.testing.assert_close(q.mH @ q, torch.eye(3, dtype=torch.float64), atol=1e-10, rtol=0)
+    # Only the well-defined direction span(Z) is guaranteed; the other two are arbitrary.
     u = z[:, :1] / torch.linalg.vector_norm(z[:, :1])
     assert float(torch.linalg.vector_norm(u - q @ (q.mH @ u))) < 1e-10
 
 
-def test_rank_deficient_y_warns_at_q0():
-    torch.manual_seed(13)
-    y = torch.ones(10, 2, dtype=torch.float64)
-    z = torch.randn(10, 4, dtype=torch.float64)
-    with pytest.warns(RankDeficiencyWarning):
-        sketch_power_subspace(y, z, 0)
+@pytest.mark.parametrize("policy", ["raise", "warn"])
+def test_zero_cross_product(policy):
+    # range(Z) is orthogonal to range(Y): Z^H Y = 0, so the powered range is {0}.
+    m, k, ell = 8, 3, 4
+    y = torch.zeros(m, k, dtype=torch.float64)
+    y[5:, :] = torch.eye(k, dtype=torch.float64)
+    z = torch.zeros(m, ell, dtype=torch.float64)
+    z[:4, :] = torch.eye(4, dtype=torch.float64)
+    if policy == "raise":
+        with pytest.raises(RankDeficiencyError, match="rank 0 < k=3"):
+            sketch_power_subspace(y, z, 1)
+    else:
+        with pytest.warns(RankDeficiencyWarning, match="rank 0 < k=3"):
+            sketch_power_subspace(y, z, 1, on_rank_deficient="warn")
 
 
-def test_check_rank_off_is_silent():
+def _graded_z(delta):
+    # y = u and z = u diag(1, 1, delta) v^T give z^H q with singular values (1, 1, delta).
+    g = torch.Generator().manual_seed(29)
+    u, v = _orthonormal(g, 20, 3), _orthonormal(g, 7, 3)
+    z = (u * torch.tensor([1.0, 1.0, delta], dtype=torch.float64)) @ v.T
+    return u.clone(), z
+
+
+def test_near_rank_deficient_above_tolerance_is_accepted():
+    y, z = _graded_z(1e-3)
+    with warnings.catch_warnings():
+        warnings.simplefilter("error")
+        q = sketch_power_subspace(y, z, 1)
+    assert _proj_dist(q, _oracle(y, z, 1)) < 1e-8
+
+
+def test_near_rank_deficient_below_tolerance_is_rejected():
+    y, z = _graded_z(1e-17)  # tolerance is about 7 * eps ~ 1.6e-15
+    with pytest.raises(RankDeficiencyError, match="rank 2 < k=3"):
+        sketch_power_subspace(y, z, 1)
+
+
+@pytest.mark.parametrize("steps", [0, 1])
+def test_rank_deficient_y_raises(steps):
+    g = torch.Generator().manual_seed(13)
+    col = torch.randn(10, 1, generator=g, dtype=torch.float64)
+    y = torch.cat([col, 2 * col], dim=1)  # numerical rank 1 < k = 2
+    z = torch.randn(10, 4, generator=g, dtype=torch.float64)
+    with pytest.raises(RankDeficiencyError, match="y has numerical rank 1"):
+        sketch_power_subspace(y, z, steps)
+
+
+def test_subspace_rank_loss_at_later_step():
+    # y has full rank, but Z^H y keeps only 2 directions of a 3-dimensional y.
+    g = torch.Generator().manual_seed(31)
+    u = _orthonormal(g, 10, 5)
+    y = u[:, :3]
+    z = u[:, :2] @ _orthonormal(g, 6, 2).T  # rank(Z) = 2 < k = 3
+    with pytest.raises(RankDeficiencyError, match=r"z\.mH @ q at step 1"):
+        sketch_power_subspace(y, z, 2)
+
+
+def test_ignore_policy_is_silent():
     torch.manual_seed(19)
     z = torch.ones(12, 5, dtype=torch.float64)
     with warnings.catch_warnings():
         warnings.simplefilter("error")
-        sketch_power_subspace(torch.randn(12, 3, dtype=torch.float64), z, 1, check_rank=False)
+        sketch_power_subspace(torch.randn(12, 3, dtype=torch.float64), z, 1, on_rank_deficient="ignore")
+
+
+def test_invalid_policy():
+    with pytest.raises(ValueError, match="on_rank_deficient"):
+        sketch_power_subspace(torch.randn(10, 2), torch.randn(10, 3), 1, on_rank_deficient="silent")
 
 
 def test_float32_stable_vs_float64():
