@@ -240,9 +240,10 @@ def test_runner_cuda_request_without_cuda_is_blocked_not_passed(tmp_path):
 
 
 def test_runner_time_limit_marks_not_run(tmp_path):
-    run_m7_cuda.main(["--device", "cpu", "--quick", "--out", str(tmp_path), "--max-seconds", "-1"])
+    code = run_m7_cuda.main(["--device", "cpu", "--quick", "--out", str(tmp_path), "--max-seconds", "-1"])
     rep = json.loads((tmp_path / "results.json").read_text())
-    assert rep["counts"] == {"NOT_RUN": 1}
+    assert code == 2 and rep["status"] == "BLOCKED" and not rep["plan_complete"]
+    assert rep["counts"] == {"NOT_RUN": 1} and not rep["gpu_evidence"]
 
 
 # ---- GPU-only: the same oracles on a real CUDA device (SKIPPED without CUDA) -------------------------------------------------

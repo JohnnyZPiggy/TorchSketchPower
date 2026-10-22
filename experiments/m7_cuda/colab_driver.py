@@ -62,6 +62,42 @@ def decide_status(dry_run, cuda_available, results):
     return "FAIL"
 
 
+def install_project(repo, env):
+    """Install this exact checkout and verify imported files against its source."""
+    code, _, err = sh([sys.executable, "-I", "-m", "pip", "install", "--no-deps", "--no-build-isolation",
+                       "--no-cache-dir", "--force-reinstall", "."], 120, cwd=repo, env=env)
+    if code:
+        raise ValueError("PACKAGE_INSTALL_FAILED: " + tail(err, 200))
+    probe = r'''
+import hashlib, importlib.metadata, json, pathlib, sys
+import torchsketchpower
+repo = pathlib.Path(sys.argv[1]).resolve()
+dist = importlib.metadata.distribution("torchsketchpower")
+package = pathlib.Path(torchsketchpower.__file__).resolve()
+installed = pathlib.Path(dist.locate_file("torchsketchpower")).resolve()
+assert package == installed / "__init__.py" and repo not in package.parents, "source import"
+direct = json.loads(dist.read_text("direct_url.json"))
+assert not direct.get("dir_info", {}).get("editable", False), "editable install"
+hashes = {}
+for source in sorted((repo / "src/torchsketchpower").glob("*.py")):
+    name = "torchsketchpower/" + source.name
+    assert name in {str(f).replace("\\", "/") for f in dist.files}, "unowned package file"
+    target = pathlib.Path(dist.locate_file(name)).resolve()
+    assert target.parent == installed and target.read_bytes() == source.read_bytes(), "installed source mismatch"
+    hashes[name] = hashlib.sha256(target.read_bytes()).hexdigest()
+assert hashes, "empty package"
+print(json.dumps({"verified": True, "source_sha": sys.argv[2], "module_file": str(package),
+                  "distribution_version": dist.version, "editable": False, "files_sha256": hashes}))
+'''
+    code, so, err = sh([sys.executable, "-I", "-c", probe, repo, SHA], 30, cwd=repo, env=env)
+    if code:
+        raise ValueError("PACKAGE_IMPORT_VERIFICATION_FAILED: " + tail(err, 200))
+    identity = json.loads(so)
+    if identity.get("verified") is not True or identity.get("source_sha") != SHA:
+        raise ValueError("PACKAGE_IDENTITY_MISMATCH")
+    return identity
+
+
 def main():
     t0 = time.time()
     report = {"source_sha": SHA, "tool": "m7-colab-driver-1", "status": "FAIL", "stage": "start", "reason": None,
@@ -88,10 +124,13 @@ def main():
         if code or head != SHA or dirty:
             report["reason"] = "SOURCE_NOT_EXACT"
             raise RuntimeError("stop")
-        env = dict(os.environ, PYTHONPATH=os.path.join(repo, "src"), PYTHONDONTWRITEBYTECODE="1")
+        env = dict(os.environ, PYTHONDONTWRITEBYTECODE="1")
+        env.pop("PYTHONPATH", None)
+        report["stage"] = "install"
+        report["installed_package"] = install_project(repo, env)
         device = "cpu" if DRY_RUN else "cuda"
         report["stage"] = "oracles"
-        code, so, se = sh([sys.executable, "experiments/m7_cuda/run_m7_cuda.py", "--device", device, "--out", out,
+        code, so, se = sh([sys.executable, "-I", "experiments/m7_cuda/run_m7_cuda.py", "--device", device, "--out", out,
                            "--source-sha", SHA, "--max-seconds", "200"], 260, cwd=repo, env=env)
         report["runner"] = {"exit_code": code, "stdout_tail": tail(so, 600), "stderr_tail": tail(se, 600)}
         results = None
@@ -106,7 +145,7 @@ def main():
         code, _, _ = sh([sys.executable, "-c", "import pytest"], 30, cwd=repo, env=env)
         if code:
             sh([sys.executable, "-m", "pip", "install", "-q", "pytest"], 90, cwd=repo, env=env)
-        code, so, se = sh([sys.executable, "-m", "pytest", "-q", "-rs", "-p", "no:cacheprovider", "tests/test_cuda_lowrank.py"],
+        code, so, se = sh([sys.executable, "-I", "-m", "pytest", "-q", "-rs", "-p", "no:cacheprovider", "tests/test_cuda_lowrank.py"],
                           120, cwd=repo, env=env)
         counts = parse_pytest_summary(so + "\n" + se)
         pt = {"exit_code": code, "counts": counts, "stdout_tail": tail(so, 1200),

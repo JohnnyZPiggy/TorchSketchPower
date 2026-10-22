@@ -63,7 +63,7 @@ PY
 5. Download `results.json`, `summary.md`, `manifest.json` and the two logs (or paste cell outputs) and attach them to Issue #18.
 6. Cleanup: `Runtime > Disconnect and delete runtime`, then confirm in `Manage sessions` that no session remains, and state that in the Issue.
 
-Interpretation: `status: PASS` with `gpu_evidence: true` means every oracle row passed on that device. Any `FAIL` or `BLOCKED` row is a finding to report as is; do not rerun to hide it. In the pytest log the GPU tests must show as passed, not skipped: `skipped` means CUDA was not visible. This run is `PROBE_ONLY` until the Architect independently reviews it.
+Interpretation: scientific `PASS` requires a complete plan with every applicable row passing. Timeout, missing required results or unexpected `NOT_RUN` produce `BLOCKED` (exit 2); observed failures produce `FAIL` (exit 1), including in CPU dry runs. The only CUDA `NOT_RUN` exemption is mixed CUDA indices on a single GPU, with the explicit hardware reason retained. CPU dry runs retain the four CUDA-only negative-control exclusions. `plan_complete`, `planned_jobs` and `completed_jobs` disclose coverage; all returned rows are preserved. GPU-only pytest cases must actually execute; the no-CUDA-only negative test may legitimately skip on CUDA. Runs remain `PROBE_ONLY` until independently reviewed.
 
 ## Local CPU dry run
 
@@ -74,7 +74,7 @@ python experiments/m7_cuda/run_m7_cuda.py --device cuda --out out_m7_blocked    
 
 ## Controller-managed run (SAE Compute Adapter, one bounded T4 session)
 
-`colab_driver.py` and `artifacts.json` are the project adapter for the pinned SAE controller (`tools/compute/colab_control.py`, SAE-Framework `65338eb1aa67971e110db982a07cf43161c23446`, Colab CLI 0.7.4). The controller reads both as Git blobs at `--source-sha`, stages the driver alone on the Colab VM and passes the commit in `SAE_CANDIDATE_SHA`. The driver clones that exact commit, runs `run_m7_cuda.py` and `tests/test_cuda_lowrank.py` on the GPU and writes one artifact, `m7-cuda-report.json`. Its `status` is the transport status (`PASS` = completed on a CUDA device); the numerical verdict is `m7_oracle_status` inside it, and nothing counts as GPU correctness until the Architect reviews it. From the WSL login shell that has `colab`:
+`colab_driver.py` and `artifacts.json` are the project adapter for the pinned SAE controller (`tools/compute/colab_control.py`, SAE-Framework `65338eb1aa67971e110db982a07cf43161c23446`, Colab CLI 0.7.4). The controller reads both as Git blobs at `--source-sha`, stages the driver alone on the Colab VM and passes the commit in `SAE_CANDIDATE_SHA`. The driver clones that exact commit, performs a non-editable `pip install --no-deps --no-build-isolation --no-cache-dir --force-reinstall .`, and verifies an isolated import against distribution-owned files and the exact checkout's Python source bytes. It records package path, distribution version, non-editable status, source SHA and file hashes in `installed_package`; installation or identity failure stops before the oracles. Runner and pytest use `python -I` with no source PYTHONPATH. The driver writes one artifact, `m7-cuda-report.json`; outer `status` remains transport-only, and `m7_oracle_status` plus the full rows/tests carry the independent scientific verdict. From the WSL login shell that has `colab`:
 
 ```sh
 python3 <SAE>/tools/compute/colab_control.py --preflight-only --cli colab --repo-path <clone> --source-sha <SHA> --run-id <id> --out <new-dir>

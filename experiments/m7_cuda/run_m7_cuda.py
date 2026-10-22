@@ -91,6 +91,16 @@ def summarize(rows):
     return counts
 
 
+def optional_not_run(row, device, env):
+    """Only hardware-inapplicable negative controls may be omitted."""
+    if device == "cuda":
+        return (row["case"] == "mixed CUDA indices" and env.get("cuda_device_count") == 1
+                and row.get("reason") == "only one CUDA device")
+    return (row["case"] in {"CPU generator with CUDA input", "sparsesign on CUDA (not validated)",
+                           "mixed CPU and CUDA tensors", "mixed CUDA indices"}
+            and row.get("reason") == "needs a CUDA device")
+
+
 def summary_md(report):
     rows = report["rows"]
     lines = ["# M7 device-correctness report", "",
@@ -127,14 +137,16 @@ def main(argv=None):
     verified = (head == args.source_sha) if (head and args.source_sha) else None
     env = environment(args.device)
     rows, blocked_reason = [], None
+    plan, completed = build_plan(args.quick), 0
     if args.device == "cuda" and not torch.cuda.is_available():
         blocked_reason = "torch.cuda.is_available() is False in this environment; no CUDA test was run"
     else:
         dev = torch.device(args.device)
-        for kind, kw in build_plan(args.quick):
+        for kind, kw in plan:
             if time.time() - t0 > args.max_seconds:
                 rows.append({"case": kind, "device": str(dev), "dtype": "n/a", "status": lib.NOT_RUN, "reason": "time limit reached"})
                 break
+            before = len(rows)
             if kind == "coefficient":
                 rows.append(lib.coefficient_case(dev, kw["dtype"], kw["m"], kw["n"], kw["s"], kw["d"], kw["cond"], kw["seed"]))
             elif kind == "end_to_end_A":
@@ -143,21 +155,32 @@ def main(argv=None):
                 rows.append(lib.end_to_end_mode_b(dev, kw["dtype"], kw["m"], kw["n"], kw["spectrum"], kw["seed"], kw["q_steps"]))
             else:
                 rows.extend(lib.negative_cases(dev))
+            if len(rows) > before:
+                completed += 1
     counts = summarize(rows)
+    plan_complete = bool(plan) and completed == len(plan) and time.time() - t0 <= args.max_seconds
+    incomplete = (not plan_complete or any(
+        r["status"] not in (lib.PASS, lib.FAIL, lib.BLOCKED, lib.NOT_RUN)
+        or (r["status"] == lib.NOT_RUN and not optional_not_run(r, args.device, env)) for r in rows))
     gpu = args.device == "cuda" and torch.cuda.is_available()
     if blocked_reason:
         status = "BLOCKED"
+    elif counts.get(lib.FAIL, 0):
+        status = "FAIL"
+    elif incomplete or counts.get(lib.BLOCKED, 0):
+        status = "BLOCKED"
+        blocked_reason = "required plan incomplete or required result unavailable"
     elif not gpu:
         status = "DRY_RUN_CPU"
-    elif counts.get(lib.FAIL, 0) or counts.get(lib.BLOCKED, 0):
-        status = "FAIL" if counts.get(lib.FAIL, 0) else "BLOCKED"
     else:
         status = "PASS"
     report = {
         "tool_version": TOOL_VERSION, "generated_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "source_sha": args.source_sha or head, "source_sha_verified": verified, "git_dirty": dirty,
-        "status": status, "device": args.device, "gpu_evidence": bool(gpu and status in ("PASS", "FAIL", "BLOCKED") and rows),
+        "status": status, "device": args.device,
+        "gpu_evidence": bool(gpu and any(r["status"] != lib.NOT_RUN for r in rows)),
         "reason": blocked_reason, "counts": counts, "environment": env, "quick": args.quick,
+        "plan_complete": plan_complete, "planned_jobs": len(plan), "completed_jobs": completed,
         "tolerances": {"C_BWD": lib.C_BWD, "note": "pre-registered backward-error bounds, see m7lib docstrings"},
         "not_run": ["performance", "speedup", "torch.compile", "batching", "sparsesign on CUDA", "TPU"],
         "rows": rows, "wall_seconds": round(time.time() - t0, 2),
