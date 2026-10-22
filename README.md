@@ -11,7 +11,9 @@ python -m pip install -e '.[test]'
 pytest -q
 ```
 
-Evidence on a separate local copy: PyTorch 2.10.0+cpu, `PYTHONPATH=src pytest -q` → 8 passed. GitHub branch tests and installation are NOT RUN.
+If `(Z Z^H)^q Y` has numerical rank below `k`, the trailing output columns are arbitrary; `sketch_power_subspace` emits a `RankDeficiencyWarning` in that case (disable with `check_rank=False`).
+
+CPU evidence for each revision is recorded in the PR conversation (PR #2). GPU: NOT RUN.
 
 See [research rationale](docs/research/spi-tensorization.md) and [Issue #1](https://github.com/JohnnyZPiggy/TorchSketchPower/issues/1).
 

@@ -8,7 +8,7 @@
 
 ## R1: dimensions and mathematical prototype
 
-Let target sketch Y be m×k, auxiliary sketch Z be m×ell with 0<k≤ell≤m. Model the sketch-based positive-semidefinite operator M=ZZ* (not the original AA*). The **subspace** target for q steps is span(M^q Y), assuming sufficient rank and stable arithmetic. q=0 returns span(Y).
+Let target sketch Y be m×k, auxiliary sketch Z be m×ell with 0<k≤m and k≤ell. (ell>m is allowed: ZZ* is still a valid m×m PSD operator; typical use has ell≪m.) Model the sketch-based positive-semidefinite operator M=ZZ* (not the original AA*). The **subspace** target for q steps is span(M^q Y), assuming sufficient rank and stable arithmetic. q=0 returns span(Y).
 
 This is a *mathematical exploration kernel*, not verification of the paper's exact Algorithm 2.x pseudocode or its full low-rank reconstruction.
 
@@ -16,7 +16,7 @@ This is a *mathematical exploration kernel*, not verification of the paper's exa
 
 Avoid forming m×m M. Compute `Z.mH @ Q`, reduced QR, `Z @ middle_Q`, reduced QR. The two QR factorizations stabilize the evolving subspace (full-rank cases). PyTorch primitives: `matmul` and `torch.linalg.qr`. No custom CUDA/Triton.
 
-**Important limitation:** For rank-deficient intermediate sketches, QR may choose arbitrary completion columns; these columns must not be interpreted as the unique rank-deficient range. Full-rank theory and rank-aware output require a separate validation step. If the paper uses a different normalization, compare subspaces rather than columnwise matrices.
+**Important limitation:** For rank-deficient intermediate sketches, QR may choose arbitrary completion columns; these columns must not be interpreted as the unique rank-deficient range. Full-rank theory and rank-aware output require a separate validation step. The implementation now detects this case: it checks the numerical rank of `Y` and of each `Z^H Q` (equal to the rank of that step's output, since `Z` is injective on `range(Z^H)`) with the `torch.linalg.matrix_rank` default tolerance and emits `RankDeficiencyWarning`; output semantics are unchanged. If the paper uses a different normalization, compare subspaces rather than columnwise matrices.
 
 ## R3: falsifiable experiment
 
