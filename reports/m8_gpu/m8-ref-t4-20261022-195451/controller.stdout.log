@@ -1,0 +1,187 @@
+{
+  "status": "PASS",
+  "source_sha": "116d6c299b3b84a3477363c2529f6efd37972055",
+  "run_id": "m8-ref-t4-20261022-195451",
+  "created": true,
+  "cleanup_confirmed": true,
+  "utc_start": "2026-10-22T17:55:06.565683+00:00",
+  "commands": [
+    {
+      "operation": "usage",
+      "status": "PASS",
+      "exit_code": 0,
+      "timeout_seconds": 30,
+      "elapsed_seconds": 1.7333536129999985
+    },
+    {
+      "operation": "new",
+      "status": "PASS",
+      "exit_code": 0,
+      "timeout_seconds": 120,
+      "elapsed_seconds": 4.331078451
+    },
+    {
+      "operation": "exec",
+      "status": "PASS",
+      "exit_code": 0,
+      "timeout_seconds": 35.0,
+      "elapsed_seconds": 12.584279708999997
+    },
+    {
+      "operation": "exec",
+      "status": "PASS",
+      "exit_code": 0,
+      "timeout_seconds": 223.08404334799997,
+      "elapsed_seconds": 59.521172861000004
+    },
+    {
+      "operation": "download",
+      "status": "PASS",
+      "exit_code": 0,
+      "timeout_seconds": 30,
+      "elapsed_seconds": 5.248224590000007
+    },
+    {
+      "operation": "stop",
+      "status": "PASS",
+      "exit_code": 0,
+      "timeout_seconds": 15,
+      "elapsed_seconds": 2.9151934560000115
+    },
+    {
+      "operation": "usage",
+      "status": "PASS",
+      "exit_code": 0,
+      "timeout_seconds": 15,
+      "elapsed_seconds": 2.1715423889999954
+    }
+  ],
+  "readbacks": [
+    {
+      "phase": "preallocation",
+      "method": "CLI_074_AUTHENTICATED_CCU_INFO",
+      "status": "AUTHENTICATED_ZERO",
+      "assignments": 0
+    },
+    {
+      "phase": "cleanup",
+      "method": "CLI_074_AUTHENTICATED_CCU_INFO",
+      "status": "AUTHENTICATED_ZERO",
+      "assignments": 0
+    }
+  ],
+  "classification": "TRANSPORT_ONLY_SCIENCE_UNREVIEWED",
+  "events": {
+    "cli_resolution": {
+      "utc_start": "2026-10-22T17:55:06.595092+00:00",
+      "status": "PASS",
+      "utc_end": "2026-10-22T17:55:06.595315+00:00",
+      "elapsed_seconds": 0.00023215300000067884
+    },
+    "environment_preflight": {
+      "utc_start": "2026-10-22T17:55:06.614381+00:00",
+      "status": "PASS",
+      "utc_end": "2026-10-22T17:55:07.615285+00:00",
+      "elapsed_seconds": 1.0009188249999994
+    },
+    "adapter_validation": {
+      "utc_start": "2026-10-22T17:55:07.615303+00:00",
+      "status": "PASS",
+      "utc_end": "2026-10-22T17:55:07.647458+00:00",
+      "elapsed_seconds": 0.032170883000002704
+    },
+    "snapshot_extraction": {
+      "utc_start": "2026-10-22T17:55:07.555907+00:00",
+      "status": "PASS",
+      "utc_end": "2026-10-22T17:55:07.613008+00:00",
+      "elapsed_seconds": 0.05711494100000003
+    },
+    "wheel_pip_install": null,
+    "first_cpu_pass": null,
+    "exact_pinned_cpu_test": null,
+    "kernel_probe": {
+      "utc_start": "2026-10-22T17:55:13.713231+00:00",
+      "status": "PASS",
+      "utc_end": "2026-10-22T17:55:26.296708+00:00",
+      "elapsed_seconds": 12.584815941999999
+    },
+    "remote_workload": {
+      "utc_start": "2026-10-22T17:55:26.296760+00:00",
+      "status": "PASS",
+      "utc_end": "2026-10-22T17:56:24.203813+00:00",
+      "elapsed_seconds": 59.521432759
+    },
+    "artifact_download": {
+      "utc_start": "2026-10-22T17:56:24.204000+00:00",
+      "status": "PASS",
+      "utc_end": "2026-10-22T17:56:29.463807+00:00",
+      "elapsed_seconds": 5.259874194999995
+    },
+    "github_publication": null,
+    "cleanup": {
+      "utc_start": "2026-10-22T17:56:29.463952+00:00",
+      "status": "PASS",
+      "utc_end": "2026-10-22T17:56:34.551558+00:00",
+      "elapsed_seconds": 5.0876169519999905
+    }
+  },
+  "per_attempt_approvals_actual": null,
+  "api_escalation_requests_actual": null,
+  "handoffs_actual": null,
+  "tool_script_sha256": {
+    "colab_control.py": "1d564818b48c9d39d1209fb57d88d24c67316efeb1f2ce73172c56350cdc29af",
+    "environment_preflight.py": "1ab11ff4baedfa875a23307f9f6af961d1ac8481f62a91f2570d755674dec112",
+    "kernel_smoke.py": "63eedb51b7ac4710009df64d01cf9e33a6e6bdb498294766b215ee90d9490b03"
+  },
+  "preflight": {
+    "status": "PASS",
+    "python_version": "3.12.3",
+    "source_sha": "116d6c299b3b84a3477363c2529f6efd37972055",
+    "events": {
+      "cli_version": {
+        "utc_start": "2026-10-22T17:55:06.614636+00:00",
+        "status": "PASS",
+        "utc_end": "2026-10-22T17:55:07.530528+00:00",
+        "elapsed_seconds": 0.9159109250000004
+      },
+      "source_verification": {
+        "utc_start": "2026-10-22T17:55:07.530686+00:00",
+        "status": "PASS",
+        "utc_end": "2026-10-22T17:55:07.543214+00:00",
+        "elapsed_seconds": 0.01257042300000144
+      },
+      "temp_build_cache": {
+        "utc_start": "2026-10-22T17:55:07.553355+00:00",
+        "status": "PASS",
+        "utc_end": "2026-10-22T17:55:07.555835+00:00",
+        "elapsed_seconds": 0.0025087980000009225
+      },
+      "snapshot_extraction": {
+        "utc_start": "2026-10-22T17:55:07.555907+00:00",
+        "status": "PASS",
+        "utc_end": "2026-10-22T17:55:07.613008+00:00",
+        "elapsed_seconds": 0.05711494100000003
+      },
+      "wheel_pip_install": null
+    },
+    "cli_verified": true,
+    "cli_version": "0.7.4",
+    "working_tree_dirty": false,
+    "temp_build_cache_writable": true,
+    "export_scope": "tracked project files excluding .sae/",
+    "exported_blobs": 84,
+    "elapsed_seconds": 1.0007631879999987
+  },
+  "driver_transport_sha256": "91ac87be0e8a9654283120975c46b911b425955fa59068f0d1ef0059f85160e2",
+  "artifact_manifest_sha256": "cf25de627d7ffc4fd7f329fb043cf89afcaae4c283117d81b0c4c59b2a3394e9",
+  "balance_before": "[REDACTED]",
+  "artifact_sha256": {
+    "m8-report.json": "5c9d1ba271984c00a8eff9c6e601fa1006053bf546cba1a17888f9b63cde62c4"
+  },
+  "utc_cleanup_verified": "2026-10-22T17:56:34.551381+00:00",
+  "allocation_lifecycle_seconds": 86.78498043500001,
+  "transport_cleanup_confirmed": true,
+  "cleanup_seconds": 5.088731077999995,
+  "total_seconds": 89.60269664299999,
+  "utc_end": "2026-10-22T17:56:34.552682+00:00"
+}

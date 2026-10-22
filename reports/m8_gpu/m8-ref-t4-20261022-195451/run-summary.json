@@ -1,0 +1,201 @@
+{
+  "source_sha": "116d6c299b3b84a3477363c2529f6efd37972055",
+  "framework_sha": "65338eb1aa67971e110db982a07cf43161c23446",
+  "run_id": "m8-ref-t4-20261022-195451",
+  "gpu_status": "BLOCKED",
+  "allocation_attempts": 1,
+  "adapter": {
+    "status": "PASS",
+    "driver_sha256": "91ac87be0e8a9654283120975c46b911b425955fa59068f0d1ef0059f85160e2",
+    "manifest_sha256": "cf25de627d7ffc4fd7f329fb043cf89afcaae4c283117d81b0c4c59b2a3394e9",
+    "names": [
+      "m8-report.json"
+    ]
+  },
+  "preflight": "PASS",
+  "preallocation_readback": {
+    "utc": "2026-10-22T17:55:06.277588+00:00",
+    "exit_code": 0,
+    "strict_parser_accepted": true,
+    "status": "AUTHENTICATED_ZERO"
+  },
+  "controller_exit_code": 0,
+  "controller_status": "PASS",
+  "controller_error": null,
+  "created": true,
+  "cleanup_confirmed": true,
+  "commands": [
+    {
+      "operation": "usage",
+      "status": "PASS",
+      "exit_code": 0,
+      "timeout_seconds": 30,
+      "elapsed_seconds": 1.7333536129999985
+    },
+    {
+      "operation": "new",
+      "status": "PASS",
+      "exit_code": 0,
+      "timeout_seconds": 120,
+      "elapsed_seconds": 4.331078451
+    },
+    {
+      "operation": "exec",
+      "status": "PASS",
+      "exit_code": 0,
+      "timeout_seconds": 35.0,
+      "elapsed_seconds": 12.584279708999997
+    },
+    {
+      "operation": "exec",
+      "status": "PASS",
+      "exit_code": 0,
+      "timeout_seconds": 223.08404334799997,
+      "elapsed_seconds": 59.521172861000004
+    },
+    {
+      "operation": "download",
+      "status": "PASS",
+      "exit_code": 0,
+      "timeout_seconds": 30,
+      "elapsed_seconds": 5.248224590000007
+    },
+    {
+      "operation": "stop",
+      "status": "PASS",
+      "exit_code": 0,
+      "timeout_seconds": 15,
+      "elapsed_seconds": 2.9151934560000115
+    },
+    {
+      "operation": "usage",
+      "status": "PASS",
+      "exit_code": 0,
+      "timeout_seconds": 15,
+      "elapsed_seconds": 2.1715423889999954
+    }
+  ],
+  "readbacks": [
+    {
+      "phase": "preallocation",
+      "method": "CLI_074_AUTHENTICATED_CCU_INFO",
+      "status": "AUTHENTICATED_ZERO",
+      "assignments": 0
+    },
+    {
+      "phase": "cleanup",
+      "method": "CLI_074_AUTHENTICATED_CCU_INFO",
+      "status": "AUTHENTICATED_ZERO",
+      "assignments": 0
+    }
+  ],
+  "events": {
+    "cli_resolution": {
+      "utc_start": "2026-10-22T17:55:06.595092+00:00",
+      "status": "PASS",
+      "utc_end": "2026-10-22T17:55:06.595315+00:00",
+      "elapsed_seconds": 0.00023215300000067884
+    },
+    "environment_preflight": {
+      "utc_start": "2026-10-22T17:55:06.614381+00:00",
+      "status": "PASS",
+      "utc_end": "2026-10-22T17:55:07.615285+00:00",
+      "elapsed_seconds": 1.0009188249999994
+    },
+    "adapter_validation": {
+      "utc_start": "2026-10-22T17:55:07.615303+00:00",
+      "status": "PASS",
+      "utc_end": "2026-10-22T17:55:07.647458+00:00",
+      "elapsed_seconds": 0.032170883000002704
+    },
+    "snapshot_extraction": {
+      "utc_start": "2026-10-22T17:55:07.555907+00:00",
+      "status": "PASS",
+      "utc_end": "2026-10-22T17:55:07.613008+00:00",
+      "elapsed_seconds": 0.05711494100000003
+    },
+    "wheel_pip_install": null,
+    "first_cpu_pass": null,
+    "exact_pinned_cpu_test": null,
+    "kernel_probe": {
+      "utc_start": "2026-10-22T17:55:13.713231+00:00",
+      "status": "PASS",
+      "utc_end": "2026-10-22T17:55:26.296708+00:00",
+      "elapsed_seconds": 12.584815941999999
+    },
+    "remote_workload": {
+      "utc_start": "2026-10-22T17:55:26.296760+00:00",
+      "status": "PASS",
+      "utc_end": "2026-10-22T17:56:24.203813+00:00",
+      "elapsed_seconds": 59.521432759
+    },
+    "artifact_download": {
+      "utc_start": "2026-10-22T17:56:24.204000+00:00",
+      "status": "PASS",
+      "utc_end": "2026-10-22T17:56:29.463807+00:00",
+      "elapsed_seconds": 5.259874194999995
+    },
+    "github_publication": null,
+    "cleanup": {
+      "utc_start": "2026-10-22T17:56:29.463952+00:00",
+      "status": "PASS",
+      "utc_end": "2026-10-22T17:56:34.551558+00:00",
+      "elapsed_seconds": 5.0876169519999905
+    }
+  },
+  "artifact": {
+    "bytes": 626657,
+    "sha256": "5c9d1ba271984c00a8eff9c6e601fa1006053bf546cba1a17888f9b63cde62c4",
+    "controller_hash_verified": true,
+    "transport_status": "PASS",
+    "benchmark_status": "BLOCKED",
+    "installed_package_verified": true,
+    "exceptions": []
+  },
+  "benchmark": {
+    "status": "BLOCKED",
+    "planned_configs": 80,
+    "completed_configs": 75,
+    "wall_seconds": 37.90731307699997,
+    "gpu_evidence": true,
+    "environment": {
+      "python": "3.13.15 (main, Aug  6 2026, 11:06:22) [GCC 13.3.0]",
+      "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+      "torch": "2.11.0+cu130",
+      "cuda_build": "13.0",
+      "threads": 1,
+      "tf32": false,
+      "matmul_precision": "highest",
+      "torch_config": "PyTorch built with:\n  - GCC 13.3\n  - C++ Version: 201703\n  - Intel(R) oneAPI Math Kernel Library Version 2024.2-Product Build 20240605 for Intel(R) 64 architecture applications\n  - Intel(R) MKL-DNN v3.10.2 (Git Hash f1d471933dc852f956fd05389f9313c7148783d5)\n  - OpenMP 201511 (a.k.a. OpenMP 4.5)\n  - LAPACK is enabled (usually provided by MKL)\n  - NNPACK is enabled\n  - CPU capability usage: AVX512\n  - CUDA Runtime 13.0\n  - NVCC architecture flags: -gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86;-gencode;arch=compute_90,code=sm_90;-gencode;arch=compute_100,code=sm_100;-gencode;arch=compute_120,code=sm_120\n  - CuDNN 92.7  (built against CUDA 12.9)\n    - Built with CuDNN 91.9\n  - Magma 2.6.1\n  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, COMMIT_SHA=70d99e998b4955e0049d13a98d77ae1b14db1f45, CUDA_VERSION=13.0, CUDNN_VERSION=9.19.0, CXX_COMPILER=/opt/rh/gcc-toolset-13/root/usr/bin/c++, CXX_FLAGS= -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -DNDEBUG -DUSE_KINETO -DLIBKINETO_NOROCTRACER -DLIBKINETO_NOXPUPTI=ON -DUSE_FBGEMM -DUSE_MSLK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -O2 -fPIC -DC10_NODEPRECATED -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Werror=range-loop-construct -Werror=bool-operation -Wnarrowing -Wno-missing-field-initializers -Wno-unknown-pragmas -Wno-unused-parameter -Wno-strict-overflow -Wno-strict-aliasing -Wno-stringop-overflow -Wsuggest-override -Wno-psabi -Wno-error=old-style-cast -faligned-new -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Wno-dangling-reference -Wno-error=dangling-reference -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, TORCH_VERSION=2.11.0, USE_CUDA=ON, USE_CUDNN=ON, USE_CUSPARSELT=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_GLOO=ON, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_NCCL=1, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, USE_ROCM_KERNEL_ASSERT=OFF, USE_XCCL=OFF, USE_XPU=OFF, \n",
+      "CUDA_LAUNCH_BLOCKING": null,
+      "kernel_only": "NOT MEASURED",
+      "clock_thermal": "Tesla T4, 580.82.07, 37, 585 MHz, 5000 MHz\n",
+      "gpu_name": "Tesla T4",
+      "gpu_memory": 15637086208,
+      "capability": [
+        7,
+        5
+      ]
+    },
+    "exceptions": [
+      {
+        "stage": "benchmark",
+        "status": "BLOCKED",
+        "exception": "Traceback (most recent call last):\n  File \"/content/m8_repo/experiments/m8_gpu/run_m8.py\", line 276, in run\n    if cfg[\"status\"]!=\"PASS\":raise RuntimeError(\"accuracy metadata audit failed\")\n                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: accuracy metadata audit failed\n"
+      }
+    ],
+    "trial_count": 380,
+    "failures": 0,
+    "warning_count": 0
+  },
+  "gate": {
+    "status": "PASS",
+    "plan_complete": true,
+    "counts": {
+      "PASS": 39,
+      "NOT_RUN": 1
+    },
+    "gpu_evidence": true
+  },
+  "status": "COMPLETED_ONE_ATTEMPT"
+}

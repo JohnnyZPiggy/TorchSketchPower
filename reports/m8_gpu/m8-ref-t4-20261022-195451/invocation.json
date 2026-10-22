@@ -1,0 +1,13 @@
+{
+  "source_sha": "116d6c299b3b84a3477363c2529f6efd37972055",
+  "framework_sha": "65338eb1aa67971e110db982a07cf43161c23446",
+  "run_id": "m8-ref-t4-20261022-195451",
+  "device_requested": "T4",
+  "task_seconds": 900,
+  "allocation_seconds": 300,
+  "cleanup_seconds": 60,
+  "kernel_timeout": 30,
+  "work_timeout": 420,
+  "driver": "experiments/m8_gpu/colab_driver.py",
+  "artifacts": "experiments/m8_gpu/artifacts.json"
+}

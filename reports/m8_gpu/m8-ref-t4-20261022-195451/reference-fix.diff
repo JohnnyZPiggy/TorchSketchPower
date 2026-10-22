@@ -1,0 +1,118 @@
+diff --git a/experiments/m8_gpu/README.md b/experiments/m8_gpu/README.md
+index 07ee549..770e7db 100644
+--- a/experiments/m8_gpu/README.md
++++ b/experiments/m8_gpu/README.md
+@@ -15,3 +15,5 @@ CPU smoke: python experiments/m8_gpu/run_m8.py --device cpu --smoke --source-sha
+ Offline CPU smoke is DRY_RUN_CPU, never GPU evidence. Full remote artifact includes losslessly zlib/base64-compressed raw benchmark JSON (no rounding or row removal), raw CSV/summary/manifest strings, complete gate results, install identity and full command stdout/stderr. Decode the exact raw JSON bytes using the encoding specified in the artifact and check against its SHA256; publish decoded files for review. Compression keeps full residual singular values within the existing 1MiB transport limit. No new dependencies, compile, TPU, custom kernels, Panther/skerch, sparse-sign or one-pass claims.
+ 
+ API sources: https://docs.pytorch.org/docs/stable/generated/torch.svd_lowrank.html (dense randomized SVD may be slower than dense exact SVD); https://docs.pytorch.org/docs/stable/notes/cuda.html (synchronization and allocator semantics). Runtime records actual torch version; APIs are independently tested on the installed runtime.
++
++Reference correction: every method shares the same-device float64 SVD of the actual dtype-rounded A (not the intended pre-cast spectrum). Native float32 singular values remain non-authoritative observations. Reference work is outside method time/allocator windows. The independent energy-subtraction tail is diagnostic only: cancellation below 100 eps64 times total/leading energy is flagged unreliable, never clamped into an oracle. Historical failed runs remain unchanged.
+diff --git a/experiments/m8_gpu/run_m8.py b/experiments/m8_gpu/run_m8.py
+index dd3f70e..3689db5 100644
+--- a/experiments/m8_gpu/run_m8.py
++++ b/experiments/m8_gpu/run_m8.py
+@@ -112,7 +112,32 @@ def timed_call(fn, device):
+     return output, data
+ 
+ 
++def reference_spectrum(a, r):
++    """Reference the realized rounded A, outside all method timing/memory windows."""
++    rounded_double = a.to(torch.float64)
++    ref = torch.linalg.svdvals(rounded_double)
++    if not bool(torch.isfinite(ref).all()):
++        raise ValueError("nonfinite float64 reference")
++    native = torch.linalg.svdvals(a) if a.dtype == torch.float32 else ref
++    total2 = float(torch.linalg.vector_norm(rounded_double) ** 2)
++    leading2 = float((ref[:r] ** 2).sum())
++    energy_tail2 = total2 - leading2
++    cancellation_bound = 100 * torch.finfo(torch.float64).eps * max(total2, leading2)
++    return ref, {"precision": "float64", "input": "actual dtype-rounded A promoted to float64 on same device",
++                 "outside_method_timing_and_memory": True,
++                 "reference_singular_values": ref.cpu().tolist(),
++                 "native_reference_precision": str(a.dtype),
++                 "native_reference_authoritative": False,
++                 "native_reference_singular_values": native.cpu().tolist(),
++                 "energy_tail2": energy_tail2, "energy_cancellation_bound": cancellation_bound,
++                 "energy_tail_reliable": energy_tail2 > cancellation_bound,
++                 "energy_tail_fro": math.sqrt(energy_tail2) if energy_tail2 > cancellation_bound else None,
++                 "tail_svd_fro": float(torch.linalg.vector_norm(ref[r:]))}
++
++
+ def accuracy(a, factors, reference_s):
++    if reference_s.dtype != torch.float64 or reference_s.device != a.device:
++        raise ValueError("authoritative reference must be same-device float64 SVD of rounded A")
+     u, s, vh = factors
+     residual = a - (u * s) @ vh
+     singular = torch.linalg.svdvals(residual).double()
+@@ -231,8 +256,8 @@ def run(device="cuda", smoke=False, source_sha=None, max_seconds=170, checkpoint
+                 t=time.perf_counter(); a=cpu.to(dev)
+                 if dev=="cuda":torch.cuda.synchronize()
+                 transfer_ms=(time.perf_counter()-t)*1000
+-                ref=torch.linalg.svdvals(a)
+-                matrix["devices"][dev]={"transfer_ms":transfer_ms,"reference_singular_values":ref.cpu().tolist()}
++                ref,reference=reference_spectrum(a,methods(smoke)[0]["r"])
++                matrix["devices"][dev]=dict(reference,transfer_ms=transfer_ms)
+                 cs=[c for c in report["configs"] if c["matrix_id"]==mid and c["device"]==dev]
+                 for phase,repeat in [("cold",0),("warmup",0)]+[("warm",i) for i in range(REPEATS)]:
+                     order=cs if (repeat+(phase=="warmup"))%2==0 else list(reversed(cs))
+diff --git a/tests/test_m8_gpu.py b/tests/test_m8_gpu.py
+index 231403a..04ac940 100644
+--- a/tests/test_m8_gpu.py
++++ b/tests/test_m8_gpu.py
+@@ -43,7 +43,7 @@ def test_seeded_matrix_and_spectrum(spectrum):
+ @pytest.mark.parametrize('shape',[(24,16),(16,24)])
+ def test_all_baselines_accuracy_orientation_and_replay(dtype,shape):
+     a=m8.make_matrix(*shape,'polynomial').to(dtype)
+-    ref=torch.linalg.svdvals(a)
++    ref,_=m8.reference_spectrum(a,2)
+     for cfg in m8.methods(True):
+         out=m8.call_method(a,cfg)
+         replay=m8.call_method(a,cfg)
+@@ -181,3 +181,46 @@ def test_driver_correctness_gate_failure_prevents_benchmark(monkeypatch,tmp_path
+     assert r['benchmark_status']=='BLOCKED' and 'benchmark' not in r and r['correctness_gate']['status']=='FAIL'
+     assert not any('experiments/m8_gpu/run_m8.py' in cmd for cmd in calls)
+     assert r['logs'][-1]['stderr']=='complete gate exception'
++
++
++def test_native_float32_reference_cannot_be_authoritative():
++    a=torch.diag(torch.tensor([4.,3.,2.,1.],dtype=torch.float32))
++    factors=(torch.eye(4)[:,:1],torch.tensor([4.]),torch.eye(4)[:1])
++    with pytest.raises(ValueError,match="float64"):
++        m8.accuracy(a,factors,torch.linalg.svdvals(a)*1.01)
++    ref,meta=m8.reference_spectrum(a,1)
++    torch.testing.assert_close(ref,torch.tensor([4.,3.,2.,1.],dtype=torch.float64))
++    result=m8.accuracy(a,factors,ref)
++    assert result['status']=='PASS' and result['opt_fro']==pytest.approx(14**.5)
++    assert meta['energy_tail_reliable'] and meta['energy_tail_fro']==pytest.approx(14**.5)
++    assert not meta['native_reference_authoritative']
++
++
++def test_reference_uses_actual_dtype_rounding_and_cancellation_guard():
++    original=torch.diag(torch.tensor([1.+2**-25,2**-30],dtype=torch.float64))
++    a=original.float();ref,meta=m8.reference_spectrum(a,1)
++    assert float(ref[0])==1. and float(ref[0])!=float(original[0,0])
++    assert not meta['energy_tail_reliable'] and meta['energy_tail_fro'] is None
++    assert meta['tail_svd_fro']==pytest.approx(2**-30)
++    assert meta['outside_method_timing_and_memory']
++
++
++def test_actual_near_flat_float32_double_reference_ey_gate():
++    import io
++    torch.set_num_threads(1)
++    a=m8.make_matrix(1024,512,'near_flat',seed=123).float()
++    raw=io.BytesIO();torch.save(a,raw)
++    assert torch.equal(a,torch.load(io.BytesIO(raw.getvalue()),weights_only=True))
++    ref,meta=m8.reference_spectrum(a,8)
++    result=m8.accuracy(a,m8.call_method(a,m8.methods()[-1]),ref)
++    assert result['status']=='PASS' and result['ey_ok']
++    assert result['fro_ratio']==pytest.approx(1.,rel=1e-6)
++    assert meta['energy_tail_fro']==pytest.approx(meta['tail_svd_fro'],rel=1e-12)
++
++
++def test_reference_api_failure_is_blocked_without_method_calls(monkeypatch):
++    def bad(a,r):raise RuntimeError('double reference unavailable')
++    monkeypatch.setattr(m8,'reference_spectrum',bad)
++    r=m8.run('cpu',True,'b'*40)
++    assert r['status']=='BLOCKED' and not r['trials']
++    assert 'double reference unavailable' in r['exceptions'][0]['exception']
