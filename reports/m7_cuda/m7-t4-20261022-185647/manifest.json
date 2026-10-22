@@ -1,0 +1,35 @@
+{
+  "tested_source_sha": "645777724845207fbb882329c086f59dc5da8b04",
+  "run_id": "m7-t4-20261022-185647",
+  "files": {
+    "m7-cuda-report.json": {
+      "sha256": "6fe65d8d45cf1c85d42ec7410dff7171a462c47adca34471ed29f594ef15bb59",
+      "bytes": 115261
+    },
+    "colab-control.json": {
+      "sha256": "258fd6402768434579f4abe43ddae10b636a65ff34d0a029110f6d0a43fb6636",
+      "bytes": 5940
+    },
+    "preflight.json": {
+      "sha256": "d5af4694d21e7f905912ac8b9594bcb7af816491f466c8f24b54f84840349f7a",
+      "bytes": 3123
+    },
+    "invocation.json": {
+      "sha256": "03de56a604825da978ac4d173cb61be9e95f4ce71ebfe0dce682f94ff40f7e1c",
+      "bytes": 418
+    },
+    "controller.stdout.log": {
+      "sha256": "258fd6402768434579f4abe43ddae10b636a65ff34d0a029110f6d0a43fb6636",
+      "bytes": 5940
+    },
+    "controller.stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "review.json": {
+      "sha256": "f508f14f9bfb77fd850434d00c84c86728d65630901b920482f16739257ddb20",
+      "bytes": 1661
+    }
+  },
+  "sanitization": "Scientific artifact byte-identical to downloaded remote artifact. Controller balance_before redacted; no raw usage payload stored or published."
+}
