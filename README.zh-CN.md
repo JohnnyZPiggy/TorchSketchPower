@@ -26,15 +26,15 @@ TorchSketchPower 实现 Sketch-Power Iterations，将随机矩阵草图、QR 稳
 
 对于稠密矩阵 \(A\in\mathbb{F}^{m\times n}\)、草图尺寸 \(s,\ell,d\) 和目标秩 \(r\)：
 
-\[
+$$
 Y=A\Omega,\quad Z=A\Phi,\quad W=\Psi A,\qquad
 Q_0=\operatorname{orth}(Y).
-\]
+$$
 
-\[
+$$
 Q_{t+1}=\operatorname{orth}\bigl(Z\,\operatorname{orth}(Z^H Q_t)\bigr),\qquad
 B=\underset{B}{\operatorname{argmin}}\,\|(\Psi Q_t)B-W\|_F.
-\]
+$$
 
 最终返回秩为 \(r\) 的截断分解 \(\widehat A_r=U_r\Sigma_r V_r^H\)。当前实现面向内存中的矩阵，幂迭代阶段重用辅助草图 \(Z\)。详细证明及数值约定见[数学文档](docs/math.md)。
 
