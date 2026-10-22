@@ -169,7 +169,7 @@ def main(argv=None):
         tcfgs = lib.timing_configs()
     rows = [lib.run_sample(c) for c in cfgs]
     lib.write_csv(os.path.join(args.out, "samples.csv"), rows)
-    with open(os.path.join(args.out, "samples.json"), "w", encoding="utf-8") as f:
+    with open(os.path.join(args.out, "samples.json"), "w", encoding="utf-8", newline="\n") as f:
         json.dump(rows, f, indent=1)
 
     trows, mrows, failures = [], [], []
@@ -191,12 +191,18 @@ def main(argv=None):
                "| spectrum | pairs | q=1 < q=0 | q=2 < q=1 | q=2 < q=0 |", "|---|---|---|---|---|"]
     for sp, t in lib.paired_q_table(rows).items():
         summary.append(f"| {sp} | {t['pairs']} | {t['q1_lt_q0']} | {t['q2_lt_q1']} | {t['q2_lt_q0']} |")
-    with open(os.path.join(args.out, "summary.md"), "w", encoding="utf-8") as f:
+    summary += ["", "## Timing and memory (seed 0, geometric; one fresh process per row)", "",
+                "Timing: single-call wall time of `sketch_power_low_rank` with 5 warm repeats (2 in smoke); "
+                "timings vary run to run, so differences of the order of the IQR are not meaningful. "
+                "Memory columns are the OS process working-set high-water mark and are dominated by the torch runtime; "
+                "they are not per-call allocations. Estimated buffers are sums of buffer sizes, not measured.", "",
+                lib.timing_markdown(trows, mrows) if trows else "NOT MEASURED (no timing rows)"]
+    with open(os.path.join(args.out, "summary.md"), "w", encoding="utf-8", newline="\n") as f:
         f.write("\n".join(summary) + "\n")
 
     files = ["samples.csv", "samples.json", "timings.csv", "memory.csv", "summary.md"]
     man = manifest(args, args.out, files, len(rows), failures, time.time() - t_start)
-    with open(os.path.join(args.out, "manifest.json"), "w", encoding="utf-8") as f:
+    with open(os.path.join(args.out, "manifest.json"), "w", encoding="utf-8", newline="\n") as f:
         json.dump(man, f, indent=1)
     print(f"wrote {len(rows)} samples, {len(trows)} timing rows, {len(mrows)} memory rows, {len(failures)} timing failures")
 

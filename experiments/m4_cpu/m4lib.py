@@ -379,6 +379,35 @@ def summary_markdown(rows) -> str:
     return "\n".join(lines)
 
 
+def timing_markdown(trows, mrows) -> str:
+    """Per-config cold time, warm median/IQR, SVD baseline median, RSS high-water, buffer estimate."""
+    def stats(vals):
+        if not vals:
+            return None, None
+        med = statistics.median(vals)
+        q = statistics.quantiles(vals, n=4) if len(vals) >= 2 else [vals[0], vals[0], vals[0]]
+        return med, q[2] - q[0]
+
+    mem = {m["config_id"]: m for m in mrows}
+    lines = ["| config | cold (ms) | warm median (ms) | warm IQR (ms) | n warm | full-SVD warm median (ms) | peak WS before call (MB) | peak WS after all calls (MB) | est. buffers (KB, estimate) |",
+             "|---|---|---|---|---|---|---|---|---|"]
+    for cid in dict.fromkeys(t["config_id"] for t in trows):
+        sel = [t for t in trows if t["config_id"] == cid]
+        warm = [t["seconds"] for t in sel if t["phase"] == "warm"]
+        cold = [t["seconds"] for t in sel if t["phase"] == "cold"]
+        svd = [t["seconds"] for t in sel if t["phase"] == "svd_baseline_warm"]
+        wm, wi = stats(warm)
+        sm, _ = stats(svd)
+        m = mem.get(cid)
+        mb = lambda v: "n/a" if v is None else f"{v / 2**20:.1f}"  # noqa: E731
+        lines.append(
+            f"| {cid} | {cold[0] * 1e3:.2f} | {wm * 1e3:.3f} | {wi * 1e3:.3f} | {len(warm)} | {sm * 1e3:.3f} | "
+            f"{mb(m and m['peak_before_call_bytes'])} | {mb(m and m['peak_after_all_calls_bytes'])} | "
+            f"{'n/a' if m is None else f'{m['est_buffer_bytes'] / 1024:.1f}'} |"
+        )
+    return "\n".join(lines)
+
+
 def paired_q_table(rows):
     """For block A_q: per (spectrum, seed) rel Fro error at q=0,1,2 and win counts (same A, same draws)."""
     by = {}

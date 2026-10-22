@@ -248,6 +248,23 @@ def test_paired_q_table_counts():
     assert lib.paired_q_table(rows) == {"x": {"pairs": 1, "q1_lt_q0": 1, "q2_lt_q1": 0, "q2_lt_q0": 1}}
 
 
+def test_timing_markdown_medians_and_missing_memory():
+    trows = [{"config_id": "c", "phase": "cold", "repeat": 0, "seconds": 0.5}]
+    trows += [{"config_id": "c", "phase": "warm", "repeat": i, "seconds": v} for i, v in enumerate((0.1, 0.2, 0.3, 0.4, 0.5))]
+    trows += [{"config_id": "c", "phase": "svd_baseline_warm", "repeat": 0, "seconds": 0.01}]
+    mrow = {"config_id": "c", "method": "m", "peak_before_call_bytes": 2 * 2**20, "peak_after_cold_call_bytes": None,
+            "peak_after_all_calls_bytes": 3 * 2**20, "current_after_all_calls_bytes": None, "est_buffer_bytes": 2048}
+    md = lib.timing_markdown(trows, [mrow])
+    assert "| c | 500.00 | 300.000 |" in md and "2.0" in md and "3.0" in md and "2.0 |" in md
+    assert "n/a" in lib.timing_markdown(trows, [])
+
+
+def test_summary_contains_timing_section(tmp_path):
+    run_m4.main(["--out", str(tmp_path), "--smoke"])
+    text = (tmp_path / "summary.md").read_text()
+    assert "## Timing and memory" in text and "full-SVD warm median" in text
+
+
 def test_estimate_buffer_bytes_formula():
     m, n, r, s, ell, d = 10, 8, 2, 3, 5, 4
     elems = (n * s + n * ell + d * m) + (m * s + m * ell + d * n) + 2 * ell * s + m * s + d * s + s * n + (m * r + r + r * n)
@@ -294,7 +311,7 @@ def test_runner_smoke_end_to_end_is_reproducible(tmp_path):
         out = tmp_path / name
         run_m4.main(["--out", str(out), "--smoke"])
         outs.append(out)
-    for fname in ("samples.csv", "samples.json", "summary.md"):  # deterministic content
+    for fname in ("samples.csv", "samples.json"):  # deterministic content (timings are not)
         assert (outs[0] / fname).read_bytes() == (outs[1] / fname).read_bytes()
     man = json.loads((outs[0] / "manifest.json").read_text())
     assert man["device"] == "cpu" and man["grid"] == "smoke" and "GPU" in man["not_run"]
@@ -303,3 +320,11 @@ def test_runner_smoke_end_to_end_is_reproducible(tmp_path):
     lib.read_csv(str(outs[0] / "samples.csv"))
     lib.read_csv(str(outs[0] / "timings.csv"), lib.TIMING_SCHEMA)
     lib.read_csv(str(outs[0] / "memory.csv"), lib.MEMORY_SCHEMA)
+
+
+def test_summary_accuracy_part_is_deterministic(tmp_path):
+    texts = []
+    for name in ("a", "b"):
+        run_m4.main(["--out", str(tmp_path / name), "--smoke"])
+        texts.append((tmp_path / name / "summary.md").read_text().split("## Timing and memory")[0])
+    assert texts[0] == texts[1]
