@@ -1,0 +1,12 @@
+Processing .\repo
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: torchsketchpower
+  Building wheel for torchsketchpower (pyproject.toml): started
+  Building wheel for torchsketchpower (pyproject.toml): finished with status 'done'
+  Created wheel for torchsketchpower: filename=torchsketchpower-0.1.0-py3-none-any.whl size=10692 sha256=ef4e956b63f6ae38bc0553ddb5038e9984f697472ea569dd74bfde780648983a
+  Stored in directory: C:\Users\zhangru\AppData\Local\Temp\pip-ephem-wheel-cache-kzoditt8\wheels\42\64\fc\f480aa88dd441de49085b234fc0f42c655a26c0f89e58a9063
+Successfully built torchsketchpower
+Installing collected packages: torchsketchpower
+Successfully installed torchsketchpower-0.1.0
+

@@ -1,0 +1,103 @@
+{
+  "source_sha": "988a1b170f2b9f56eef3a3e21f71bbdb5b68290e",
+  "run_id": "m9-t4-20261022-204314",
+  "classification": "PROBE_ONLY_COMPILE_NOT_ACCELERATION",
+  "files": {
+    ".gitattributes": {
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da",
+      "bytes": 8
+    },
+    "colab-control.json": {
+      "sha256": "4d23d205519b30384b230d47aaab2cde91492a513125aea6bdc0207534d4f965",
+      "bytes": 5931
+    },
+    "controller.stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "controller.stdout.log": {
+      "sha256": "4d23d205519b30384b230d47aaab2cde91492a513125aea6bdc0207534d4f965",
+      "bytes": 5931
+    },
+    "cpu-benchmark-manifest.json": {
+      "sha256": "4f96b614665655f88a8385b04659d35174023f9e70c0dfa473501a41ba5879e4",
+      "bytes": 491
+    },
+    "cpu-codegen-probe.log": {
+      "sha256": "13bc00480b192e1c6476b4408de8c076a0123516dab502c88ebd058d503602dc",
+      "bytes": 42
+    },
+    "cpu-decision.md": {
+      "sha256": "2667cf4ed756b92a6bff55d0c2f745553821633aeff5d74bf2056779fc5f0d99",
+      "bytes": 2105
+    },
+    "cpu-environment.log": {
+      "sha256": "a58f9e0bd1065f10d1e85904f966ea1c81d3e23c8fe1715c99df025d61ec6138",
+      "bytes": 191
+    },
+    "cpu-install.log": {
+      "sha256": "de0a5d817f98985363705f62c734cfd3dc772f2c70e7fc9888e69cc87734e9e0",
+      "bytes": 806
+    },
+    "cpu-local-report.json": {
+      "sha256": "f501a09b66026579c5411ab3f4da86bc68fa57adee9e5529aa2a1a58b2207460",
+      "bytes": 1876
+    },
+    "cpu-pytest.log": {
+      "sha256": "346cc7a61be90c5049f987054872e6cd5d9e3daf377eeedb43f089583c23550f",
+      "bytes": 1174
+    },
+    "cpu-results.json": {
+      "sha256": "85f6189f2c7096197370e62f1c34460ef6d27fdecc577ece6c6522c8455b6079",
+      "bytes": 707946
+    },
+    "cpu-summary.md": {
+      "sha256": "7921943eff55c07436de4510efe88c0d4ce42ad29460577bd3e856c7efd20bb5",
+      "bytes": 860
+    },
+    "cpu-trials.csv": {
+      "sha256": "8299f51d0917373fb55cfb1846fdec7bbeca89096289b23763c013bb18ce342f",
+      "bytes": 4534
+    },
+    "gpu-benchmark-manifest.json": {
+      "sha256": "3a31388a688d64f04533df00ffbbdea43f45dea7a68662a5524ad56e600cfa80",
+      "bytes": 476
+    },
+    "gpu-results.json": {
+      "sha256": "da97825a41e0d191dd3f12a68801390d8dd5791a943182d306a7c99697d26752",
+      "bytes": 851429
+    },
+    "gpu-summary.md": {
+      "sha256": "928b571facf4e3236b50f87de921b3a325af596ee98cae002fa8c7d459413921",
+      "bytes": 847
+    },
+    "gpu-trials.csv": {
+      "sha256": "5295886f05095d00e73fbfe3a569f4d35b80d207eae938fa762f0b700b5974a9",
+      "bytes": 17683
+    },
+    "invocation.json": {
+      "sha256": "14a345d86d7f834686f10b7849ec24225e81adf20fabf49d0679330cc08eaa47",
+      "bytes": 424
+    },
+    "m9-report.json": {
+      "sha256": "7788fd6feb780df1326a5357fbcf59eabf7e12133d48879f0167a4652bdfa377",
+      "bytes": 124088
+    },
+    "preflight.json": {
+      "sha256": "35bdaf862d7066c9eeefe383d8c3c0f2f6aaa7981c0977957fc16193894027a5",
+      "bytes": 3099
+    },
+    "review.json": {
+      "sha256": "1362317053ec9081668f8722cedd62e2cb892b0eb61e92fd9694da9722d1a4de",
+      "bytes": 15341
+    },
+    "review.md": {
+      "sha256": "00b4311afb649d8657be635301bd21336ddbdf54f7a97833c7aa38df2ce8d2a5",
+      "bytes": 7158
+    },
+    "run-summary.json": {
+      "sha256": "e13e37f77107555a8917a2c6cf42dbe5f9ca538171c4edd4943280db0cb18e1d",
+      "bytes": 7361
+    }
+  }
+}
