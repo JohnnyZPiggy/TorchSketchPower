@@ -11,3 +11,6 @@ dependencies = ["torch>=2.2"]
 test = ["pytest>=8"]
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
